@@ -1,0 +1,66 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">
+        <button class="btn">
+          <i class="bi bi-arrow-down-up"></i>
+        </button>
+        Title
+      </th>
+      <th scope="col">
+        <button class="btn">
+          <i class="bi bi-arrow-down-up"></i>
+        </button>
+        Description
+      </th>
+      <th scope="col">
+        <button class="btn">
+          <i class="bi bi-arrow-down-up"></i>
+        </button>
+        Created At
+      </th>
+      <th scope="col">
+        <button class="btn">
+          <i class="bi bi-arrow-down-up"></i>
+        </button>
+        Updated At
+      </th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if books %} {% for book in books %}
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.description }}</td>
+      <td>{{ book.created_at }}</td>
+      <td>{{ book.updated_at }}</td>
+      <td class="d-flex gap-2">
+        <a
+          class="btn btn-success"
+          href="/dashboard/books/{{ book.id }}/update/"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </a>
+        <button
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#book_delete_modal_{{ book.id }}"
+        >
+          <i class="bi bi-trash3-fill"></i>
+        </button>
+      </td>
+    </tr>
+    {% endfor %} {% else %}
+    <tr class="w-100">
+      <td></td>
+      <td></td>
+      <td>
+        <p>Data Empty</p>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>

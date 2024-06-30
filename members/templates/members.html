@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div style="max-width: 80vw" class="w-100 p-4">
+  {% include "members_delete_form.html" %}
+  <div class="d-flex flex-column gap-2 mb-4">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#member_modal_create"
+    >
+      <i class="bi bi-plus-circle"></i> Add Member
+    </button>
+    {% include "members_create_form.html" %}
+  </div>
+  {% include "members_table_data.html" %}
+</div>
+{% endblock dashboard %}

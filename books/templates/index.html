@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div style="max-width: 80vw" class="w-100 p-4">
+  <div class="d-flex flex-column gap-2 mb-4">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#book_modal_create"
+    >
+      <i class="bi bi-plus-circle"></i> Add Book
+    </button>
+    {% include "create_form.html" %}
+  </div>
+  {% include "table_data.html" %} {% include "delete_form.html" %}
+</div>
+{% endblock dashboard %}

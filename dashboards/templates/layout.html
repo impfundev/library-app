@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<main
+  style="min-height: 100vh"
+  class="w-100 h-100 bg-body-secondary d-flex justify-content-end"
+>
+  <div
+    class="w-100 p-4 d-flex flex-column gap-4 bg-body"
+    style="max-width: 20vw"
+  >
+    <h5 class="h4">{{ user_session.name }}</h5>
+    <div class="d-flex flex-column gap-2">
+      <a href="/dashboard" class="btn btn-outline-primary text-start w-100"
+        ><i class="bi bi-house-fill"></i> Home</a
+      >
+      <a
+        href="/dashboard/books"
+        class="btn btn-outline-primary text-start w-100"
+        ><i class="bi bi-book-half"></i> Books</a
+      >
+      <a
+        href="/dashboard/members"
+        class="btn btn-outline-primary text-start w-100"
+        ><i class="bi bi-person-vcard"></i> Members</a
+      >
+      <a
+        href="/dashboard/librarians"
+        class="btn btn-outline-primary text-start w-100"
+        ><i class="bi bi-person-fill-lock"></i> Librarian Access</a
+      >
+    </div>
+  </div>
+  {% block dashboard %}{% endblock dashboard %}
+</main>
+{% endblock content %}
