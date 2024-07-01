@@ -18,7 +18,7 @@ def index(request):
 
             Book.objects.create(title=title, description=description)
 
-    return render(request, "index.html", context)
+    return render(request, "book.html", context)
 
 
 def update(request, id):
@@ -51,4 +51,4 @@ def delete(request, id):
         book.delete()
         return HttpResponseRedirect("/dashboard/books")
 
-    return render(request, "index.html", context)
+    return render(request, "book.html", context)
