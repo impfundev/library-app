@@ -27,7 +27,7 @@ def index(request):
             loan_date = form.data["loan_date"]
             due_date = form.data["due_date"]
             return_date = form.data["return_date"]
-            note = form.data["note"]
+            notes = form.data["notes"]
 
             auth_session = request.session.get("auth_session", None)
             decoded = jwt.decode(
@@ -41,7 +41,7 @@ def index(request):
                 loan_date=loan_date,
                 due_date=due_date,
                 return_date=return_date,
-                notes=note,
+                notes=notes,
                 librarians_id=librarians_id,
             )
 
