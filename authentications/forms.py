@@ -48,3 +48,30 @@ class SignUpForm(forms.Form):
             }
         ),
     )
+
+
+class ForgotPassword(forms.Form):
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control",
+            }
+        )
+    )
+    old_password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Old Password",
+                "class": "form-control",
+            }
+        )
+    )
+    new_password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "New Password",
+                "class": "form-control",
+            }
+        )
+    )

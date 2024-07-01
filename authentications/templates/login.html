@@ -19,14 +19,17 @@
     >
       Login
     </button>
-    {% if error_message %}
-    <p class="alert alert-warning small" role="alert">
-      <i class="bi bi-exclamation-circle"></i> {{ error_message }}
-    </p>
-    {% endif %}
-    <p class="my-2">
-      Don't have an account? <a href="/auth/sign-up">Sign Up</a>
-    </p>
+    <div class="d-flex flex-column align-items-center">
+      {% if error_message %}
+      <p class="alert alert-warning small" role="alert">
+        <i class="bi bi-exclamation-circle"></i> {{ error_message }}
+      </p>
+      {% endif %}
+      <p class="my-2">
+        Don't have an account? <a href="/auth/sign-up">Sign Up</a>
+      </p>
+      <a href="/auth/forgot-password/" class="my-2">Forgot password</a>
+    </div>
   </form>
 </main>
 {% endblock content %}
