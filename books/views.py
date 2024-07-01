@@ -40,7 +40,7 @@ def update(request, id):
 
     context["form"] = form
     context["book_id"] = id
-    return render(request, "update_form.html", context)
+    return render(request, "book_update_form.html", context)
 
 
 def delete(request, id):
