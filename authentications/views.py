@@ -1,8 +1,8 @@
-import jwt
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from authentications.forms import LoginForm, SignUpForm
 from librarians.models import Librarians, LoginHistory
+from authentications.utils import create_auth_session
 
 
 def login(request):
@@ -20,14 +20,13 @@ def login(request):
                     email=form.data["email"],
                     password=form.data["password"],
                 )
-
                 payload = {
                     "librarian_id": librarian.id,
                     "name": librarian.name,
                     "email": librarian.email,
                 }
-                token = jwt.encode(payload, "secret", algorithm="HS256")
-                request.session["auth_session"] = token
+
+                create_auth_session(request, payload)
 
                 LoginHistory.objects.create(librarian_id=librarian.id)
                 return HttpResponseRedirect("/dashboard/")
@@ -59,13 +58,20 @@ def sign_up(request):
                     email=form.data["email"],
                     password=form.data["password"],
                 )
-                librarian_id = librarian.get(
+                new_librarian = librarian.get(
                     name=form.data["name"],
                     email=form.data["email"],
                     password=form.data["password"],
-                ).id
+                )
 
-                LoginHistory.objects.create(librarian_id=librarian_id)
+                payload = {
+                    "librarian_id": new_librarian.id,
+                    "name": new_librarian.name,
+                    "email": new_librarian.email,
+                }
+                create_auth_session(request, payload)
+
+                LoginHistory.objects.create(librarian_id=new_librarian.id)
                 return HttpResponseRedirect("/dashboard/")
     else:
         form = SignUpForm()

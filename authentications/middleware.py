@@ -5,6 +5,7 @@ from django.utils.deprecation import MiddlewareMixin
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from librarians.models import Librarians
+from django.conf import settings
 
 
 class AuthMiddleware(MiddlewareMixin):
@@ -18,7 +19,9 @@ class AuthMiddleware(MiddlewareMixin):
 
         if request.path.startswith("/dashboard/"):
             if auth_session is not None:
-                decoded = jwt.decode(auth_session, "secret", algorithms=["HS256"])
+                decoded = jwt.decode(
+                    auth_session, settings.JWT_SECRET, algorithms=["HS256"]
+                )
                 user_verified = get_object_or_404(
                     Librarians, id=decoded["librarian_id"]
                 )
