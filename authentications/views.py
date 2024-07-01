@@ -71,3 +71,8 @@ def sign_up(request):
         form = SignUpForm()
 
     return render(request, "sign_up.html", context)
+
+
+def logout(request):
+    del request.session["auth_session"]
+    return HttpResponseRedirect("/auth/login")

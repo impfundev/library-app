@@ -7,7 +7,7 @@
     class="w-100 p-4 d-flex flex-column gap-4 bg-body"
     style="max-width: 20vw"
   >
-    <h5 class="h4">{{ user_session.name }}</h5>
+    {% include "profile.html" %}
     <div class="d-flex flex-column gap-2">
       <a href="/dashboard" class="btn btn-outline-primary text-start w-100"
         ><i class="bi bi-house-fill"></i> Home</a
