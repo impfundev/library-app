@@ -1,0 +1,60 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Book</th>
+        <th scope="col">Member</th>
+        <th scope="col">Librarian</th>
+        <th scope="col">Loan Date</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if book_loans %} {% for loan in book_loans %}
+      <tr>
+        <td>{{ loan.book.title }}</td>
+        <td>{{ loan.member.name }}</td>
+        <td>{{ loan.librarians.name }}</td>
+        <td>{{ loan.loan_date }}</td>
+        <td>{{ loan.due_date }}</td>
+        <td>{{ loan.return_date }}</td>
+        <td>{{ loan.created_at }}</td>
+        <td>{{ loan.updated_at }}</td>
+        <td class="d-flex gap-2 py-4">
+          <a
+            class="btn btn-success"
+            href="/dashboard/book-loans/{{ loan.id }}/update/"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </a>
+          <button
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#book_loan_delete_modal_{{ loan.id }}"
+          >
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr class="w-100">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <p>Data Empty</p>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>

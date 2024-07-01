@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div class="w-100 p-4">
+  {% include "book_loan_delete_form.html" %}
+  <div class="d-flex flex-column gap-2 mb-4">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#book_loan_modal_create"
+    >
+      <i class="bi bi-plus-circle"></i> Add Book Loan
+    </button>
+    {% include "book_loan_create_form.html" %}
+  </div>
+  {% include "book_loan_table_data.html" %}
+</div>
+{% endblock dashboard %}

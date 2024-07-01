@@ -5,5 +5,6 @@ urlpatterns = [
     path("", index, name="dashboard"),
     path("books/", include("books.urls")),
     path("members/", include("members.urls")),
+    path("book-loans/", include("book_loans.urls")),
     path("librarians/", include("librarians.urls")),
 ]
