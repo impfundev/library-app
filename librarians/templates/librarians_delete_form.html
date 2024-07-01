@@ -1,0 +1,38 @@
+{% for librarian in librarians %}
+<form
+  class="modal fade"
+  id="librarian_delete_modal_{{ librarian.id }}"
+  tabindex="-1"
+  aria-labelledby="librarian_delete_label"
+  aria-hidden="true"
+  action="/dashboard/librarians/{{ librarian.id }}/delete/"
+  method="POST"
+>
+  {% csrf_token %}
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Are you sure want to delete <b>{{ librarian.title }}</b>?
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Once data is deleted, it cannot be restored.
+        <input type="hidden" name="id" id="almacen_id" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-danger">Continue</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endfor %}
