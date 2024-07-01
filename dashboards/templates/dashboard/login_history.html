@@ -1,0 +1,17 @@
+<table class="table">
+  <legend class="h3">Librarian Login History</legend>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Login At</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for histori in login_histories %}
+    <tr>
+      <td>{{ histori.librarian.name }}</td>
+      <td>{{ histori.login_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
