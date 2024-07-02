@@ -18,7 +18,13 @@
         <td>{{ loan.due_date }}</td>
         <td>{{ loan.loan_date }}</td>
       </tr>
-      {% endfor %} {% endif %}
+      {% endfor %} {% else %}
+      <tr>
+        <td>No Data</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endif %}
     </tbody>
   </table>
 </div>
