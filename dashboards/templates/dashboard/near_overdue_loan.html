@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      {% for loan in near_overdue_loans %}
+      {% if near_overdue_loans %} {% for loan in near_overdue_loans %}
       <tr>
         <td>{{ loan.book.title }}</td>
         <td>{{ loan.due_date }}</td>
         <td>{{ loan.loan_date }}</td>
       </tr>
-      {% endfor %}
+      {% endfor %} {% endif %}
     </tbody>
   </table>
 </div>
