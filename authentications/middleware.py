@@ -34,8 +34,12 @@ class AuthMiddleware(MiddlewareMixin):
                 }
                 message = "login request success, user: " + f"{user_obj}"
                 print(message)
+
                 return response
             else:
                 return HttpResponseRedirect("/auth/login")
 
-        return response
+        if auth_session is not None and request.path.startswith("/auth/"):
+            return HttpResponseRedirect("/dashboard/")
+        else:
+            return response
