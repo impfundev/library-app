@@ -61,13 +61,6 @@ MIDDLEWARE = [
     "authentications.middleware.AuthMiddleware",
 ]
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://default:AcxnAAIncDEzODA4ZjYxYzg1MDQ0MzdmYjMyZTQwNGZjMTZlNmFmY3AxNTIzMjc@devoted-meerkat-52327.upstash.io:6379",
-    }
-}
-
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
