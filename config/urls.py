@@ -17,9 +17,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include, static
+from django.conf.urls import include
 from dashboards.views import home
-from django.conf import settings
 
 urlpatterns = [
     path("", home, name="homepage"),
@@ -27,6 +26,3 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("auth/", include("authentications.urls")),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
