@@ -1,6 +1,8 @@
+from datetime import timedelta, datetime
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
 from authentications.forms import LoginForm, SignUpForm, ForgotPassword
 from librarians.models import Librarians, LoginHistory
 from authentications.utils import create_auth_session
@@ -22,7 +24,10 @@ class AuthView(TemplateView):
                         email=form.data["email"],
                         password=form.data["password"],
                     )
+
+                    expiration_time = datetime.now() + timedelta(minutes=30)
                     payload = {
+                        "exp": expiration_time.timestamp(),
                         "librarian_id": librarian.id,
                         "name": librarian.name,
                         "email": librarian.email,
@@ -65,7 +70,9 @@ class AuthView(TemplateView):
                         password=form.data["password"],
                     )
 
+                    expiration_time = datetime.now() + timedelta(minutes=30)
                     payload = {
+                        "exp": expiration_time.timestamp(),
                         "librarian_id": new_librarian.id,
                         "name": new_librarian.name,
                         "email": new_librarian.email,

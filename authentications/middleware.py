@@ -27,6 +27,7 @@ class AuthMiddleware(MiddlewareMixin):
                 )
 
                 user_obj = {
+                    "exp": decoded["exp"],
                     "id": user_verified.id,
                     "name": user_verified.name,
                     "time": str(datetime.now()),
