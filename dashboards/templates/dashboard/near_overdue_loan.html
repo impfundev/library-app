@@ -1,19 +1,24 @@
-<table class="table">
-  <legend class="h3">Near Overdue Book Loan</legend>
-  <thead>
-    <tr>
-      <th scope="col">Book Title</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Loan Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for loan in near_overdue_loans %}
-    <tr>
-      <td>{{ loan.book.title }}</td>
-      <td>{{ loan.due_date }}</td>
-      <td>{{ loan.loan_date }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="card-header">
+  <h2 class="h4">Near Overdue Book Loan</h2>
+</div>
+<div class="card-body">
+  <table class="table table-striped">
+    <legend class="h3"></legend>
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Book Title</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Loan Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for loan in near_overdue_loans %}
+      <tr>
+        <td>{{ loan.book.title }}</td>
+        <td>{{ loan.due_date }}</td>
+        <td>{{ loan.loan_date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

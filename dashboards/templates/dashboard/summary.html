@@ -1,8 +1,10 @@
-<h3 class="h3">At a Glance</h3>
-<div class="row container text-center">
+<div class="card-header">
+  <h3 class="h4">At a Glance</h3>
+</div>
+<div class="card-body row container text-center">
   <div class="col">
     <div class="card h-100 d-flex flex-column">
-      <div class="card-body">
+      <div class="card-body row align-content-center">
         <h5 class="card-title"><i class="bi bi-book-half"></i> Total Book</h5>
         <p class="h1">{{ total_book }}</p>
       </div>
@@ -15,7 +17,7 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <div class="card-body">
+      <div class="card-body row align-content-center">
         <h5 class="card-title">
           <i class="bi bi-person-vcard"></i> Total Member
         </h5>
@@ -30,11 +32,11 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <div class="card-body">
+      <div class="card-body row align-content-center">
         <h5 class="card-title">
           <i class="bi bi-calendar-week"></i> Book Loan
         </h5>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center gap-2">
           <div class="card">
             <div class="card-header">Total</div>
             <p class="h1">{{ total_book_loans }}</p>
