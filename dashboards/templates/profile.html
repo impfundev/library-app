@@ -1,18 +1,21 @@
-<div class="dropdown">
-  <button class="w-100 btn btn-primary" type="button" data-bs-toggle="dropdown">
+<div class="d-flex flex-column gap-2">
+  <button
+    class="w-100 btn btn-primary text-start d-flex justify-content-center gap-2"
+    type="button"
+    data-bs-toggle="dropdown"
+  >
     <i class="bi bi-person-circle"></i>
-    {% if user %} {{ user.name }} {% endif %}
+    {% if user %} <span class="text-truncate">{{ user.name }}</span> {% endif %}
   </button>
-  <ul class="w-100 dropdown-menu shadow">
-    <li>
-      <a class="dropdown-item" href="#"
-        ><i class="bi bi-person-fill-gear"></i> settings</a
-      >
-    </li>
-    <li>
-      <a class="dropdown-item" href="/auth/logout/"
-        ><i class="bi bi-box-arrow-left"></i> logout</a
-      >
-    </li>
-  </ul>
+  <a
+    class="w-100 btn btn-outline-primary border-white text-white text-start"
+    href="#"
+    ><i class="bi bi-person-fill-gear"></i> settings</a
+  >
+  <a
+    class="w-100 btn btn-outline-primary border-white text-white text-start"
+    href="/auth/logout/"
+    ><i class="bi bi-box-arrow-left"></i> logout</a
+  >
 </div>
+<hr class="border-white" />
