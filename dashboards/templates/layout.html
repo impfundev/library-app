@@ -4,36 +4,40 @@
   class="w-100 h-100 bg-body-secondary d-flex justify-content-end"
 >
   <div
-    class="w-100 p-4 d-flex flex-column gap-4 bg-body"
+    class="w-100 p-4 d-flex flex-column gap-4 bg-dark"
     style="max-width: 20vw"
   >
     {% include "profile.html" %}
     <div class="d-flex flex-column gap-2">
-      <a href="/dashboard" class="btn btn-outline-primary text-start w-100"
+      <a
+        href="/dashboard"
+        class="btn {% if request.path == '/dashboard/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-bar-chart-line-fill"></i> Reports</a
       >
       <a
         href="/dashboard/books"
-        class="btn btn-outline-primary text-start w-100"
+        class="btn {% if request.path == '/dashboard/books/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-book-half"></i> Books</a
       >
       <a
         href="/dashboard/members"
-        class="btn btn-outline-primary text-start w-100"
+        class="btn {% if request.path == '/dashboard/members/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-person-vcard"></i> Members</a
       >
       <a
         href="/dashboard/book-loans"
-        class="btn btn-outline-primary text-start w-100"
+        class="btn {% if request.path == '/dashboard/book-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-calendar-week"></i> Book Loans</a
       >
       <a
         href="/dashboard/librarians"
-        class="btn btn-outline-primary text-start w-100"
+        class="btn {% if request.path == '/dashboard/librarians/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-person-fill-lock"></i> Librarian</a
       >
     </div>
   </div>
-  {% block dashboard %}{% endblock dashboard %}
+  <div style="max-height: 100vh" class="w-100 overflow-y-auto">
+    {% block dashboard %}{% endblock dashboard %}
+  </div>
 </main>
 {% endblock content %}
