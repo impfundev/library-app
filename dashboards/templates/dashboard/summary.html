@@ -1,3 +1,4 @@
+<h3 class="h3">At a Glance</h3>
 <div class="row container text-center">
   <div class="col">
     <div class="card h-100 d-flex flex-column">
@@ -31,9 +32,18 @@
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">
-          <i class="bi bi-calendar-week"></i> Total Book Loan
+          <i class="bi bi-calendar-week"></i> Book Loan
         </h5>
-        <p class="h1">{{ total_book_loans }}</p>
+        <div class="d-flex justify-content-center">
+          <div class="card">
+            <div class="card-header">Total</div>
+            <p class="h1">{{ total_book_loans }}</p>
+          </div>
+          <div class="card">
+            <div class="card-header">Overdue</div>
+            <p class="h1">{{ total_overdue }}</p>
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <a href="/dashboard/book-loans/" class="w-100 btn btn-primary"

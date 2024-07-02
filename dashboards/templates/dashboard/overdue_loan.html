@@ -1,0 +1,17 @@
+<table class="table">
+  <legend class="h3">Overdue Book Loan</legend>
+  <thead>
+    <tr>
+      <th scope="col">Book Title</th>
+      <th scope="col">Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loan in overdue_loans %}
+    <tr>
+      <td>{{ loan.book.title }}</td>
+      <td>{{ loan.due_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
