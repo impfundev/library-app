@@ -22,7 +22,12 @@
             <label for="book">Book</label>
             <select id="book" name="book" class="form-select">
               {% for book in books %}
-              <option value="{{ book.id }}">{{ book.title }}</option>
+              <option
+                value="{{ book.id }}"
+                selected="{% if initial_book_id == book.id %}true{% else %}false{% endif %}"
+              >
+                {{ book.title }}
+              </option>
               {% endfor %}
             </select>
 
