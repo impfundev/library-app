@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from datetime import datetime
 
 from librarians.models import Librarians
@@ -18,6 +19,23 @@ def index(request):
             password = form.data["password"]
 
             Librarians.objects.create(name=name, email=email, password=password)
+
+    if request.method == "GET":
+        query = request.GET.get("q")
+        order = request.GET.get("o")
+
+        if query is not None:
+            filtered_book_list = Librarians.objects.filter(
+                Q(name__icontains=query) | Q(email__icontains=query)
+            ).order_by("-created_at")[:10]
+            context["librarians"] = filtered_book_list
+
+        if order == "new":
+            context["librarians"] = Librarians.objects.all().order_by("-updated_at")[
+                :10
+            ]
+        elif order == "old":
+            context["librarians"] = Librarians.objects.all().order_by("updated_at")[:10]
 
     return render(request, "librarians.html", context)
 

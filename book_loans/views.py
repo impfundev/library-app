@@ -1,6 +1,7 @@
 import jwt
 from django.conf import settings
 from datetime import datetime
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from book_loans.models import Book, BookLoans
@@ -48,6 +49,21 @@ def index(request):
                 librarians_id=librarians_id,
                 return_date=return_date,
             )
+
+    if request.method == "GET":
+        query = request.GET.get("q")
+        order = request.GET.get("o")
+
+        # if query is not None:
+        #     filtered_book_list = BookLoans.objects.filter(
+        #         Q(member__icontains=query) | Q(book__icontains=query)
+        #     ).order_by("-created_at")[:10]
+        #     context["book_loans"] = filtered_book_list
+
+        if order == "new":
+            context["book_loans"] = BookLoans.objects.all().order_by("-created_at")[:10]
+        elif order == "old":
+            context["book_loans"] = BookLoans.objects.all().order_by("created_at")[:10]
 
     return render(request, "loans.html", context)
 
