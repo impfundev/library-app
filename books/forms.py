@@ -11,6 +11,15 @@ class BookForm(forms.Form):
             }
         ),
     )
+    stock = forms.IntegerField(
+        widget=forms.TextInput(
+            attrs={
+                "type": "number",
+                "placeholder": "Stock",
+                "class": "form-control",
+            }
+        ),
+    )
     description = forms.CharField(
         max_length=255,
         widget=forms.Textarea(

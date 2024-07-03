@@ -29,6 +29,10 @@ def index(request):
             return_date = form.data["return_date"] or None
             notes = form.data["notes"]
 
+            book = books.get(id=book_id)
+            new_stock = book.stock - 1
+            books.filter(id=book_id).update(stock=new_stock)
+
             auth_session = request.session.get("auth_session", None)
             decoded = jwt.decode(
                 auth_session, settings.JWT_SECRET, algorithms=["HS256"]
@@ -75,6 +79,7 @@ def update(request, id):
         auth_session = request.session.get("auth_session", None)
         decoded = jwt.decode(auth_session, settings.JWT_SECRET, algorithms=["HS256"])
         librarians_id = decoded["librarian_id"]
+        context["initial_book_id"] = book_id
 
         if form.is_valid:
             loan_date = form.data["loan_date"]
