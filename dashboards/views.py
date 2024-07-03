@@ -30,12 +30,12 @@ def index(request):
 
     if overdue_loans.exists():
         context["overdue_loans"] = overdue_loans
-        near_overdue_loans = {}
-        for loan in BookLoans.objects.all():
-            three_day_before_overdue = loan.due_date - timedelta(days=3)
-            if three_day_before_overdue.timestamp() >= now.timestamp():
-                near_overdue_loans = overdue_loans
-
-            context["near_overdue_loans"] = near_overdue_loans
+        due_date_threshold = now - timedelta(days=3)
+        upcoming_loan = (
+            BookLoans.objects.filter(due_date__gte=now)
+            .filter(due_date__gte=due_date_threshold)
+            .order_by("-due_date")
+        )
+        context["near_overdue_loans"] = upcoming_loan
 
     return render(request, "dashboard/index.html", context)

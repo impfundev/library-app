@@ -9,7 +9,7 @@ from book_loans.forms import BookLoanForm
 
 
 def index(request):
-    latest_book_loan_list = BookLoans.objects.order_by("created_at")[:10]
+    latest_book_loan_list = BookLoans.objects.order_by("-created_at")[:10]
     books = Book.objects.all()
     member = Members.objects.all()
     context = {
@@ -26,7 +26,7 @@ def index(request):
             member_id = request.POST["member"]
             loan_date = form.data["loan_date"]
             due_date = form.data["due_date"]
-            return_date = form.data["return_date"]
+            return_date = form.data["return_date"] or None
             notes = form.data["notes"]
 
             auth_session = request.session.get("auth_session", None)
@@ -40,9 +40,9 @@ def index(request):
                 member_id=member_id,
                 loan_date=loan_date,
                 due_date=due_date,
-                return_date=return_date,
                 notes=notes,
                 librarians_id=librarians_id,
+                return_date=return_date,
             )
 
     return render(request, "loans.html", context)
@@ -77,14 +77,19 @@ def update(request, id):
         librarians_id = decoded["librarian_id"]
 
         if form.is_valid:
+            loan_date = form.data["loan_date"]
+            due_date = form.data["due_date"]
+            return_date = form.data["return_date"] or None
+            notes = form.data["notes"]
+
             loan.update(
                 book_id=book_id,
                 member_id=member_id,
                 librarians_id=librarians_id,
-                loan_date=form.data["loan_date"],
-                due_date=form.data["due_date"],
-                return_date=form.data["return_date"],
-                notes=form.data["notes"],
+                loan_date=loan_date,
+                due_date=due_date,
+                return_date=return_date,
+                notes=notes,
                 updated_at=datetime.now(),
             )
             return HttpResponseRedirect("/dashboard/book-loans")

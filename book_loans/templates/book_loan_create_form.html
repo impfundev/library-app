@@ -32,7 +32,14 @@
           <option value="{{ member.id }}">{{ member.name }}</option>
           {% endfor %}
         </select>
-        {{ form }}
+        {% for field in form %}
+        <div class="py-1">
+          <label for="{{ field.id }}" class="form-label"
+            >{{ field.label }}</label
+          >
+          {{ field }}
+        </div>
+        {% endfor %}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

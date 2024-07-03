@@ -19,12 +19,13 @@ class BookLoanForm(forms.Form):
         )
     )
     return_date = forms.DateTimeField(
+        required=False,
         widget=forms.DateTimeInput(
             attrs={
                 "type": "datetime-local",
                 "class": "form-control",
             }
-        )
+        ),
     )
     notes = forms.CharField(
         widget=forms.Textarea(
