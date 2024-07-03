@@ -20,22 +20,23 @@ def index(request):
         due_date__lte=now, return_date=None
     ).order_by("created_at")
 
+    due_date_treshold = now.today() + timedelta(days=3)
+
+    upcoming_loans = BookLoans.objects.filter(due_date__lte=due_date_treshold).filter(
+        due_date__gte=now.today()
+    )
+
     context = {
         "login_histories": latest_login_history,
         "total_book": total_book,
         "total_member": total_member,
         "total_book_loans": total_book_loans,
         "total_overdue": overdue_loans.count(),
+        "overdue_loans": overdue_loans,
+        "upcoming_loans": upcoming_loans,
     }
 
     if overdue_loans.exists():
         context["overdue_loans"] = overdue_loans
-        due_date_threshold = now - timedelta(days=3)
-        upcoming_loan = (
-            BookLoans.objects.filter(due_date__gte=now)
-            .filter(due_date__gte=due_date_threshold)
-            .order_by("-due_date")
-        )
-        context["near_overdue_loans"] = upcoming_loan
 
     return render(request, "dashboard/index.html", context)

@@ -7,6 +7,7 @@
       <tr class="table-primary">
         <th scope="col">Book Title</th>
         <th scope="col">Due Date</th>
+        <th scope="col">Loan Date</th>
       </tr>
     </thead>
     <tbody>
@@ -14,9 +15,11 @@
       <tr>
         <td>{{ loan.book.title }}</td>
         <td>{{ loan.due_date }}</td>
+        <td>{{ loan.loan_date }}</td>
       </tr>
       {% endfor %} {% else %}
       <tr>
+        <td></td>
         <td>No Data</td>
         <td></td>
       </tr>
