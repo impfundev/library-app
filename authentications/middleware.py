@@ -1,11 +1,10 @@
 import jwt
 
-from datetime import datetime
-from django.utils.deprecation import MiddlewareMixin
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from librarians.models import Librarians
 from django.conf import settings
+from datetime import datetime, timedelta
+from django.utils.deprecation import MiddlewareMixin
+from django.http import HttpResponseRedirect
+import jwt.utils
 
 
 class AuthMiddleware(MiddlewareMixin):
@@ -17,29 +16,34 @@ class AuthMiddleware(MiddlewareMixin):
 
         auth_session = request.session.get("auth_session", None)
 
-        if request.path.startswith("/dashboard/"):
-            if auth_session is not None:
-                decoded = jwt.decode(
+        if auth_session is not None:
+            try:
+                payload = jwt.decode(
                     auth_session, settings.JWT_SECRET, algorithms=["HS256"]
                 )
-                user_verified = get_object_or_404(
-                    Librarians, id=decoded["librarian_id"]
-                )
 
-                user_obj = {
-                    "exp": decoded["exp"],
-                    "id": user_verified.id,
-                    "name": user_verified.name,
-                    "time": str(datetime.now()),
-                }
-                message = "login request success, user: " + f"{user_obj}"
-                print(message)
+                # refresh token 5 minutes before expired
+                expired_time = datetime.fromtimestamp(payload["exp"])
+                near_expired = expired_time - timedelta(minutes=5)
+
+                if datetime.now() >= near_expired:
+                    payload["exp"] = (
+                        payload["exp"] + timedelta(minutes=15).total_seconds()
+                    )
+                    new_token = jwt.encode(
+                        payload, settings.JWT_SECRET, algorithm="HS256"
+                    )
+                    request.session["auth_session"] = new_token
 
                 return response
-            else:
+
+            except jwt.ExpiredSignatureError:
+                del request.session["auth_session"]
                 return HttpResponseRedirect("/auth/login")
 
-        if auth_session is not None and request.path.startswith("/auth/"):
+        if auth_session is None and request.path.startswith("/dashboard/"):
+            return HttpResponseRedirect("/auth/login")
+        elif auth_session is not None and request.path.startswith("/auth/"):
             return HttpResponseRedirect("/dashboard/")
         else:
             return response
