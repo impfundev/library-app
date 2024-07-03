@@ -16,7 +16,9 @@ def index(request):
     total_book_loans = BookLoans.objects.count()
 
     now = datetime.now()
-    overdue_loans = BookLoans.objects.filter(due_date__lte=now)
+    overdue_loans = BookLoans.objects.filter(
+        due_date__lte=now, return_date=None
+    ).order_by("created_at")
 
     context = {
         "login_histories": latest_login_history,
@@ -28,13 +30,12 @@ def index(request):
 
     if overdue_loans.exists():
         context["overdue_loans"] = overdue_loans
+        near_overdue_loans = {}
         for loan in BookLoans.objects.all():
-            near_overdue_window = loan.due_date - timedelta(days=7)
-            due_date = loan.due_date
+            three_day_before_overdue = loan.due_date - timedelta(days=3)
+            if three_day_before_overdue.timestamp() >= now.timestamp():
+                near_overdue_loans = overdue_loans
 
-        near_overdue_loans = BookLoans.objects.filter(
-            due_date__range=(near_overdue_window, due_date)
-        )
-        context["near_overdue_loans"] = near_overdue_loans
+            context["near_overdue_loans"] = near_overdue_loans
 
     return render(request, "dashboard/index.html", context)
