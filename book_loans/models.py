@@ -11,7 +11,7 @@ class BookLoans(models.Model):
     notes = models.TextField(blank=True, null=True)
     loan_date = models.DateTimeField()
     due_date = models.DateTimeField()
-    return_date = models.DateTimeField()
+    return_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
