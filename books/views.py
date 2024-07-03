@@ -1,14 +1,16 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from datetime import datetime
+from django.db.models import Q
 
 from books.models import Book
 from books.forms import BookForm
 
 
 def index(request):
-    latest_book_list = Book.objects.order_by("created_at")[:10]
-    context = {"books": latest_book_list, "form": BookForm()}
+    context = {"form": BookForm()}
+    latest_book_list = Book.objects.order_by("-created_at")[:10]
+    context["books"] = latest_book_list
 
     if request.method == "POST":
         form = BookForm(request.POST)
@@ -18,6 +20,21 @@ def index(request):
             description = form.data["description"]
 
             Book.objects.create(title=title, stock=stock, description=description)
+
+    if request.method == "GET":
+        query = request.GET.get("q")
+        order = request.GET.get("o")
+
+        if query is not None:
+            filtered_book_list = Book.objects.filter(
+                Q(title__icontains=query) | Q(description__icontains=query)
+            ).order_by("-created_at")[:10]
+            context["books"] = filtered_book_list
+
+        if order == "new":
+            context["books"] = Book.objects.all().order_by("-updated_at")[:10]
+        elif order == "old":
+            context["books"] = Book.objects.all().order_by("updated_at")[:10]
 
     return render(request, "book.html", context)
 
