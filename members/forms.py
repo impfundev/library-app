@@ -1,31 +1,29 @@
 from django import forms
+from members.models import Members
 
 
-class MemberForm(forms.Form):
-    name = forms.CharField(
-        max_length=50,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Name",
-                "class": "form-control",
-            }
-        ),
-    )
-    email = forms.CharField(
-        max_length=255,
-        widget=forms.EmailInput(
-            attrs={
-                "placeholder": "Email",
-                "class": "form-control",
-            }
-        ),
-    )
-    password = forms.CharField(
-        max_length=255,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Password",
-                "class": "form-control",
-            }
-        ),
-    )
+class MemberForm(forms.ModelForm):
+
+    class Meta:
+        model = Members
+        fields = ["name", "email", "password"]
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    "placeholder": "Name",
+                    "class": "form-control",
+                }
+            ),
+            "email": forms.EmailInput(
+                attrs={
+                    "placeholder": "Email",
+                    "class": "form-control",
+                }
+            ),
+            "password": forms.TextInput(
+                attrs={
+                    "placeholder": "Password",
+                    "class": "form-control",
+                }
+            ),
+        }
