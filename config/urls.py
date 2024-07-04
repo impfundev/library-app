@@ -25,4 +25,5 @@ urlpatterns = [
     path("dashboard/", include("dashboards.urls")),
     path("admin/", admin.site.urls),
     path("auth/", include("authentications.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]

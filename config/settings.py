@@ -32,6 +32,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app", ".now.sh"]
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
+def show_toolbar(request):
+    return True
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+}
+
+if DEBUG:
+    import mimetypes
+
+    mimetypes.add_type("application/javascript", ".js", True)
+
 
 # Application definition
 
@@ -48,6 +66,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -60,6 +79,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "authentications.middleware.AuthMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     # "django.middleware.cache.UpdateCacheMiddleware",
     # "django.middleware.cache.FetchFromCacheMiddleware",
 ]
@@ -139,7 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 
 STORAGES = {
     "staticfiles": {
@@ -147,12 +167,14 @@ STORAGES = {
     },
 }
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-#         "LOCATION": "cache",
-#     }
-# }
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://default:zTuwykbejEOsZ4TGTku4IHRMJwu7JeHa@redis-12647.c1.ap-southeast-1-1.ec2.redns.redis-cloud.com:12647",
+    },
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
