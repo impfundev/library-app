@@ -22,9 +22,9 @@ def index(request):
 
     due_date_treshold = now.today() + timedelta(days=3)
 
-    upcoming_loans = BookLoans.objects.filter(due_date__lte=due_date_treshold).filter(
-        due_date__gte=now.today()
-    )
+    upcoming_loans = BookLoans.objects.filter(
+        due_date__lte=due_date_treshold, return_date=None
+    ).filter(due_date__gte=now.today())
 
     context = {
         "login_histories": latest_login_history,
