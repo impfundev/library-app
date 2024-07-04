@@ -27,9 +27,7 @@ class AuthMiddleware(MiddlewareMixin):
                 near_expired = expired_time - timedelta(minutes=5)
 
                 if datetime.now() >= near_expired:
-                    payload["exp"] = (
-                        payload["exp"] + timedelta(minutes=15).total_seconds()
-                    )
+                    payload["exp"] = payload["exp"] + timedelta(hours=2).total_seconds()
                     new_token = jwt.encode(
                         payload, settings.JWT_SECRET, algorithm="HS256"
                     )

@@ -25,7 +25,7 @@ class AuthView(TemplateView):
                         password=form.data["password"],
                     )
 
-                    expiration_time = datetime.now() + timedelta(minutes=15)
+                    expiration_time = datetime.now() + timedelta(hours=2)
                     payload = {
                         "exp": expiration_time.timestamp(),
                         "librarian_id": librarian.id,
