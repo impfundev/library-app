@@ -1,31 +1,30 @@
 from django import forms
+from books.models import Book
 
 
-class BookForm(forms.Form):
-    title = forms.CharField(
-        max_length=100,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Title",
-                "class": "form-control",
-            }
-        ),
-    )
-    stock = forms.IntegerField(
-        widget=forms.TextInput(
-            attrs={
-                "type": "number",
-                "placeholder": "Stock",
-                "class": "form-control",
-            }
-        ),
-    )
-    description = forms.CharField(
-        max_length=255,
-        widget=forms.Textarea(
-            attrs={
-                "placeholder": "Description",
-                "class": "form-control",
-            }
-        ),
-    )
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ["title", "stock", "description"]
+
+        widgets = {
+            "title": forms.TextInput(
+                attrs={
+                    "placeholder": "Title",
+                    "class": "form-control",
+                }
+            ),
+            "stock": forms.TextInput(
+                attrs={
+                    "type": "number",
+                    "placeholder": "Stock",
+                    "class": "form-control",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "placeholder": "Description",
+                    "class": "form-control",
+                }
+            ),
+        }
