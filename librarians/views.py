@@ -54,7 +54,7 @@ def index(request):
             cache.clear()
             filtered_book_list = Librarians.objects.filter(
                 Q(name__icontains=query) | Q(email__icontains=query)
-            ).order_by("-created_at")[:10]
+            ).order_by("-created_at")
             context["librarians"] = filtered_book_list
 
         if order == "new":
@@ -64,13 +64,13 @@ def index(request):
             ]
         elif order == "old":
             cache.clear()
-            context["librarians"] = Librarians.objects.all().order_by("updated_at")[:10]
+            context["librarians"] = Librarians.objects.all().order_by("updated_at")
 
     return render(request, "librarians.html", context)
 
 
 def update(request, id):
-    latest_librarian_list = Librarians.objects.order_by("created_at")[:10]
+    latest_librarian_list = Librarians.objects.order_by("created_at")
     context = {"librarians": latest_librarian_list}
     librarian = Librarians.objects.get(id=id)
     initial = {

@@ -82,21 +82,21 @@ def index(request):
         if keyword is not None:
             filtered_book_list = BookLoans.objects.filter(
                 Q(member__name__icontains=keyword) | Q(book__title__icontains=keyword)
-            ).order_by("-created_at")[:10]
+            ).order_by("-created_at")
             context["book_loans"] = filtered_book_list
 
         if order == "new":
             cache.clear()
-            context["book_loans"] = BookLoans.objects.all().order_by("-created_at")[:10]
+            context["book_loans"] = BookLoans.objects.all().order_by("-created_at")
         elif order == "old":
             cache.clear()
-            context["book_loans"] = BookLoans.objects.all().order_by("created_at")[:10]
+            context["book_loans"] = BookLoans.objects.all().order_by("created_at")
 
     return render(request, "loans.html", context)
 
 
 def update(request, id):
-    book_loans = BookLoans.objects.order_by("created_at")[:10]
+    book_loans = BookLoans.objects.order_by("created_at")
     loan = get_object_or_404(BookLoans, id=id)
     books = Book.objects.all()
     member = Members.objects.all()

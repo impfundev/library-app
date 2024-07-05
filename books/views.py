@@ -53,21 +53,21 @@ def index(request):
             cache.clear()
             filtered_book_list = Book.objects.filter(
                 Q(title__icontains=query) | Q(description__icontains=query)
-            ).order_by("-created_at")[:10]
+            ).order_by("-created_at")
             context["books"] = filtered_book_list
 
         if order == "new":
             cache.clear()
-            context["books"] = Book.objects.all().order_by("-updated_at")[:10]
+            context["books"] = Book.objects.all().order_by("-updated_at")
         elif order == "old":
             cache.clear()
-            context["books"] = Book.objects.all().order_by("updated_at")[:10]
+            context["books"] = Book.objects.all().order_by("updated_at")
 
     return render(request, "book.html", context)
 
 
 def update(request, id):
-    latest_book_list = Book.objects.order_by("created_at")[:10]
+    latest_book_list = Book.objects.order_by("created_at")
     context = {"books": latest_book_list}
     book = Book.objects.get(id=id)
     initial_dict = {

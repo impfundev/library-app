@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
-    members = Members.objects.order_by("created_at")[:10]
+    members = Members.objects.order_by("created_at")
     context = {"members": members, "form": MemberForm()}
 
     default_page = 1
@@ -52,21 +52,21 @@ def index(request):
             cache.clear()
             filtered_book_list = Members.objects.filter(
                 Q(name__icontains=query) | Q(email__icontains=query)
-            ).order_by("-created_at")[:10]
+            ).order_by("-created_at")
             context["members"] = filtered_book_list
 
         if order == "new":
             cache.clear()
-            context["members"] = Members.objects.all().order_by("-updated_at")[:10]
+            context["members"] = Members.objects.all().order_by("-updated_at")
         elif order == "old":
             cache.clear()
-            context["members"] = Members.objects.all().order_by("updated_at")[:10]
+            context["members"] = Members.objects.all().order_by("updated_at")
 
     return render(request, "members.html", context)
 
 
 def update(request, id):
-    latest_member_list = Members.objects.order_by("created_at")[:10]
+    latest_member_list = Members.objects.order_by("created_at")
     context = {"members": latest_member_list}
     member = Members.objects.get(id=id)
     initial = {
