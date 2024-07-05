@@ -95,18 +95,6 @@ python manage.py runserver
     * Overdue Book Loans - View books currently overdue
     * Librarian Login History - Track librarian activity
 
-### Technologies (Replace with your specific technologies)
-
-* Programming Language: (e.g., Python, Java)
-* Framework: (e.g., Django, Spring Boot)
-* Database: (e.g., MySQL, PostgreSQL)
-
-### Installation (Optional - If applicable)
-
-1. Install required dependencies (list dependencies here)
-2. Configure database connection (mention configuration file)
-3. Run application server (mention command)
-
 ### Usage
 
 1. **Login:**
