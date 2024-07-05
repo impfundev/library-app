@@ -9,18 +9,40 @@ from django.shortcuts import render, get_object_or_404
 from book_loans.models import Book, BookLoans
 from members.models import Members
 from book_loans.forms import BookLoanForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
-    latest_book_loan_list = BookLoans.objects.order_by("-created_at")[:10]
+    book_loan_lists = BookLoans.objects.all()
     books = Book.objects.all()
     member = Members.objects.all()
     context = {
-        "book_loans": latest_book_loan_list,
+        "book_loans": book_loan_lists,
         "form": BookLoanForm(),
         "books": books,
         "members": member,
     }
+
+    default_page = 1
+    page = request.GET.get("page", default_page)
+    items_per_page = 5
+    paginator = Paginator(book_loan_lists, items_per_page)
+
+    try:
+        page_obj = paginator.page(page)
+        context["page_obj"] = page_obj
+        context["book_loans"] = page_obj
+        cache.clear()
+    except PageNotAnInteger:
+        page_obj = paginator.page(default_page)
+        context["page_obj"] = page_obj
+        context["book_loans"] = page_obj
+        cache.clear()
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+        context["page_obj"] = page_obj
+        context["book_loans"] = page_obj
+        cache.clear()
 
     if request.method == "POST":
         form = BookLoanForm(request.POST)
@@ -74,12 +96,12 @@ def index(request):
 
 
 def update(request, id):
-    latest_book_loan_list = BookLoans.objects.order_by("created_at")[:10]
+    book_loans = BookLoans.objects.order_by("created_at")[:10]
     loan = get_object_or_404(BookLoans, id=id)
     books = Book.objects.all()
     member = Members.objects.all()
     context = {
-        "book_loans": latest_book_loan_list,
+        "book_loans": book_loans,
         "loan": loan,
         "books": books,
         "members": member,

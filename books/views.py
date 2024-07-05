@@ -1,17 +1,39 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.cache import cache
+
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from django.db.models import Q
 
 from books.models import Book
 from books.forms import BookForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
     context = {"form": BookForm()}
-    latest_book_list = Book.objects.order_by("-created_at")[:10]
-    context["books"] = latest_book_list
+    books = Book.objects.all()
+
+    default_page = 1
+    page = request.GET.get("page", default_page)
+    items_per_page = 5
+    paginator = Paginator(books, items_per_page)
+
+    try:
+        page_obj = paginator.page(page)
+        context["page_obj"] = page_obj
+        context["books"] = page_obj
+        cache.clear()
+    except PageNotAnInteger:
+        page_obj = paginator.page(default_page)
+        context["page_obj"] = page_obj
+        context["books"] = page_obj
+        cache.clear()
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+        context["page_obj"] = page_obj
+        context["books"] = page_obj
+        cache.clear()
 
     if request.method == "POST":
         form = BookForm(request.POST)

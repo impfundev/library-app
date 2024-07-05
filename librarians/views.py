@@ -1,4 +1,4 @@
-from authentications.utils import create_auth_session, Hasher
+from authentications.utils import Hasher
 from django.shortcuts import get_object_or_404, render
 from django.core.cache import cache
 from django.http import HttpResponseRedirect
@@ -7,11 +7,33 @@ from datetime import datetime
 
 from librarians.models import Librarians
 from librarians.forms import LibrarianForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
-    latest_librarian_list = Librarians.objects.order_by("created_at")[:10]
-    context = {"librarians": latest_librarian_list, "form": LibrarianForm()}
+    librarians = Librarians.objects.all()
+    context = {"librarians": librarians, "form": LibrarianForm()}
+
+    default_page = 1
+    page = request.GET.get("page", default_page)
+    items_per_page = 5
+    paginator = Paginator(librarians, items_per_page)
+
+    try:
+        page_obj = paginator.page(page)
+        context["page_obj"] = page_obj
+        context["librarians"] = page_obj
+        cache.clear()
+    except PageNotAnInteger:
+        page_obj = paginator.page(default_page)
+        context["page_obj"] = page_obj
+        context["librarians"] = page_obj
+        cache.clear()
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+        context["page_obj"] = page_obj
+        context["librarians"] = page_obj
+        cache.clear()
 
     if request.method == "POST":
         form = LibrarianForm(request.POST)

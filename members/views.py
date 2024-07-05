@@ -6,11 +6,33 @@ from datetime import datetime
 
 from members.models import Members
 from members.forms import MemberForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def index(request):
-    latest_memeber_list = Members.objects.order_by("created_at")[:10]
-    context = {"members": latest_memeber_list, "form": MemberForm()}
+    members = Members.objects.order_by("created_at")[:10]
+    context = {"members": members, "form": MemberForm()}
+
+    default_page = 1
+    page = request.GET.get("page", default_page)
+    items_per_page = 5
+    paginator = Paginator(members, items_per_page)
+
+    try:
+        page_obj = paginator.page(page)
+        context["page_obj"] = page_obj
+        context["members"] = page_obj
+        cache.clear()
+    except PageNotAnInteger:
+        page_obj = paginator.page(default_page)
+        context["page_obj"] = page_obj
+        context["members"] = page_obj
+        cache.clear()
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+        context["page_obj"] = page_obj
+        context["members"] = page_obj
+        cache.clear()
 
     if request.method == "POST":
         form = MemberForm(request.POST)
