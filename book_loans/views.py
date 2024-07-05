@@ -51,7 +51,7 @@ def index(request):
             )
 
     if request.method == "GET":
-        query = request.GET.get("q")
+        # query = request.GET.get("q")
         order = request.GET.get("o")
 
         # if query is not None:
@@ -113,6 +113,14 @@ def update(request, id):
                 notes=notes,
                 updated_at=datetime.now(),
             )
+
+            updated_loan = BookLoans.objects.get(id=id)
+            book = Book.objects.get(id=book_id)
+            new_stock = book.stock + 1
+
+            if updated_loan.return_date is not None and book.stock < new_stock:
+                Book.objects.filter(id=book_id).update(stock_in=new_stock)
+
             return HttpResponseRedirect("/dashboard/book-loans")
 
     context["form"] = form
@@ -124,7 +132,17 @@ def delete(request, id):
     book_loan = get_object_or_404(BookLoans, id=id)
 
     if request.method == "POST":
+        books = Book.objects.all()
+        book_id = request.POST["book_id"]
+
+        book = Book.objects.get(id=book_id)
+        new_stock = book.stock + 1
+
+        if book_loan.return_date is None:
+            books.filter(id=book_id).update(stock=new_stock)
+
         book_loan.delete()
+
         return HttpResponseRedirect("/dashboard/book-loans")
 
     return render(request, "loans.html", context)

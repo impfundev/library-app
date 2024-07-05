@@ -5,9 +5,9 @@ from librarians.models import Librarians
 
 
 class BookLoans(models.Model):
-    book = models.ForeignKey(to=Book, on_delete=models.SET_NULL, null=True)
-    member = models.ForeignKey(to=Members, on_delete=models.SET_NULL, null=True)
-    librarians = models.ForeignKey(to=Librarians, on_delete=models.SET_NULL, null=True)
+    book = models.ForeignKey(to=Book, on_delete=models.CASCADE, null=True)
+    member = models.ForeignKey(to=Members, on_delete=models.CASCADE, null=True)
+    librarians = models.ForeignKey(to=Librarians, on_delete=models.CASCADE, null=True)
     notes = models.TextField(blank=True, null=True)
     loan_date = models.DateTimeField()
     due_date = models.DateTimeField()
