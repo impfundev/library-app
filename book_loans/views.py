@@ -3,7 +3,7 @@ from django.conf import settings
 from django.core.cache import cache
 from datetime import datetime
 
-# from django.db.models import Q
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from book_loans.models import Book, BookLoans
@@ -76,14 +76,14 @@ def index(request):
             cache.clear()
 
     if request.method == "GET":
-        # query = request.GET.get("q")
+        keyword = request.GET.get("q")
         order = request.GET.get("o")
 
-        # if query is not None:
-        #     filtered_book_list = BookLoans.objects.filter(
-        #         Q(member__icontains=query) | Q(book__icontains=query)
-        #     ).order_by("-created_at")[:10]
-        #     context["book_loans"] = filtered_book_list
+        if keyword is not None:
+            filtered_book_list = BookLoans.objects.filter(
+                Q(member__name__icontains=keyword) | Q(book__title__icontains=keyword)
+            ).order_by("-created_at")[:10]
+            context["book_loans"] = filtered_book_list
 
         if order == "new":
             cache.clear()
