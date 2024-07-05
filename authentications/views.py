@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from authentications.forms import LoginForm, SignUpForm, ForgotPassword
 from librarians.models import Librarians, LoginHistory
-from authentications.utils import create_auth_session
+from authentications.utils import create_auth_session, Hasher
 
 
 class AuthView(TemplateView):
@@ -15,31 +15,36 @@ class AuthView(TemplateView):
         if request.method == "POST":
             form = LoginForm(request.POST)
             if form.is_valid():
-                account = librarian.filter(
-                    email=form.data["email"], password=form.data["password"]
-                )
+                account = librarian.filter(email=form.data["email"])
+                password = form.data["password"]
 
                 if account.exists():
-                    librarian = librarian.get(
-                        email=form.data["email"],
-                        password=form.data["password"],
+                    librarian = librarian.get(email=form.data["email"])
+
+                    verified = Hasher.verify(
+                        password=password, encoded=librarian.password
                     )
 
-                    expiration_time = datetime.now() + timedelta(hours=2)
-                    payload = {
-                        "exp": expiration_time.timestamp(),
-                        "librarian_id": librarian.id,
-                        "name": librarian.name,
-                        "email": librarian.email,
-                    }
+                    if not verified:
+                        context["error_message"] = (
+                            "Password invalid, please enter valid data or Sign Up first"
+                        )
+                    else:
+                        expiration_time = datetime.now() + timedelta(hours=2)
+                        payload = {
+                            "exp": expiration_time.timestamp(),
+                            "librarian_id": librarian.id,
+                            "name": librarian.name,
+                            "email": librarian.email,
+                        }
 
-                    create_auth_session(request, payload)
+                        create_auth_session(request, payload)
 
-                    LoginHistory.objects.create(librarian_id=librarian.id)
-                    return HttpResponseRedirect("/dashboard/")
+                        LoginHistory.objects.create(librarian_id=librarian.id)
+                        return HttpResponseRedirect("/dashboard/")
                 else:
                     context["error_message"] = (
-                        "Email or Password invalid, please enter valid data or Sign Up first"
+                        "Email invalid, please enter valid data or Sign Up first"
                     )
         else:
             form = LoginForm()
@@ -59,15 +64,17 @@ class AuthView(TemplateView):
                         "Email was already exist, please use different email"
                     )
                 else:
+                    password = form.data["password"]
+                    hashed_password = Hasher.encode(password=password)
                     librarian.create(
                         name=form.data["name"],
                         email=form.data["email"],
-                        password=form.data["password"],
+                        password=hashed_password,
                     )
+
                     new_librarian = librarian.get(
                         name=form.data["name"],
                         email=form.data["email"],
-                        password=form.data["password"],
                     )
 
                     expiration_time = datetime.now() + timedelta(minutes=30)

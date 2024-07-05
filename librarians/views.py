@@ -1,3 +1,4 @@
+from authentications.utils import create_auth_session, Hasher
 from django.shortcuts import get_object_or_404, render
 from django.core.cache import cache
 from django.http import HttpResponseRedirect
@@ -18,8 +19,9 @@ def index(request):
             name = form.data["name"]
             email = form.data["email"]
             password = form.data["password"]
+            hashed_password = Hasher.encode(password=password)
 
-            Librarians.objects.create(name=name, email=email, password=password)
+            Librarians.objects.create(name=name, email=email, password=hashed_password)
             cache.clear()
 
     if request.method == "GET":
@@ -52,7 +54,6 @@ def update(request, id):
     initial = {
         "name": librarian.name,
         "email": librarian.email,
-        "password": librarian.password,
     }
     form = LibrarianForm(request.POST or None, initial=initial)
 
@@ -61,10 +62,14 @@ def update(request, id):
             name = form.data["name"]
             email = form.data["email"]
             password = form.data["password"]
+            hashed_password = Hasher.encode(password=password)
             librarian = Librarians.objects.filter(id=id)
 
             librarian.update(
-                name=name, email=email, password=password, updated_at=datetime.now()
+                name=name,
+                email=email,
+                password=hashed_password,
+                updated_at=datetime.now(),
             )
             cache.clear()
             return HttpResponseRedirect("/dashboard/librarians")
