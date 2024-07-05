@@ -45,13 +45,13 @@ def index(request):
             cache.clear()
 
     if request.method == "GET":
-        query = request.GET.get("q")
+        keyword = request.GET.get("q")
         order = request.GET.get("o")
 
-        if query is not None:
+        if keyword is not None:
             cache.clear()
             filtered_book_list = Members.objects.filter(
-                Q(name__icontains=query) | Q(email__icontains=query)
+                Q(name__icontains=keyword) | Q(email__icontains=keyword)
             ).order_by("-created_at")
             context["members"] = filtered_book_list
 
