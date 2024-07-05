@@ -1,7 +1,9 @@
 import jwt
 from django.conf import settings
+from django.core.cache import cache
 from datetime import datetime
-from django.db.models import Q
+
+# from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from book_loans.models import Book, BookLoans
@@ -49,6 +51,7 @@ def index(request):
                 librarians_id=librarians_id,
                 return_date=return_date,
             )
+            cache.clear()
 
     if request.method == "GET":
         # query = request.GET.get("q")
@@ -61,8 +64,10 @@ def index(request):
         #     context["book_loans"] = filtered_book_list
 
         if order == "new":
+            cache.clear()
             context["book_loans"] = BookLoans.objects.all().order_by("-created_at")[:10]
         elif order == "old":
+            cache.clear()
             context["book_loans"] = BookLoans.objects.all().order_by("created_at")[:10]
 
     return render(request, "loans.html", context)
@@ -121,6 +126,7 @@ def update(request, id):
             if updated_loan.return_date is not None and book.stock < new_stock:
                 Book.objects.filter(id=book_id).update(stock_in=new_stock)
 
+            cache.clear()
             return HttpResponseRedirect("/dashboard/book-loans")
 
     context["form"] = form
@@ -142,6 +148,7 @@ def delete(request, id):
             books.filter(id=book_id).update(stock=new_stock)
 
         book_loan.delete()
+        cache.clear()
 
         return HttpResponseRedirect("/dashboard/book-loans")
 

@@ -19,9 +19,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from dashboards.views import home
+from django.views.decorators.cache import cache_page
+from django.conf import settings
 
 urlpatterns = [
-    path("", home, name="homepage"),
+    path(
+        "",
+        cache_page(settings.CACHE_TTL, key_prefix="homepage")(home),
+        name="homepage",
+    ),
     path("dashboard/", include("dashboards.urls")),
     path("admin/", admin.site.urls),
     path("auth/", include("authentications.urls")),

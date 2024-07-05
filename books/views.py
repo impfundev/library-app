@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from django.db.models import Q
@@ -20,20 +21,24 @@ def index(request):
             description = form.data["description"]
 
             Book.objects.create(title=title, stock=stock, description=description)
+            cache.clear()
 
     if request.method == "GET":
         query = request.GET.get("q")
         order = request.GET.get("o")
 
         if query is not None:
+            cache.clear()
             filtered_book_list = Book.objects.filter(
                 Q(title__icontains=query) | Q(description__icontains=query)
             ).order_by("-created_at")[:10]
             context["books"] = filtered_book_list
 
         if order == "new":
+            cache.clear()
             context["books"] = Book.objects.all().order_by("-updated_at")[:10]
         elif order == "old":
+            cache.clear()
             context["books"] = Book.objects.all().order_by("updated_at")[:10]
 
     return render(request, "book.html", context)
@@ -64,6 +69,7 @@ def update(request, id):
                 description=description,
                 updated_at=datetime.now(),
             )
+            cache.clear()
             return HttpResponseRedirect("/dashboard/books")
 
     context["form"] = form
@@ -77,6 +83,7 @@ def delete(request, id):
 
     if request.method == "POST":
         book.delete()
+        cache.clear()
         return HttpResponseRedirect("/dashboard/books")
 
     return render(request, "book.html", context)

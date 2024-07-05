@@ -174,6 +174,8 @@ CACHES = {
     },
 }
 
+CACHE_TTL = 60 * 15  # 15 Minute
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 # Default primary key field type

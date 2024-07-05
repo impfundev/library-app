@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from datetime import datetime
@@ -19,22 +20,26 @@ def index(request):
             password = form.data["password"]
 
             Librarians.objects.create(name=name, email=email, password=password)
+            cache.clear()
 
     if request.method == "GET":
         query = request.GET.get("q")
         order = request.GET.get("o")
 
         if query is not None:
+            cache.clear()
             filtered_book_list = Librarians.objects.filter(
                 Q(name__icontains=query) | Q(email__icontains=query)
             ).order_by("-created_at")[:10]
             context["librarians"] = filtered_book_list
 
         if order == "new":
+            cache.clear()
             context["librarians"] = Librarians.objects.all().order_by("-updated_at")[
                 :10
             ]
         elif order == "old":
+            cache.clear()
             context["librarians"] = Librarians.objects.all().order_by("updated_at")[:10]
 
     return render(request, "librarians.html", context)
@@ -61,6 +66,7 @@ def update(request, id):
             librarian.update(
                 name=name, email=email, password=password, updated_at=datetime.now()
             )
+            cache.clear()
             return HttpResponseRedirect("/dashboard/librarians")
 
     context["form"] = form
@@ -74,6 +80,7 @@ def delete(request, id):
 
     if request.method == "POST":
         librarian.delete()
+        cache.clear()
         return HttpResponseRedirect("/dashboard/librarians")
 
     return render(request, "librarians.html", context)
