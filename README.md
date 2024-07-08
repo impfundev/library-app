@@ -1,4 +1,4 @@
-## Librarian App
+# Librarian App
 
 The Librarian App is a library management tool designed to streamline book lending and member management processes. It offers functionalities for librarians to:
 
@@ -8,13 +8,80 @@ The Librarian App is a library management tool designed to streamline book lendi
 * Record book loans and returns
 * Track librarian login history
 * Generate reports on:
-    * Near outstanding book loans
-    * Overdue book loans
-    * Librarian login activity
+  * Near outstanding book loans
+  * Overdue book loans
+  * Librarian login activity
 
 This app provides a centralized platform for librarians to effectively manage library resources and user interactions.
 
-### Start Development
+## API
+
+prefix: `/api/v1`
+
+postman:
+
+### Auth
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/auth/login` | Login for librarian or member | POST |
+| `/auth/logout` | Logout for librarian or member | GET |
+| `/auth/registration` | Register new librarian or member | POST |
+| `/auth/password/reset` | Reset password | POST |
+| `/auth/password/reset/confirm` | Confirm reset password | POST |
+
+### Books
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/books` | book lists | GET |
+| `/books/{{ book.id }}` | book details | GET, POST, PUT |
+| `/books?search={{ book.title }}` | search book lists, filtered by name | GET |
+| `/books?year={{ year }}` | filter book lists by year | GET |
+| `/books?category={{ category }}` | filter book lists by category | GET |
+
+### Categories
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/categories` | category lists | GET |
+| `/categories/{{ book.id }}` | category details | GET, POST, PUT |
+| `/categories?search={{ book.title }}` | search category  lists, filtered by name | GET |
+| `/categories?year={{ year }}` | filter category  lists by year | GET |
+| `/categories?category={{ category }}` | filter category  lists by category | GET |
+
+### Members
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/members` | member lists | GET |
+| `/members/{{ book.id }}` | member details | GET, POST, PUT |
+| `/members?search={{ book.title }}` | search member lists, filtered by name | GET |
+| `/members?year={{ year }}` | filter member lists by year | GET |
+| `/members?category={{ category }}` | filter member lists by category | GET |
+
+### Librarians
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/librarians` | librarian lists | GET |
+| `/librarians/{{ book.id }}` | librarian details | GET, POST, PUT |
+| `/librarians?search={{ book.title }}` | search librarian lists, filtered by name | GET |
+| `/librarians?year={{ year }}` | filter librarian lists by year | GET |
+| `/librarians?category={{ category }}` | filter librarian  lists by category | GET |
+
+### Book Loans
+
+| Endpoint | Description | HTTP |
+|----|----|----|
+| `/book-loans` | book loan lists | GET |
+| `/book-loans/{{ book.id }}` | book loan details | GET, POST, PUT |
+| `/book-loans?search={{ book.title }}` | search book loan  lists, filtered by name | GET |
+| `/book-loans?year={{ year }}` | filter book loan lists by year | GET |
+| `/book-loans?category={{ category }}` | filter book loan lists by category | GET |
+
+## Start Development
+
 
 1. Clone this project
 
@@ -22,6 +89,7 @@ This app provides a centralized platform for librarians to effectively manage li
 git clone https://github.com/impfundev/library-app.git
 cd library-app
 ```
+
 
 2. Create virtual environments
 
@@ -33,8 +101,8 @@ source library_app_env/bin/activate
 
 # windows
 library_app_env\Scripts\Activate.ps1
-
 ```
+
 
 3. Install Depedencies
 
@@ -42,13 +110,14 @@ library_app_env\Scripts\Activate.ps1
 pip -r install requirements.txt
 ```
 
-4. Configure secure variable ```.env```
+
+4. Configure secure variable `.env`
 
 ```
 cp .env.example .env
 ```
 
-in ```.env```
+in `.env`
 
 ```
 JWT_SECRET= #SECURE RANDOM SECREET
@@ -60,12 +129,14 @@ PGUSER=""
 PGPASSWORD=""
 ```
 
+
 5. Make migration:
 
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
+
 
 6. Run Development Server
 
@@ -74,59 +145,3 @@ python manage.py runserver
 ```
 
 
-### Features
-
-* **Masters:**
-    * Book Master - Manage book details (title, etc.)
-    * Member Master - Manage member information (name, contact details, etc.)
-    * Librarian Master - Manage librarian accounts (username, password, etc.)
-* **Transactions:**
-    * Book Loan - Record book lending and return activity
-    * Login History - Track librarian login attempts
-* **Functionalities:**
-    * Login - Secure access for librarians
-    * CRUD (Create, Read, Update, Delete) operations for:
-        * Book records
-        * Member records
-        * Librarian records
-        * Book loan records
-* **Reports:**
-    * Near Outstanding Book Loans - Identify loans nearing due date
-    * Overdue Book Loans - View books currently overdue
-    * Librarian Login History - Track librarian activity
-
-### Usage
-
-1. **Login:**
-    * Access the application login page.
-    * Enter valid librarian credentials.
-    * Click Login.
-2. **Book Management:**
-    * Access the Book Master section.
-    * View existing book records.
-    * Add new book entries.
-    * Edit or update existing book information.
-    * Delete unwanted book records.
-3. **Member Management:**
-    * Access the Member Master section.
-    * View existing member records.
-    * Add new member entries.
-    * Edit or update existing member information.
-    * Delete unwanted member records.
-4. **Librarian Management:**
-    * Access the Librarian Master section (**Note:** Restricted access)
-    * View existing librarian accounts.
-    * Add new librarian accounts (**Note:**  Grant appropriate access levels)
-    * Edit or update existing librarian information.
-    * Delete unwanted librarian accounts (**Note:**  Maintain at least one active account)
-5. **Book Loan Management:**
-    * Access the Book Loan section.
-    * View existing loan records.
-    * Create new loan entries (linking books and members).
-    * Edit or update loan details (e.g., return date).
-    * Mark loans as returned.
-6. **Reports:**
-    * Access the Reports section.
-    * View a list of Near Outstanding Book Loans.
-    * View a list of Overdue Book Loans.
-    * View historical Librarian Login data.
