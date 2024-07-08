@@ -9,7 +9,7 @@ from api.views import (
 )
 
 router = routers.DefaultRouter()
-router.register(r"users", UserViewSet, basename="user")
+router.register(r"users", UserViewSet, basename="users")
 router.register(r"books", BookViewSet, basename="books")
 router.register(r"members", MemberViewSet, basename="members")
 router.register(r"librarians", LibrarianViewSet, basename="librarians")

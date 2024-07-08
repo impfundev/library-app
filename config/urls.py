@@ -25,10 +25,14 @@ urlpatterns = [
     path("dashboard/", include("dashboards.urls")),
     path("admin/", admin.site.urls),
     path("auth/", include("authentications.urls")),
-    path("__debug__/", include("debug_toolbar.urls")),
+    # path("__debug__/", include("debug_toolbar.urls")),
     # API
     path("api/v1/", include("api.urls")),
     path("api/v1/auth/", include("dj_rest_auth.urls")),
-    path("api/v1/auth/registration/", include("dj_rest_auth.registration.urls")),
+    path(
+        "api/v1/auth/registration/",
+        include("dj_rest_auth.registration.urls"),
+        name="register",
+    ),
     path("api-auth/", include("rest_framework.urls")),
 ]
