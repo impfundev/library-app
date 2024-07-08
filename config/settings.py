@@ -54,20 +54,43 @@ if DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
-    "books.apps.BooksConfig",
-    "book_loans.apps.BookLoansConfig",
-    "members.apps.MembersConfig",
-    "librarians.apps.LibrariansConfig",
-    "authentications.apps.AuthenticationsConfig",
-    "dashboards.apps.DashboardsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 3rd party
     "debug_toolbar",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    # local
+    "api.apps.ApiConfig",
+    "books.apps.BooksConfig",
+    "members.apps.MembersConfig",
+    "book_loans.apps.BookLoansConfig",
+    "librarians.apps.LibrariansConfig",
+    "dashboards.apps.DashboardsConfig",
+    "authentications.apps.AuthenticationsConfig",
 ]
+
+# 3rd party config
+
+# DJANGO REST FRAMEWORK CONFIG
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -78,10 +101,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "authentications.middleware.AuthMiddleware",
+    # 3rd party
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    # "django.middleware.cache.UpdateCacheMiddleware",
-    # "django.middleware.cache.FetchFromCacheMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
+    # local
+    "authentications.middleware.AuthMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
