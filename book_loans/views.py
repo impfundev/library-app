@@ -1,6 +1,5 @@
 import jwt
 from django.conf import settings
-from django.core.cache import cache
 from datetime import datetime
 
 from django.db.models import Q
@@ -32,17 +31,16 @@ def index(request):
         page_obj = paginator.page(page)
         context["page_obj"] = page_obj
         context["book_loans"] = page_obj
-        cache.clear()
+
     except PageNotAnInteger:
         page_obj = paginator.page(default_page)
         context["page_obj"] = page_obj
         context["book_loans"] = page_obj
-        cache.clear()
+
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
         context["page_obj"] = page_obj
         context["book_loans"] = page_obj
-        cache.clear()
 
     if request.method == "POST":
         form = BookLoanForm(request.POST)
@@ -73,7 +71,6 @@ def index(request):
                 librarians_id=librarians_id,
                 return_date=return_date,
             )
-            cache.clear()
 
     if request.method == "GET":
         keyword = request.GET.get("q")
@@ -86,10 +83,10 @@ def index(request):
             context["book_loans"] = filtered_book_list
 
         if order == "new":
-            cache.clear()
+
             context["book_loans"] = BookLoans.objects.all().order_by("-created_at")
         elif order == "old":
-            cache.clear()
+
             context["book_loans"] = BookLoans.objects.all().order_by("created_at")
 
     return render(request, "loans.html", context)
@@ -148,7 +145,6 @@ def update(request, id):
             if updated_loan.return_date is not None and book.stock < new_stock:
                 Book.objects.filter(id=book_id).update(stock_in=new_stock)
 
-            cache.clear()
             return HttpResponseRedirect("/dashboard/book-loans")
 
     context["form"] = form
@@ -170,7 +166,6 @@ def delete(request, id):
             books.filter(id=book_id).update(stock=new_stock)
 
         book_loan.delete()
-        cache.clear()
 
         return HttpResponseRedirect("/dashboard/book-loans")
 

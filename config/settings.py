@@ -30,25 +30,7 @@ SECRET_KEY = JWT_SECRET
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app", ".now.sh"]
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
-
-def show_toolbar(request):
-    return True
-
-
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
-}
-
-if DEBUG:
-    import mimetypes
-
-    mimetypes.add_type("application/javascript", ".js", True)
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -61,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party
-    # "debug_toolbar",
     "rest_framework",
     "rest_framework.authtoken",
     "django_filters",
@@ -189,17 +170,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": getenv("CACHE_LOCATION"),
-    },
-}
-
-CACHE_TTL = 60 * 15  # 15 Minute
-
-SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

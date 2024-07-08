@@ -1,6 +1,5 @@
 from authentications.utils import Hasher
 from django.shortcuts import get_object_or_404, render
-from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from datetime import datetime
@@ -23,17 +22,16 @@ def index(request):
         page_obj = paginator.page(page)
         context["page_obj"] = page_obj
         context["librarians"] = page_obj
-        cache.clear()
+
     except PageNotAnInteger:
         page_obj = paginator.page(default_page)
         context["page_obj"] = page_obj
         context["librarians"] = page_obj
-        cache.clear()
+
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
         context["page_obj"] = page_obj
         context["librarians"] = page_obj
-        cache.clear()
 
     if request.method == "POST":
         form = LibrarianForm(request.POST)
@@ -44,26 +42,25 @@ def index(request):
             hashed_password = Hasher.encode(password=password)
 
             Librarians.objects.create(name=name, email=email, password=hashed_password)
-            cache.clear()
 
     if request.method == "GET":
         keyword = request.GET.get("q")
         order = request.GET.get("o")
 
         if keyword is not None:
-            cache.clear()
+
             filtered_book_list = Librarians.objects.filter(
                 Q(name__icontains=keyword) | Q(email__icontains=keyword)
             ).order_by("-created_at")
             context["librarians"] = filtered_book_list
 
         if order == "new":
-            cache.clear()
+
             context["librarians"] = Librarians.objects.all().order_by("-updated_at")[
                 :10
             ]
         elif order == "old":
-            cache.clear()
+
             context["librarians"] = Librarians.objects.all().order_by("updated_at")
 
     return render(request, "librarians.html", context)
@@ -93,7 +90,7 @@ def update(request, id):
                 password=hashed_password,
                 updated_at=datetime.now(),
             )
-            cache.clear()
+
             return HttpResponseRedirect("/dashboard/librarians")
 
     context["form"] = form
@@ -107,7 +104,7 @@ def delete(request, id):
 
     if request.method == "POST":
         librarian.delete()
-        cache.clear()
+
         return HttpResponseRedirect("/dashboard/librarians")
 
     return render(request, "librarians.html", context)
