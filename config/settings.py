@@ -25,7 +25,7 @@ JWT_SECRET = getenv("JWT_SECRET", default="")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-3-$!7+86e)2ps3i+3=da5(7-a=gt$p_@+=)fuh2jj-2!eym$3y"
+SECRET_KEY = JWT_SECRET
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework",
     "rest_framework.authtoken",
+    "django_filters",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -88,6 +89,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
 }
