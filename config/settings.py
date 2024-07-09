@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # local
     "api.apps.ApiConfig",
     "books.apps.BooksConfig",
+    "categories.apps.CategoriesConfig",
     "members.apps.MembersConfig",
     "book_loans.apps.BookLoansConfig",
     "librarians.apps.LibrariansConfig",
