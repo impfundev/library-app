@@ -12,7 +12,7 @@
       <a
         href="/dashboard"
         class="btn {% if request.path == '/dashboard/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-bar-chart-line-fill"></i> Reports</a
+        ><i class="bi bi-columns-gap"></i> Dashboard</a
       >
       <a
         href="/dashboard/books"
@@ -25,14 +25,24 @@
         ><i class="bi bi-person-vcard"></i> Members</a
       >
       <a
+        href="/dashboard/librarians"
+        class="btn {% if request.path == '/dashboard/librarians/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
+        ><i class="bi bi-person-fill-lock"></i> Librarian</a
+      >
+      <a
         href="/dashboard/book-loans"
         class="btn {% if request.path == '/dashboard/book-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
         ><i class="bi bi-calendar-week"></i> Book Loans</a
       >
       <a
-        href="/dashboard/librarians"
-        class="btn {% if request.path == '/dashboard/librarians/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-person-fill-lock"></i> Librarian</a
+        href="/dashboard/upcoming-loans/"
+        class="btn {% if request.path == '/dashboard/upcoming-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
+        ><i class="bi bi-calendar2-event"></i> Upcoming Loans</a
+      >
+      <a
+        href="/dashboard/overdued-loans/"
+        class="btn {% if request.path == '/dashboard/overdued-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
+        ><i class="bi bi-calendar2-x"></i> Overdued Loans</a
       >
     </div>
   </div>

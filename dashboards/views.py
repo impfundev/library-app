@@ -1,8 +1,77 @@
-from datetime import datetime, timedelta
+from django.db.models import Q
+from django.views.generic import ListView
 from django.shortcuts import render
+from datetime import datetime, timedelta
+
 from librarians.models import LoginHistory
 from members.models import Members
 from book_loans.models import Book, BookLoans
+
+
+class OverduedLoanView(ListView):
+    model = BookLoans
+    template_name = "loans.html"
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
+
+        now = datetime.now()
+        queryset = queryset.filter(due_date__lte=now, return_date=None).order_by(
+            "-updated_at"
+        )
+
+        if keyword:
+            queryset = queryset.filter(
+                Q(book__title__icontains=keyword)
+                | Q(member__name__icontains=keyword)
+                | Q(librarian__name__icontains=keyword)
+            ).order_by("-created_at")
+
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-created_at")
+            elif order == "old":
+                queryset = queryset.order_by("created_at")
+
+        return queryset
+
+
+class UpcomingLoanView(ListView):
+    model = BookLoans
+    template_name = "loans.html"
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
+
+        now = datetime.now()
+        due_date_treshold = now.today() + timedelta(days=3)
+
+        queryset = (
+            queryset.filter(due_date__lte=due_date_treshold, return_date=None)
+            .filter(due_date__gte=now.today())
+            .order_by("-updated_at")
+        )
+
+        if keyword:
+            queryset = queryset.filter(
+                Q(book__title__icontains=keyword)
+                | Q(member__name__icontains=keyword)
+                | Q(librarian__name__icontains=keyword)
+            ).order_by("-created_at")
+
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-created_at")
+            elif order == "old":
+                queryset = queryset.order_by("created_at")
+
+        return queryset
 
 
 def home(request):
