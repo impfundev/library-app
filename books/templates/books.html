@@ -1,18 +1,12 @@
 {% extends "layout.html" %} {% block dashboard %}
 <div style="max-width: 80vw" class="w-100 p-4">
-  {% include "book_create_form.html" %}
   <div class="d-flex gap-2 pb-4">
     {% include "order_form.html" %}
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#book_modal_create"
-    >
+    <a type="button" class="btn btn-primary" href="/dashboard/books/add">
       <i class="bi bi-plus-circle"></i> Add Book
-    </button>
+    </a>
     {% include "search_form.html" %}
   </div>
-  {% include "book_table_data.html" %} {% include "book_delete_form.html" %}
+  {% include "book_table_data.html" %}
 </div>
 {% endblock dashboard %}
