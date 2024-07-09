@@ -1,11 +1,11 @@
 from django.db.models import Q
 from django.views.generic import ListView, TemplateView
-from django.shortcuts import render
 from datetime import datetime, timedelta
 
 from librarians.models import LoginHistory
 from members.models import Members
 from book_loans.models import Book, BookLoans
+from categories.models import Category
 
 
 class OverduedLoanView(ListView):
@@ -84,6 +84,7 @@ class DashboardView(TemplateView):
     login_history = LoginHistory.objects.order_by("-login_at")[:10]
     book_loans = BookLoans.objects.all()
     total_book = Book.objects.count()
+    total_category = Category.objects.count()
     total_member = Members.objects.count()
     total_book_loans = book_loans.count()
 
@@ -104,6 +105,7 @@ class DashboardView(TemplateView):
 
         context["login_histories"] = self.login_history
         context["total_book"] = self.total_book
+        context["total_category"] = self.total_category
         context["total_member"] = self.total_member
         context["total_book_loans"] = self.total_book_loans
         context["total_overdue"] = overdue_loans.count()
