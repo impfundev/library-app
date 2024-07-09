@@ -25,7 +25,7 @@ class LibrarianListView(generic.ListView):
             elif order == "old":
                 queryset = queryset.order_by("created_at")
 
-        return queryset
+        return queryset.order_by("-updated_at")
 
 
 class LibrarianCreateView(generic.edit.CreateView):

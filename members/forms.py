@@ -20,7 +20,7 @@ class MemberForm(forms.ModelForm):
                     "class": "form-control",
                 }
             ),
-            "password": forms.TextInput(
+            "password": forms.PasswordInput(
                 attrs={
                     "placeholder": "Password",
                     "class": "form-control",
