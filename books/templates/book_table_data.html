@@ -2,6 +2,7 @@
   <thead>
     <tr class="table-primary">
       <th scope="col">Title</th>
+      <th scope="col">Category</th>
       <th scope="col">Stock</th>
       <th scope="col">Description</th>
       <th scope="col">Created At</th>
@@ -13,6 +14,7 @@
     {% if object_list %} {% for book in object_list %}
     <tr>
       <td>{{ book.title }}</td>
+      <td>{{ book.category.name }}</td>
       <td>{{ book.stock }}</td>
       <td>{{ book.description }}</td>
       <td>{{ book.created_at }}</td>

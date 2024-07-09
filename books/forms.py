@@ -5,7 +5,7 @@ from books.models import Book
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ["title", "stock", "description"]
+        fields = ["title", "stock", "category", "description"]
 
         widgets = {
             "title": forms.TextInput(
@@ -18,6 +18,11 @@ class BookForm(forms.ModelForm):
                 attrs={
                     "type": "number",
                     "placeholder": "Stock",
+                    "class": "form-control",
+                }
+            ),
+            "category": forms.Select(
+                attrs={
                     "class": "form-control",
                 }
             ),
