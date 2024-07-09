@@ -1,9 +1,14 @@
 from django.urls import path
-from book_loans.views import index, update, delete
-from django.views.decorators.cache import cache_page
+from book_loans.views import (
+    BookLoanListView,
+    BookLoanCreateView,
+    BookLoanUpdateView,
+    BookLoanDeleteView,
+)
 
 urlpatterns = [
-    path("", index, name="book_loan_lists"),
-    path("<id>/update/", update, name="update_book"),
-    path("<id>/delete/", delete, name="delete_book_loan"),
+    path("", BookLoanListView.as_view(), name="book_loan_lists"),
+    path("add/", BookLoanCreateView.as_view(), name="add_book_loan"),
+    path("<int:pk>/", BookLoanUpdateView.as_view(), name="update_book_loan"),
+    path("<int:pk>/delete/", BookLoanDeleteView.as_view(), name="delete_book_loan"),
 ]

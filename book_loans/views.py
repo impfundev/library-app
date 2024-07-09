@@ -1,172 +1,50 @@
-import jwt
-from django.conf import settings
-from datetime import datetime
-
 from django.db.models import Q
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from book_loans.models import Book, BookLoans
-from members.models import Members
+from django.views import generic
+from book_loans.models import BookLoans
 from book_loans.forms import BookLoanForm
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
-def index(request):
-    book_loan_lists = BookLoans.objects.all()
-    books = Book.objects.all()
-    member = Members.objects.all()
-    context = {
-        "book_loans": book_loan_lists,
-        "form": BookLoanForm(),
-        "books": books,
-        "members": member,
-    }
+class BookLoanListView(generic.ListView):
+    model = BookLoans
+    template_name = "loans.html"
+    paginate_by = 5
 
-    default_page = 1
-    page = request.GET.get("page", default_page)
-    items_per_page = 5
-    paginator = Paginator(book_loan_lists, items_per_page)
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
 
-    try:
-        page_obj = paginator.page(page)
-        context["page_obj"] = page_obj
-        context["book_loans"] = page_obj
-
-    except PageNotAnInteger:
-        page_obj = paginator.page(default_page)
-        context["page_obj"] = page_obj
-        context["book_loans"] = page_obj
-
-    except EmptyPage:
-        page_obj = paginator.page(paginator.num_pages)
-        context["page_obj"] = page_obj
-        context["book_loans"] = page_obj
-
-    if request.method == "POST":
-        form = BookLoanForm(request.POST)
-        if form.is_valid:
-            book_id = request.POST["book"]
-            member_id = request.POST["member"]
-            loan_date = form.data["loan_date"]
-            due_date = form.data["due_date"]
-            return_date = form.data["return_date"] or None
-            notes = form.data["notes"]
-
-            book = books.get(id=book_id)
-            new_stock = book.stock - 1
-            books.filter(id=book_id).update(stock=new_stock)
-
-            auth_session = request.session.get("auth_session", None)
-            decoded = jwt.decode(
-                auth_session, settings.JWT_SECRET, algorithms=["HS256"]
-            )
-            librarians_id = decoded["librarian_id"]
-
-            BookLoans.objects.create(
-                book_id=book_id,
-                member_id=member_id,
-                loan_date=loan_date,
-                due_date=due_date,
-                notes=notes,
-                librarians_id=librarians_id,
-                return_date=return_date,
-            )
-
-    if request.method == "GET":
-        keyword = request.GET.get("q")
-        order = request.GET.get("o")
-
-        if keyword is not None:
-            filtered_book_list = BookLoans.objects.filter(
-                Q(member__name__icontains=keyword) | Q(book__title__icontains=keyword)
+        if keyword:
+            queryset = queryset.filter(
+                Q(book__title__icontains=keyword)
+                | Q(member__name__icontains=keyword)
+                | Q(librarian__name__icontains=keyword)
             ).order_by("-created_at")
-            context["book_loans"] = filtered_book_list
 
-        if order == "new":
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-created_at")
+            elif order == "old":
+                queryset = queryset.order_by("created_at")
 
-            context["book_loans"] = BookLoans.objects.all().order_by("-created_at")
-        elif order == "old":
-
-            context["book_loans"] = BookLoans.objects.all().order_by("created_at")
-
-    return render(request, "loans.html", context)
+        return queryset.order_by("-updated_at")
 
 
-def update(request, id):
-    book_loans = BookLoans.objects.order_by("created_at")
-    loan = get_object_or_404(BookLoans, id=id)
-    books = Book.objects.all()
-    member = Members.objects.all()
-    context = {
-        "book_loans": book_loans,
-        "loan": loan,
-        "books": books,
-        "members": member,
-    }
-    initial_dict = {
-        "loan_date": loan.loan_date,
-        "due_date": loan.due_date,
-        "return_date": loan.return_date,
-        "notes": loan.notes,
-    }
-    form = BookLoanForm(request.POST or None, initial=initial_dict)
-
-    if request.method == "POST":
-        book_id = request.POST["book"]
-        member_id = request.POST["member"]
-        loan = BookLoans.objects.filter(id=id)
-
-        auth_session = request.session.get("auth_session", None)
-        decoded = jwt.decode(auth_session, settings.JWT_SECRET, algorithms=["HS256"])
-        librarians_id = decoded["librarian_id"]
-        context["initial_book_id"] = book_id
-
-        if form.is_valid:
-            loan_date = form.data["loan_date"]
-            due_date = form.data["due_date"]
-            return_date = form.data["return_date"] or None
-            notes = form.data["notes"]
-
-            loan.update(
-                book_id=book_id,
-                member_id=member_id,
-                librarians_id=librarians_id,
-                loan_date=loan_date,
-                due_date=due_date,
-                return_date=return_date,
-                notes=notes,
-                updated_at=datetime.now(),
-            )
-
-            updated_loan = BookLoans.objects.get(id=id)
-            book = Book.objects.get(id=book_id)
-            new_stock = book.stock + 1
-
-            if updated_loan.return_date is not None and book.stock < new_stock:
-                Book.objects.filter(id=book_id).update(stock_in=new_stock)
-
-            return HttpResponseRedirect("/dashboard/book-loans")
-
-    context["form"] = form
-    return render(request, "book_loan_update_form.html", context)
+class BookLoanCreateView(generic.edit.CreateView):
+    model = BookLoans
+    form_class = BookLoanForm
+    success_url = "/dashboard/book-loans/"
+    template_name = "form/create_form.html"
 
 
-def delete(request, id):
-    context = {}
-    book_loan = get_object_or_404(BookLoans, id=id)
+class BookLoanUpdateView(generic.edit.UpdateView):
+    model = BookLoans
+    form_class = BookLoanForm
+    success_url = "/dashboard/book-loans"
+    template_name = "form/update_form.html"
 
-    if request.method == "POST":
-        books = Book.objects.all()
-        book_id = request.POST["book_id"]
 
-        book = Book.objects.get(id=book_id)
-        new_stock = book.stock + 1
-
-        if book_loan.return_date is None:
-            books.filter(id=book_id).update(stock=new_stock)
-
-        book_loan.delete()
-
-        return HttpResponseRedirect("/dashboard/book-loans")
-
-    return render(request, "loans.html", context)
+class BookLoanDeleteView(generic.edit.DeleteView):
+    model = BookLoans
+    success_url = "/dashboard/book-loans"
+    template_name = "form/delete_form.html"

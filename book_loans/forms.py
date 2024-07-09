@@ -5,8 +5,31 @@ from book_loans.models import BookLoans
 class BookLoanForm(forms.ModelForm):
     class Meta:
         model = BookLoans
-        fields = ["loan_date", "due_date", "return_date", "notes"]
+        fields = [
+            "book",
+            "member",
+            "librarian",
+            "loan_date",
+            "due_date",
+            "return_date",
+            "notes",
+        ]
         widgets = {
+            "book": forms.Select(
+                attrs={
+                    "class": "form-control",
+                }
+            ),
+            "member": forms.Select(
+                attrs={
+                    "class": "form-control",
+                }
+            ),
+            "librarian": forms.Select(
+                attrs={
+                    "class": "form-control",
+                }
+            ),
             "loan_date": forms.DateTimeInput(
                 attrs={
                     "type": "datetime-local",
