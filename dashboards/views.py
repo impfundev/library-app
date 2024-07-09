@@ -78,34 +78,37 @@ class HomePage(TemplateView):
     template_name = "homepage.html"
 
 
-def index(request):
-    latest_login_history = LoginHistory.objects.order_by("-login_at")[:10]
+class DashboardView(TemplateView):
+    template_name = "dashboard/index.html"
+
+    login_history = LoginHistory.objects.order_by("-login_at")[:10]
+    book_loans = BookLoans.objects.all()
     total_book = Book.objects.count()
     total_member = Members.objects.count()
-    total_book_loans = BookLoans.objects.count()
+    total_book_loans = book_loans.count()
 
-    now = datetime.now()
-    overdue_loans = BookLoans.objects.filter(
-        due_date__lte=now, return_date=None
-    ).order_by("created_at")
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        now = datetime.now()
+        overdue_loans = self.book_loans.filter(
+            due_date__lte=now, return_date=None
+        ).order_by("-created_at")[:10]
 
-    due_date_treshold = now.today() + timedelta(days=3)
+        due_date_treshold = now.today() + timedelta(days=3)
 
-    upcoming_loans = BookLoans.objects.filter(
-        due_date__lte=due_date_treshold, return_date=None
-    ).filter(due_date__gte=now.today())
+        upcoming_loans = (
+            self.book_loans.filter(due_date__lte=due_date_treshold, return_date=None)
+            .filter(due_date__gte=now.today())
+            .order_by("-created_at")[:10]
+        )
 
-    context = {
-        "login_histories": latest_login_history,
-        "total_book": total_book,
-        "total_member": total_member,
-        "total_book_loans": total_book_loans,
-        "total_overdue": overdue_loans.count(),
-        "overdue_loans": overdue_loans,
-        "upcoming_loans": upcoming_loans,
-    }
-
-    if overdue_loans.exists():
+        context["login_histories"] = self.login_history
+        context["total_book"] = self.total_book
+        context["total_member"] = self.total_member
+        context["total_book_loans"] = self.total_book_loans
+        context["total_overdue"] = overdue_loans.count()
+        context["total_upcoming"] = upcoming_loans.count()
         context["overdue_loans"] = overdue_loans
+        context["upcoming_loans"] = upcoming_loans
 
-    return render(request, "dashboard/index.html", context)
+        return context

@@ -1,8 +1,8 @@
 from django.urls import path, include
-from dashboards.views import index, UpcomingLoanView, OverduedLoanView
+from dashboards.views import DashboardView, UpcomingLoanView, OverduedLoanView
 
 urlpatterns = [
-    path("", index, name="dashboard"),
+    path("", DashboardView.as_view(), name="dashboard"),
     path("books/", include("books.urls")),
     path("members/", include("members.urls")),
     path("book-loans/", include("book_loans.urls")),
