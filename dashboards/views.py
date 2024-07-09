@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
 from datetime import datetime, timedelta
 
@@ -74,8 +74,8 @@ class UpcomingLoanView(ListView):
         return queryset
 
 
-def home(request):
-    return render(request, "homepage.html")
+class HomePage(TemplateView):
+    template_name = "homepage.html"
 
 
 def index(request):
