@@ -1,110 +1,59 @@
-from authentications.utils import Hasher
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.views import generic
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
+
 from datetime import datetime
 
+from authentications.utils import Hasher
 from librarians.models import Librarians
 from librarians.forms import LibrarianForm
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
-def index(request):
-    librarians = Librarians.objects.all()
-    context = {"librarians": librarians, "form": LibrarianForm()}
+class LibrarianListView(generic.ListView):
+    model = Librarians
+    template_name = "librarians.html"
+    paginate_by = 5
+    context_object_name = "librarians"
 
-    default_page = 1
-    page = request.GET.get("page", default_page)
-    items_per_page = 5
-    paginator = Paginator(librarians, items_per_page)
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
 
-    try:
-        page_obj = paginator.page(page)
-        context["page_obj"] = page_obj
-        context["librarians"] = page_obj
-
-    except PageNotAnInteger:
-        page_obj = paginator.page(default_page)
-        context["page_obj"] = page_obj
-        context["librarians"] = page_obj
-
-    except EmptyPage:
-        page_obj = paginator.page(paginator.num_pages)
-        context["page_obj"] = page_obj
-        context["librarians"] = page_obj
-
-    if request.method == "POST":
-        form = LibrarianForm(request.POST)
-        if form.is_valid:
-            name = form.data["name"]
-            email = form.data["email"]
-            password = form.data["password"]
-            hashed_password = Hasher.encode(password=password)
-
-            Librarians.objects.create(name=name, email=email, password=hashed_password)
-
-    if request.method == "GET":
-        keyword = request.GET.get("q")
-        order = request.GET.get("o")
-
-        if keyword is not None:
-
-            filtered_book_list = Librarians.objects.filter(
+        if keyword:
+            queryset = queryset.filter(
                 Q(name__icontains=keyword) | Q(email__icontains=keyword)
             ).order_by("-created_at")
-            context["librarians"] = filtered_book_list
 
-        if order == "new":
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-created_at")
+            elif order == "old":
+                queryset = queryset.order_by("created_at")
 
-            context["librarians"] = Librarians.objects.all().order_by("-updated_at")[
-                :10
-            ]
-        elif order == "old":
-
-            context["librarians"] = Librarians.objects.all().order_by("updated_at")
-
-    return render(request, "librarians.html", context)
+        return queryset
 
 
-def update(request, id):
-    latest_librarian_list = Librarians.objects.order_by("created_at")
-    context = {"librarians": latest_librarian_list}
-    librarian = Librarians.objects.get(id=id)
-    initial = {
-        "name": librarian.name,
-        "email": librarian.email,
-    }
-    form = LibrarianForm(request.POST or None, initial=initial)
-
-    if request.method == "POST":
-        if form.is_valid:
-            name = form.data["name"]
-            email = form.data["email"]
-            password = form.data["password"]
-            hashed_password = Hasher.encode(password=password)
-            librarian = Librarians.objects.filter(id=id)
-
-            librarian.update(
-                name=name,
-                email=email,
-                password=hashed_password,
-                updated_at=datetime.now(),
-            )
-
-            return HttpResponseRedirect("/dashboard/librarians")
-
-    context["form"] = form
-    context["librarian_id"] = id
-    return render(request, "librarians_update_form.html", context)
+class LibrarianCreateView(generic.edit.CreateView):
+    model = Librarians
+    form_class = LibrarianForm
+    success_url = "/dashboard/librarians/"
+    template_name = "librarians_create_form.html"
+    success_message = "Librarian created successfully!"
 
 
-def delete(request, id):
-    context = {}
-    librarian = get_object_or_404(Librarians, id=id)
+class LibrarianUpdateView(generic.edit.UpdateView):
+    model = Librarians
+    form_class = LibrarianForm
+    success_url = "/dashboard/librarians"
+    template_name = "librarians_update_form.html"
+    success_message = "Librarian updated successfully!"
 
-    if request.method == "POST":
-        librarian.delete()
 
-        return HttpResponseRedirect("/dashboard/librarians")
-
-    return render(request, "librarians.html", context)
+class LibrarianDeleteView(generic.edit.DeleteView):
+    model = Librarians
+    success_url = "/dashboard/librarians"
+    template_name = "librarians_delete_form.html"
+    success_message = "Librarian deleted successfully!"

@@ -1,8 +1,14 @@
 from django.urls import path
-from librarians.views import index, update, delete
+from librarians.views import (
+    LibrarianListView,
+    LibrarianCreateView,
+    LibrarianUpdateView,
+    LibrarianDeleteView,
+)
 
 urlpatterns = [
-    path("", index, name="librarian_lists"),
-    path("<id>/update/", update, name="update_librarian"),
-    path("<id>/delete/", delete, name="delete_librarian"),
+    path("", LibrarianListView.as_view(), name="librarian_lists"),
+    path("add/", LibrarianCreateView.as_view(), name="create_librarian"),
+    path("<int:pk>/", LibrarianUpdateView.as_view(), name="update_librarian"),
+    path("<int:pk>/delete/", LibrarianDeleteView.as_view(), name="delete_librarian"),
 ]
