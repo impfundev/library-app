@@ -52,9 +52,6 @@ class BookLoanViewSet(ModelViewSet):
     serializer_class = BookLoanSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = [
-        "book__title",
-        "member__name",
-        "librarians__name",
         "loan_date",
         "due_date",
         "return_date",

@@ -37,7 +37,7 @@ class BookLoanSerializer(serializers.ModelSerializer):
         fields = [
             "book",
             "member",
-            "librarians",
+            "librarian",
             "notes",
             "loan_date",
             "due_date",
