@@ -2,14 +2,9 @@
 <div style="max-width: 80vw" class="w-100 p-4">
   <div class="d-flex gap-2 mb-4">
     {% include "order_form.html" %}
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#member_modal_create"
-    >
+    <a type="button" class="btn btn-primary" href="/dashboard/members/add/">
       <i class="bi bi-plus-circle"></i> Add Member
-    </button>
+    </a>
     {% include "search_form.html" %}
   </div>
   {% include "members_table_data.html" %}
