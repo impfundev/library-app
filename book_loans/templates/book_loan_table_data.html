@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    {% if book_loans %} {% for loan in book_loans %}
+    {% if object_list %} {% for loan in object_list %}
     <tr>
       <td>{{ loan.book.title }}</td>
       <td>{{ loan.member.name }}</td>
@@ -20,19 +20,15 @@
       <td>{{ loan.due_date }}</td>
       <td>{{ loan.return_date }}</td>
       <td class="d-flex gap-2 py-4">
-        <a
-          class="btn btn-success"
-          href="/dashboard/book-loans/{{ loan.id }}/update/"
-        >
+        <a class="btn btn-success" href="/dashboard/book-loans/{{ loan.id }}/">
           <i class="bi bi-pencil-square"></i>
         </a>
-        <button
+        <a
           class="btn btn-danger"
-          data-bs-toggle="modal"
-          data-bs-target="#book_loan_delete_modal_{{ loan.id }}"
+          href="/dashboard/book-loans/{{ loan.id }}/delete/"
         >
           <i class="bi bi-trash3-fill"></i>
-        </button>
+        </a>
       </td>
     </tr>
     {% endfor %} {% else %}
