@@ -16,7 +16,9 @@ class BookListView(generic.ListView):
 
         if keyword:
             queryset = queryset.filter(
-                Q(title__icontains=keyword) | Q(description__icontains=keyword)
+                Q(title__icontains=keyword)
+                | Q(category__name__icontains=keyword)
+                | Q(description__icontains=keyword)
             ).order_by("-created_at")
 
         if order:
