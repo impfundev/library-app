@@ -9,6 +9,7 @@ class Book(models.Model):
     category = models.ForeignKey(
         to=Category, on_delete=models.CASCADE, blank=True, null=True
     )
+    cover_image = models.ImageField(upload_to="uploads", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

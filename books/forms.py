@@ -5,9 +5,15 @@ from books.models import Book
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ["title", "stock", "category", "description"]
+        fields = ["cover_image", "title", "stock", "category", "description"]
 
         widgets = {
+            "cover_image": forms.FileInput(
+                attrs={
+                    "placeholder": "Cover Image",
+                    "class": "form-control",
+                }
+            ),
             "title": forms.TextInput(
                 attrs={
                     "placeholder": "Title",

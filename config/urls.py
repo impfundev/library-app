@@ -15,10 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from dashboards.views import HomePage
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", HomePage.as_view(), name="homepage"),
@@ -35,3 +37,6 @@ urlpatterns = [
     ),
     path("api-auth/", include("rest_framework.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
