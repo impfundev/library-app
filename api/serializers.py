@@ -16,25 +16,36 @@ class UserSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ["title", "description", "stock", "created_at", "updated_at"]
+        fields = [
+            "id",
+            "title",
+            "stock",
+            "description",
+            "cover_image",
+            "category",
+            "published_year",
+            "created_at",
+            "updated_at",
+        ]
 
 
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Members
-        fields = ["name", "email", "password", "created_at", "updated_at"]
+        fields = ["id", "name", "email", "password", "created_at", "updated_at"]
 
 
 class LibrarianSerializer(serializers.ModelSerializer):
     class Meta:
         model = Librarians
-        fields = ["name", "email", "password", "created_at", "updated_at"]
+        fields = ["id", "name", "email", "password", "created_at", "updated_at"]
 
 
 class BookLoanSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookLoans
         fields = [
+            "id",
             "book",
             "member",
             "librarian",
