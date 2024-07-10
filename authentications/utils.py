@@ -19,9 +19,6 @@ class Hasher:
         hashed_password = encoded[2:].replace("'", "").encode("utf-8")
         password_encode = password.encode("utf-8")
 
-        print(hashed_password)
-        print(password_encode)
-
         is_verified = bcrypt.checkpw(
             password=password_encode, hashed_password=hashed_password
         )
