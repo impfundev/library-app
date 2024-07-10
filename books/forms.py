@@ -5,7 +5,14 @@ from books.models import Book
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ["cover_image", "title", "stock", "category", "description"]
+        fields = [
+            "cover_image",
+            "title",
+            "stock",
+            "category",
+            "description",
+            "published_year",
+        ]
 
         widgets = {
             "cover_image": forms.FileInput(
@@ -35,6 +42,12 @@ class BookForm(forms.ModelForm):
             "description": forms.Textarea(
                 attrs={
                     "placeholder": "Description",
+                    "class": "form-control",
+                }
+            ),
+            "published_year": forms.TextInput(
+                attrs={
+                    "type": "number",
                     "class": "form-control",
                 }
             ),
