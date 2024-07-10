@@ -19,6 +19,7 @@ class BookListView(generic.ListView):
                 Q(title__icontains=keyword)
                 | Q(category__name__icontains=keyword)
                 | Q(description__icontains=keyword)
+                | Q(published_year__icontains=keyword)
             ).order_by("-created_at")
 
         if order:
@@ -27,7 +28,7 @@ class BookListView(generic.ListView):
             elif order == "old":
                 queryset = queryset.order_by("created_at")
 
-        return queryset.order_by("-updated_at")
+        return queryset
 
 
 class BookDetailView(generic.DeleteView):
