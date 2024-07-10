@@ -30,6 +30,12 @@ class BookListView(generic.ListView):
         return queryset.order_by("-updated_at")
 
 
+class BookDetailView(generic.DeleteView):
+    model = Book
+    template_name = "book_detail.html"
+    context_object_name = "book"
+
+
 class BookCreateView(generic.edit.CreateView):
     model = Book
     form_class = BookForm
