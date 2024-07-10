@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from members.utils import generate_unique_number
 
@@ -5,6 +6,7 @@ random_number = generate_unique_number(15)
 
 
 class Members(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4())
     account_number = models.CharField(
         default=random_number, editable=False, max_length=15
     )
