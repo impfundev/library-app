@@ -12,6 +12,8 @@ from api.views import (
     LoginAsMember,
     LogoutAsMember,
     ChangePasswordAsMember,
+    OverduedBookLoanViewSet,
+    UpComingBookLoanViewSet,
 )
 
 router = routers.DefaultRouter()
@@ -19,7 +21,13 @@ router.register(r"users", UserViewSet, basename="users")
 router.register(r"books", BookViewSet, basename="books")
 router.register(r"members", MemberViewSet, basename="members")
 router.register(r"librarians", LibrarianViewSet, basename="librarians")
-router.register(r"book_loans", BookLoanViewSet, basename="book_loans")
+router.register(r"book-loans", BookLoanViewSet, basename="book_loans")
+router.register(
+    r"overdued-loans", OverduedBookLoanViewSet, basename="book_loans_overdued"
+)
+router.register(
+    r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
+)
 
 urlpatterns = [
     path("", include(router.urls)),

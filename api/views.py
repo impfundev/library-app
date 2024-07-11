@@ -66,6 +66,26 @@ class BookLoanViewSet(viewsets.ModelViewSet):
     search_fields = filterset_fields
 
 
+class OverduedBookLoanViewSet(BookLoanViewSet):
+    now = datetime.now()
+    queryset = (
+        BookLoans.objects.all()
+        .filter(due_date__lte=now, return_date=None)
+        .order_by("created_at")
+    )
+
+
+class UpComingBookLoanViewSet(BookLoanViewSet):
+    now = datetime.now()
+    due_date_treshold = now.today() + timedelta(days=3)
+    queryset = (
+        BookLoans.objects.all()
+        .filter(due_date__lte=due_date_treshold, return_date=None)
+        .filter(due_date__gte=now.today())
+        .order_by("created_at")
+    )
+
+
 class LoginAsLibrarian(views.APIView):
 
     def post(self, request):
