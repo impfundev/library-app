@@ -14,12 +14,15 @@ from api.serializers import (
     UserSerializer,
     Book,
     BookSerializer,
+    Category,
+    CategorySerializer,
     Members,
     MemberSerializer,
     Librarians,
     LibrarianSerializer,
     BookLoans,
     BookLoanSerializer,
+    MemberLoanSerializer,
 )
 from librarians.models import LoginHistory
 
@@ -35,15 +38,37 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ["published_year", "category__name"]
-    search_fields = filterset_fields
+    search_fields = ["title"]
+
+    def update(self, request, pk):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all().order_by("created_at")
+    serializer_class = CategorySerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ["created_at", "updated_at"]
+    search_fields = ["name", "description"]
+
+    def update(self, request, pk):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Members.objects.all().order_by("created_at")
     serializer_class = MemberSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["name", "email"]
-    search_fields = filterset_fields
+    filterset_fields = ["created_at", "updated_at"]
+    search_fields = ["name", "email"]
 
 
 class LibrarianViewSet(viewsets.ModelViewSet):
@@ -51,19 +76,22 @@ class LibrarianViewSet(viewsets.ModelViewSet):
     serializer_class = LibrarianSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ["name", "email"]
-    search_fields = filterset_fields
+    search_fields = ["name", "email"]
 
 
 class BookLoanViewSet(viewsets.ModelViewSet):
     queryset = BookLoans.objects.all().order_by("created_at")
     serializer_class = BookLoanSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = [
-        "loan_date",
-        "due_date",
-        "return_date",
-    ]
-    search_fields = filterset_fields
+    filterset_fields = ["loan_date", "due_date", "return_date", "member__id"]
+    search_fields = ["book__title", "member__name"]
+
+    def update(self, request, pk):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 class OverduedBookLoanViewSet(BookLoanViewSet):
@@ -84,6 +112,15 @@ class UpComingBookLoanViewSet(BookLoanViewSet):
         .filter(due_date__gte=now.today())
         .order_by("created_at")
     )
+
+
+class MemberLoanViewSet(BookLoanViewSet):
+    queryset = BookLoans.objects.all()
+    serializer_class = MemberLoanSerializer
+
+    def get_queryset(self):
+        member_id = self.kwargs.get("member_id")
+        return BookLoans.objects.filter(member__id=member_id).order_by("created_at")
 
 
 class LoginAsLibrarian(views.APIView):
@@ -151,6 +188,11 @@ class ChangePasswordAsLibrarian(views.APIView):
         librarian = librarians.filter(pk=pk, email=data.get("email"))
         is_email_exists = librarian.exists()
         new_password = data.get("new_password")
+
+        if request.data.email is None or request.data.password is None:
+            return Response(
+                {"message": "Email or Password is required fields, cannot be empty"}
+            )
 
         if not is_email_exists:
             return Response(
