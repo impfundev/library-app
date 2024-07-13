@@ -26,9 +26,58 @@ from api.serializers import (
 )
 from librarians.models import LoginHistory
 
+from users.models import User
+from dj_rest_auth.views import LoginView
+
+
+class LoginUserView(LoginView):
+
+    def get_response(self):
+        if self.user.is_staff:
+            return Response(
+                {"message": "Login as librarian success"},
+                status=status.HTTP_200_OK,
+            )
+        else:
+            return Response(
+                {"message": "Login as member success"},
+                status=status.HTTP_200_OK,
+            )
+
+
+class RegisterUserView(views.APIView):
+
+    def pos(self, request):
+        data = request.data
+
+        is_username = User.objects.filter(username=data.username)
+        if is_username.exists():
+            return Response(
+                {
+                    "message": "Register failed: Username is already used, please used another username"
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        is_email = User.objects.filter(email=data.email)
+        if is_email.exists():
+            return Response(
+                {
+                    "messagge": "Register failed: Email is already used, please used another email"
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        User.objects.create(data)
+        user = User.objects.get(username=data.username)
+        return Response(
+            {"messagge": "Register Success"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = get_user_model().objects.all().order_by("id")
     serializer_class = UserSerializer
 

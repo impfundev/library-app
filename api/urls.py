@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
+from dj_rest_auth.views import LogoutView
 from api.views import (
     UserViewSet,
     BookViewSet,
@@ -16,6 +17,7 @@ from api.views import (
     OverduedBookLoanViewSet,
     UpComingBookLoanViewSet,
     MemberLoanViewSet,
+    LoginUserView,
 )
 
 router = routers.DefaultRouter()
@@ -65,5 +67,16 @@ urlpatterns = [
         "members/<int:member_id>/",
         include(router_member.urls),
         name="member_loans",
+    ),
+    # auth beta
+    path(
+        "auth/beta/login/",
+        LoginUserView.as_view(),
+        name="auth_login_beta",
+    ),
+    path(
+        "auth/beta/logout/",
+        LogoutView.as_view(),
+        name="auth_login_beta",
     ),
 ]

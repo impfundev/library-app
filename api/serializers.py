@@ -2,16 +2,32 @@ from datetime import datetime
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from users.models import Role
 from books.models import Book, Category
 from members.models import Members
 from book_loans.models import BookLoans
 from librarians.models import Librarians
 
 
+class RoleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Role
+        fields = "__all__"
+
+
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = get_user_model()
-        fields = "__all__"
+        fields = [
+            "username",
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "is_staff",
+        ]
 
 
 class CategorySerializer(serializers.ModelSerializer):

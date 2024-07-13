@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     # local
     "api.apps.ApiConfig",
+    "users.apps.UsersConfig",
     "books.apps.BooksConfig",
     "categories.apps.CategoriesConfig",
     "members.apps.MembersConfig",
@@ -68,7 +69,6 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
