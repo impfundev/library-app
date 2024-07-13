@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "is_staff",
         ]
-        extra_kwargs = {"password": {"write_only": True}}  # Hide password from response
+        extra_kwargs = {"password": {"write_only": True}}
 
     def update(self, instance, validated_data):
         partial = self.context.get("is_partial", False)
