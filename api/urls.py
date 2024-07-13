@@ -1,12 +1,7 @@
 from django.urls import path, include
-from rest_framework import routers
 
-from .views import LibrarianViewSet, MemberViewSet
-
-router = routers.DefaultRouter()
-router.register(r"librarians", LibrarianViewSet, basename="librarians")
-router.register(r"members", MemberViewSet, basename="members")
+from .auth import urls as auth_urls
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("", include(auth_urls)),
 ]
