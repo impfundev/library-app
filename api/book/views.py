@@ -35,7 +35,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ["created_at", "updated_at"]
-    search_fields = ["name", "description"]
+    search_fields = ["name"]
 
     def update(self, request, pk):
         instance = self.get_object()
