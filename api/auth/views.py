@@ -15,6 +15,16 @@ class LibrarianViewSet(viewsets.ModelViewSet):
     queryset = Librarian.objects.all().order_by("created_at")
     serializer_class = LibrarianSerializer
 
+    def list(self, request):
+        if not self.request.user.is_staff:
+            return Response(
+                {"message": "Access Denied"}, status=status.HTTP_406_NOT_ACCEPTABLE
+            )
+
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
     def update(self, request, pk):
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
@@ -27,6 +37,16 @@ class MemberViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Member.objects.all().order_by("created_at")
     serializer_class = MemberSerializer
+
+    def list(self, request):
+        if self.request.user.is_staff:
+            return Response(
+                {"message": "Access Denied"}, status=status.HTTP_406_NOT_ACCEPTABLE
+            )
+
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
     def update(self, request, pk):
         instance = self.get_object()
