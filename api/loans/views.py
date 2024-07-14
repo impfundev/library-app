@@ -4,15 +4,14 @@ from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import BookLoan, BookLoanSerializer
+from .serializers import BookLoan, BookLoanSerializer, MemberLoanSerializer
 
 
 class BookLoanViewSet(viewsets.ModelViewSet):
     queryset = BookLoan.objects.all().order_by("loan_date")
     serializer_class = BookLoanSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["loan_date", "due_date", "return_date", "member__id"]
-    search_fields = ["book__title", "member__name"]
+    filterset_fields = ["loan_date", "due_date", "return_date"]
 
     def update(self, request, pk):
         instance = self.get_object()
@@ -40,3 +39,12 @@ class UpComingBookLoanViewSet(BookLoanViewSet):
         .filter(due_date__gte=now)
         .order_by("loan_date")
     )
+
+
+class MemberLoanViewSet(BookLoanViewSet):
+    queryset = BookLoan.objects.all()
+    serializer_class = MemberLoanSerializer
+
+    def get_queryset(self):
+        member_id = self.kwargs.get("member_id")
+        return BookLoan.objects.filter(member__id=member_id).order_by("loan_date")

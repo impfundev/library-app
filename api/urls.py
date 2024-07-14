@@ -14,6 +14,7 @@ from .loans.views import (
     BookLoanViewSet,
     OverduedBookLoanViewSet,
     UpComingBookLoanViewSet,
+    MemberLoanViewSet,
 )
 
 
@@ -30,6 +31,9 @@ router.register(
     r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
 )
 
+router_member_loan = routers.DefaultRouter()
+router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans")
+
 urlpatterns = [
     path("", include(router.urls)),
     # auth
@@ -39,4 +43,9 @@ urlpatterns = [
     ),
     path("members/auth/login", MemberLoginView.as_view(), name="member_login"),
     path("members/auth/logout", MemberLogoutView.as_view(), name="member_logout"),
+    path(
+        "members/<int:member_id>/",
+        include(router_member_loan.urls),
+        name="member_loans",
+    ),
 ]
