@@ -10,12 +10,25 @@ from .auth.views import (
     MemberLogoutView,
 )
 from .book.views import BookViewSet, CategoryViewSet
+from .loans.views import (
+    BookLoanViewSet,
+    OverduedBookLoanViewSet,
+    UpComingBookLoanViewSet,
+)
+
 
 router = routers.DefaultRouter()
 router.register(r"librarians", LibrarianViewSet, basename="librarians")
 router.register(r"members", MemberViewSet, basename="members")
 router.register(r"books", BookViewSet, basename="books")
 router.register(r"categories", CategoryViewSet, basename="categories")
+router.register(r"book-loans", BookLoanViewSet, basename="book_loans")
+router.register(
+    r"overdued-loans", OverduedBookLoanViewSet, basename="book_loans_overdued"
+)
+router.register(
+    r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
+)
 
 urlpatterns = [
     path("", include(router.urls)),

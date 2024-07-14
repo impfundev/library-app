@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # local
     "users.apps.UsersConfig",
     "book.apps.BookConfig",
+    "loans.apps.LoansConfig",
     # 3rd party
     "rest_framework",
     "django_filters",
@@ -127,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Jakarta"
 
 USE_I18N = True
 
