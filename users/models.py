@@ -12,6 +12,9 @@ class Librarian(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.user.username
+
 
 class Member(models.Model):
     user = models.OneToOneField(
@@ -20,6 +23,9 @@ class Member(models.Model):
     picture = models.ImageField(upload_to="uploads", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.username
 
 
 class LibrarianLoginHistory(models.Model):

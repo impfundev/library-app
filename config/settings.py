@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # local
     "users.apps.UsersConfig",
+    "book.apps.BookConfig",
     # 3rd party
     "rest_framework",
     "django_filters",
