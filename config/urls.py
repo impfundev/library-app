@@ -26,6 +26,7 @@ urlpatterns = [
     path("dashboard/", include("dashboard.urls")),
     path("books/", include("book.urls")),
     path("users/", include("users.urls")),
+    path("book-loans/", include("loans.urls")),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party

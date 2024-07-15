@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div class="w-100 p-4">
+  <div class="d-flex gap-2 mb-4">
+    {% include "order_form.html" %}
+    <a type="button" class="btn btn-primary" href="/book-loans/add/">
+      <i class="bi bi-plus-circle"></i> Add Book Loan
+    </a>
+    {% include "search_form.html" %}
+  </div>
+  {% include "book_loan_table_data.html" %}
+</div>
+{% endblock dashboard %}

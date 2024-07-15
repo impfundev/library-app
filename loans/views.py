@@ -1,3 +1,48 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.views import generic
+from .models import BookLoan
+from .forms import BookLoanForm
 
-# Create your views here.
+
+class BookLoanListView(generic.ListView):
+    model = BookLoan
+    template_name = "loans.html"
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
+
+        if keyword:
+            queryset = queryset.filter(
+                Q(book__title__icontains=keyword) | Q(member__name__icontains=keyword)
+            ).order_by("-loan_date")
+
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-loan_date")
+            elif order == "old":
+                queryset = queryset.order_by("loan_date")
+
+        return queryset.order_by("-loan_date")
+
+
+class BookLoanCreateView(generic.edit.CreateView):
+    model = BookLoan
+    form_class = BookLoanForm
+    success_url = "/dashboard/book-loans/"
+    template_name = "form/create_form.html"
+
+
+class BookLoanUpdateView(generic.edit.UpdateView):
+    model = BookLoan
+    form_class = BookLoanForm
+    success_url = "/dashboard/book-loans"
+    template_name = "form/update_form.html"
+
+
+class BookLoanDeleteView(generic.edit.DeleteView):
+    model = BookLoan
+    success_url = "/dashboard/book-loans"
+    template_name = "form/delete_form.html"
