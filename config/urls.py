@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from dashboard.views import UpcomingLoanView, OverduedLoanView
 
 urlpatterns = [
     # local
@@ -27,6 +28,8 @@ urlpatterns = [
     path("books/", include("book.urls")),
     path("users/", include("users.urls")),
     path("book-loans/", include("loans.urls")),
+    path("upcoming-loans/", UpcomingLoanView.as_view(), name="upcoming_loans"),
+    path("overdued-loans/", OverduedLoanView.as_view(), name="overdued_loans"),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party
