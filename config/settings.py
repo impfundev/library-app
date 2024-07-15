@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "book.apps.BookConfig",
     "loans.apps.LoansConfig",
+    "dashboard.apps.DashboardConfig",
     # 3rd party
     "rest_framework",
     "django_filters",

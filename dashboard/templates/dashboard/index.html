@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div style="max-width: 80vw;" class="w-100 p-4 d-flex flex-column gap-4">
+  <h1 class="h2">Reports</h1>
+  <div class="row card">{% include "dashboard/summary.html" %}</div>
+  <div class="row card">{% include "dashboard/overdue_loan.html" %}</div>
+  <div class="row card">{% include "dashboard/near_overdue_loan.html" %}</div>
+  <div class="row card">{% include "dashboard/login_history.html" %}</div>
+</div>
+{% endblock dashboard %}

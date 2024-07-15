@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     # local
     path("admin/", admin.site.urls),
+    path("dashboard/", include("dashboard.urls")),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party

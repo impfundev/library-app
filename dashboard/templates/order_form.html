@@ -1,0 +1,24 @@
+<div class="dropdown">
+  <button
+    type="button"
+    class="btn btn-secondary dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <i class="bi bi-arrow-down-up"></i> Order By
+  </button>
+  <ul class="dropdown-menu shadow">
+    <li>
+      <form action="" method="get" class="d-flex gap-2">
+        <input name="o" value="new" hidden />
+        <button type="submit" class="dropdown-item" href="#">Newest</button>
+      </form>
+    </li>
+    <li>
+      <form action="" method="get" class="d-flex gap-2">
+        <input name="o" value="old" hidden />
+        <button type="submit" class="dropdown-item" href="#">Oldest</button>
+      </form>
+    </li>
+  </ul>
+</div>
