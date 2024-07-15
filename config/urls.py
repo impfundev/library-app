@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("dashboard/", include("dashboard.urls")),
     path("books/", include("book.urls")),
+    path("users/", include("users.urls")),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party
