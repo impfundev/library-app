@@ -28,7 +28,7 @@ class BookListView(generic.ListView):
             elif order == "old":
                 queryset = queryset.order_by("created_at")
 
-        return queryset
+        return queryset.order_by("-created_at")
 
 
 class BookDetailView(generic.DeleteView):
