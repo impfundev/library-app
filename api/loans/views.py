@@ -12,6 +12,13 @@ class BookLoanViewSet(viewsets.ModelViewSet):
     serializer_class = BookLoanSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ["loan_date", "due_date", "return_date"]
+    search_fields = [
+        "member__user__username",
+        "member__user__email",
+        "member__user__first_name",
+        "member__user__last_name",
+        "book__title",
+    ]
 
     def update(self, request, pk):
         instance = self.get_object()
