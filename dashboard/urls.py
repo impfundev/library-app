@@ -14,7 +14,6 @@ from dashboard.views import DashboardView
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
-    path("books/", include("book.urls")),
     # librarians
     path("librarians/", LibrarianListView.as_view(), name="librarian_lists"),
     path("librarians/add/", LibrarianCreateView.as_view(), name="create_librarian"),
