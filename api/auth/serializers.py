@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from users.models import User, Librarian, Member
+from users.models import User, Librarian, Member, LibrarianLoginHistory
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -23,12 +23,18 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
+class LoginHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LibrarianLoginHistory
+        fields = "__all__"
+
+
 class LibrarianSerializer(serializers.ModelSerializer):
-    user_detail = UserSerializer(source="user")
+    user = UserSerializer()
 
     class Meta:
         model = Librarian
-        fields = ["user_detail", "picture", "created_at", "updated_at"]
+        fields = ["user", "picture", "created_at", "updated_at"]
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")
@@ -73,11 +79,11 @@ class LibrarianSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
-    user_detail = UserSerializer(source="user")
+    user = UserSerializer()
 
     class Meta:
         model = Member
-        fields = ["user_detail", "picture", "created_at", "updated_at"]
+        fields = ["user", "picture", "created_at", "updated_at"]
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")

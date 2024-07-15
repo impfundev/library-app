@@ -1,29 +1,31 @@
 from django.contrib.auth import authenticate, login, logout
-from rest_framework import views, viewsets, permissions, status
+from rest_framework import views, viewsets, status
 from rest_framework.response import Response
+from rest_framework.filters import SearchFilter
 
 from .serializers import (
     Librarian,
     LibrarianSerializer,
+    LibrarianLoginHistory,
+    LoginHistorySerializer,
     Member,
     MemberSerializer,
 )
+from .permissions import IsStaffUser, IsNotStaffUser
 
 
 class LibrarianViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsStaffUser]
     queryset = Librarian.objects.all().order_by("created_at")
     serializer_class = LibrarianSerializer
 
-    def list(self, request):
-        if not self.request.user.is_staff:
-            return Response(
-                {"message": "Access Denied"}, status=status.HTTP_406_NOT_ACCEPTABLE
-            )
-
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+    filter_backends = [SearchFilter]
+    search_fields = [
+        "user__username",
+        "user__email",
+        "user__first_name",
+        "user__last_name",
+    ]
 
     def update(self, request, pk):
         instance = self.get_object()
@@ -34,9 +36,17 @@ class LibrarianViewSet(viewsets.ModelViewSet):
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsNotStaffUser]
     queryset = Member.objects.all().order_by("created_at")
     serializer_class = MemberSerializer
+
+    filter_backends = [SearchFilter]
+    search_fields = [
+        "user__username",
+        "user__email",
+        "user__first_name",
+        "user__last_name",
+    ]
 
     def list(self, request):
         if self.request.user.is_staff:
@@ -102,7 +112,40 @@ class LibrarianLoginView(LoginBaseView):
             else:
                 login(request, self.user)
 
+                librarian = Librarian.objects.get(user=self.user)
+                LibrarianLoginHistory.objects.create(librarian=librarian)
+
         return response
+
+
+class LibrarianLoginHistoryViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsStaffUser]
+    queryset = LibrarianLoginHistory.objects.all().order_by("date")
+    serializer_class = LoginHistorySerializer
+
+    filter_backends = [SearchFilter]
+    search_fields = ["librarian__name"]
+
+
+class LibrarianViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsStaffUser]
+    queryset = Librarian.objects.all().order_by("created_at")
+    serializer_class = LibrarianSerializer
+
+    filter_backends = [SearchFilter]
+    search_fields = [
+        "user__username",
+        "user__email",
+        "user__first_name",
+        "user__last_name",
+    ]
+
+    def update(self, request, pk):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class MemberLoginView(LoginBaseView):

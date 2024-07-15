@@ -5,6 +5,7 @@ from .auth.views import (
     LibrarianViewSet,
     LibrarianLoginView,
     LibrarianLogoutView,
+    LibrarianLoginHistoryViewSet,
     MemberViewSet,
     MemberLoginView,
     MemberLogoutView,
@@ -29,6 +30,9 @@ router.register(
 )
 router.register(
     r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
+)
+router.register(
+    r"login-history", LibrarianLoginHistoryViewSet, basename="librarian_login_history"
 )
 
 router_member_loan = routers.DefaultRouter()
