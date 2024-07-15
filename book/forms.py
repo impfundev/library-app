@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book
+from .models import Book, Category
 
 
 class BookForm(forms.ModelForm):
@@ -53,6 +53,21 @@ class BookForm(forms.ModelForm):
             "description": forms.Textarea(
                 attrs={
                     "placeholder": "Description",
+                    "class": "form-control",
+                }
+            ),
+        }
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ["name"]
+
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    "placeholder": "Title",
                     "class": "form-control",
                 }
             ),
