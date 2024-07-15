@@ -3,9 +3,8 @@
     <tr class="table-primary">
       <th scope="col">Title</th>
       <th scope="col">Category</th>
-      <th scope="col">Stock</th>
       <th scope="col">Description</th>
-      <th scope="col">Year</th>
+      <th scope="col">Published Date</th>
       <th scope="col">Created At</th>
       <th scope="col">Updated At</th>
       <th scope="col"></th>
@@ -16,9 +15,8 @@
     <tr>
       <td><a href="/dashboard/books/{{ book.id }}/">{{ book.title }}</a></td>
       <td>{{ book.category.name }}</td>
-      <td>{{ book.stock }}</td>
       <td>{{ book.description }}</td>
-      <td>{{ book.published_year }}</td>
+      <td>{{ book.publish_date }}</td>
       <td>{{ book.created_at }}</td>
       <td>{{ book.updated_at }}</td>
       <td>

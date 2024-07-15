@@ -28,6 +28,6 @@ class Member(models.Model):
 
 class LibrarianLoginHistory(models.Model):
     librarian = models.OneToOneField(
-        Librarian, blank=True, null=True, on_delete=models.DO_NOTHING
+        Librarian, blank=True, null=True, on_delete=models.CASCADE
     )
     date = models.DateTimeField(auto_now_add=True)
