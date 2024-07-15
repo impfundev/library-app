@@ -20,9 +20,15 @@
     />
     <div class="col">
       <h1 class="h2 row">{{ book.title }}</h1>
-      <p class="h5 row">{{ book.description }}</p>
-      <p class="h5 row">Stock: {{ book.stock }}</p>
-      <p class="row badge text-bg-secondary">{{ book.category.name }}</p>
+      
+      <div class="row d-flex flex-collumn gap-2">
+        <span class="row">Author: {{ book.author }}</span>
+        <span class="row">Rating: {{ book.rating }}</span>
+        <time class="row">Published Date: {{ book.publish_date }}</time>  
+      <div/>
+
+      <p class="fs-5 row text-secondary">{{ book.description }}</p>
+      <p class="row badge text-bg-secondary">{% if book.category.name is None %}uncategories {% else %}{{book.category.name}}{% endif %}</p>
       <time datetime="{{ book.created_at }}" class="row fs-6"
         >Created at: {{ book.created_at }}</time
       >
