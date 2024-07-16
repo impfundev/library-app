@@ -19,7 +19,7 @@ class OverduedLoanView(ListView):
 
         now = timezone.now()
         queryset = queryset.filter(due_date__lte=now, return_date=None).order_by(
-            "-due_date"
+            "-created_at"
         )
 
         if keyword:
@@ -27,13 +27,13 @@ class OverduedLoanView(ListView):
                 Q(book__title__icontains=keyword)
                 | Q(member__name__icontains=keyword)
                 | Q(librarian__name__icontains=keyword)
-            ).order_by("-due_date")
+            ).order_by("-created_at")
 
         if order:
             if order == "new":
-                queryset = queryset.order_by("-due_date")
+                queryset = queryset.order_by("-created_at")
             elif order == "old":
-                queryset = queryset.order_by("due_date")
+                queryset = queryset.order_by("created_at")
 
         return queryset
 
@@ -54,7 +54,7 @@ class UpcomingLoanView(ListView):
         queryset = (
             queryset.filter(due_date__lte=due_date_treshold, return_date=None)
             .filter(due_date__gte=now)
-            .order_by("-due_date")
+            .order_by("-created_at")
         )
 
         if keyword:
@@ -62,13 +62,13 @@ class UpcomingLoanView(ListView):
                 Q(book__title__icontains=keyword)
                 | Q(member__name__icontains=keyword)
                 | Q(librarian__name__icontains=keyword)
-            ).order_by("-due_date")
+            ).order_by("-created_at")
 
         if order:
             if order == "new":
-                queryset = queryset.order_by("-due_date")
+                queryset = queryset.order_by("-created_at")
             elif order == "old":
-                queryset = queryset.order_by("due_date")
+                queryset = queryset.order_by("created_at")
 
         return queryset
 
