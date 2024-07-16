@@ -1,1301 +1,1301 @@
 [{
   "model": "book.book",
   "fields": {
-    "title": "Nazis at the Center of the Earth",
-    "author": "Belle Rattenberie",
-    "isbn": "205496564-2",
+    "title": "Kiki",
+    "author": "Pepillo Daglish",
+    "isbn": "336433730-6",
+    "rating": 3,
+    "description": "turpis elementum ligula vehicula consequat morbi a ipsum integer a",
+    "publish_date": "2023-08-19 13:50:30",
+    "created_at": "2023-10-11 00:30:05",
+    "updated_at": "2023-12-30 18:43:26",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Blind Justice (Hævnens nat)",
+    "author": "Cosme Mahedy",
+    "isbn": "328622606-8",
     "rating": 1,
-    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "publish_date": "2024-02-04 09:46:55",
-    "created_at": "2023-10-04 06:34:25",
-    "updated_at": "2024-07-07 02:05:06",
-    "cover_image": "http://dummyimage.com/129x100.png/cc0000/ffffff"
+    "description": "eget eleifend luctus ultricies eu nibh quisque id justo sit",
+    "publish_date": "2023-08-13 17:04:15",
+    "created_at": "2023-10-03 00:09:06",
+    "updated_at": "2024-07-13 00:03:31",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Cheaper by the Dozen",
-    "author": "Eirena Muncaster",
-    "isbn": "704309137-3",
-    "rating": 4,
-    "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "publish_date": "2023-08-31 05:32:14",
-    "created_at": "2024-06-02 01:16:01",
-    "updated_at": "2024-03-06 20:06:18",
-    "cover_image": "http://dummyimage.com/218x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "What's in a Name (Prénom, Le)",
-    "author": "Roderick Saile",
-    "isbn": "643579460-X",
+    "title": "Sherlock Holmes: Dressed to Kill",
+    "author": "Xymenes Stede",
+    "isbn": "473202694-X",
     "rating": 5,
-    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "publish_date": "2024-07-03 16:52:25",
-    "created_at": "2024-05-10 09:03:30",
-    "updated_at": "2024-06-13 13:52:17",
-    "cover_image": "http://dummyimage.com/198x100.png/ff4444/ffffff"
+    "description": "massa volutpat convallis morbi odio odio elementum eu interdum eu",
+    "publish_date": "2024-06-11 16:47:20",
+    "created_at": "2023-12-11 06:19:34",
+    "updated_at": "2023-07-23 00:28:42",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Rink, The",
-    "author": "Bruce Rosson",
-    "isbn": "388633952-1",
-    "rating": 0,
-    "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "publish_date": "2024-04-20 12:04:36",
-    "created_at": "2024-01-27 20:11:09",
-    "updated_at": "2024-04-02 03:32:19",
-    "cover_image": "http://dummyimage.com/240x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Aerial, The (La antena)",
-    "author": "Ward Cutteridge",
-    "isbn": "242892821-X",
-    "rating": 5,
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-    "publish_date": "2023-11-25 02:57:07",
-    "created_at": "2024-01-22 23:52:52",
-    "updated_at": "2023-11-02 13:44:00",
-    "cover_image": "http://dummyimage.com/136x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Under the Cherry Moon",
-    "author": "Delia Geale",
-    "isbn": "667364807-4",
+    "title": "The Last Diamond",
+    "author": "Livvie Descroix",
+    "isbn": "758926260-9",
     "rating": 1,
-    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-    "publish_date": "2023-09-13 21:07:05",
-    "created_at": "2023-12-05 04:22:12",
-    "updated_at": "2023-09-18 19:04:36",
-    "cover_image": "http://dummyimage.com/114x100.png/5fa2dd/ffffff"
+    "description": "orci luctus et ultrices posuere cubilia curae mauris viverra diam",
+    "publish_date": "2023-11-10 05:30:27",
+    "created_at": "2023-09-15 09:55:00",
+    "updated_at": "2023-08-11 20:04:12",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Shadows (Cienie)",
-    "author": "Lancelot Bellie",
-    "isbn": "869879142-5",
+    "title": "Someone Like You (Unnaipol Oruvan)",
+    "author": "Cleve Tummons",
+    "isbn": "585069859-0",
+    "rating": 3,
+    "description": "sagittis dui vel nisl duis ac nibh fusce lacus purus",
+    "publish_date": "2024-02-11 01:24:54",
+    "created_at": "2023-09-28 18:28:07",
+    "updated_at": "2023-11-02 04:19:01",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "The Land Before Time IX: Journey to the Big Water",
+    "author": "Patricio McKeaveney",
+    "isbn": "716245324-4",
     "rating": 5,
-    "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
-    "publish_date": "2023-10-04 20:23:33",
-    "created_at": "2024-01-19 00:10:20",
-    "updated_at": "2023-09-08 01:25:30",
-    "cover_image": "http://dummyimage.com/160x100.png/cc0000/ffffff"
+    "description": "diam id ornare imperdiet sapien urna pretium nisl ut volutpat",
+    "publish_date": "2024-05-27 06:47:31",
+    "created_at": "2023-08-22 08:55:44",
+    "updated_at": "2023-07-26 22:52:21",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Stranger in Me, The (Das Fremde in mir)",
-    "author": "Gabrila Birtles",
-    "isbn": "286251506-X",
+    "title": "Star Witness, The",
+    "author": "Carole Kimmons",
+    "isbn": "631596190-8",
     "rating": 4,
-    "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "publish_date": "2024-03-30 17:02:25",
-    "created_at": "2023-08-23 21:30:12",
-    "updated_at": "2024-05-12 07:33:32",
-    "cover_image": "http://dummyimage.com/204x100.png/ff4444/ffffff"
+    "description": "platea dictumst maecenas ut massa quis augue luctus tincidunt nulla",
+    "publish_date": "2023-07-26 09:52:13",
+    "created_at": "2024-04-26 04:11:58",
+    "updated_at": "2023-12-02 10:34:09",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Johnny Handsome",
-    "author": "Hamish Briat",
-    "isbn": "919425202-5",
+    "title": "Once in a Lifetime: The Extraordinary Story of the New York Cosmos",
+    "author": "Townie Olivera",
+    "isbn": "882828204-5",
+    "rating": 3,
+    "description": "turpis adipiscing lorem vitae mattis nibh ligula nec sem duis",
+    "publish_date": "2024-04-06 14:50:09",
+    "created_at": "2023-09-10 09:33:51",
+    "updated_at": "2024-05-13 23:47:06",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Von Richthofen and Brown",
+    "author": "Rosette Dunsmuir",
+    "isbn": "857822789-1",
     "rating": 4,
-    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "publish_date": "2024-04-12 21:08:29",
-    "created_at": "2023-09-18 12:52:14",
-    "updated_at": "2023-08-07 08:18:01",
-    "cover_image": "http://dummyimage.com/119x100.png/5fa2dd/ffffff"
+    "description": "mauris non ligula pellentesque ultrices phasellus id sapien in sapien",
+    "publish_date": "2024-04-22 14:35:56",
+    "created_at": "2023-10-18 21:33:32",
+    "updated_at": "2024-04-02 17:29:26",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Death by China ",
-    "author": "Esteban Osler",
-    "isbn": "874871332-5",
-    "rating": 5,
-    "description": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-    "publish_date": "2023-10-05 07:28:07",
-    "created_at": "2023-10-29 01:38:27",
-    "updated_at": "2024-05-01 02:51:45",
-    "cover_image": "http://dummyimage.com/222x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Tempest, The",
-    "author": "Zoe Tinto",
-    "isbn": "248502742-0",
-    "rating": 5,
-    "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-    "publish_date": "2023-10-03 19:33:47",
-    "created_at": "2023-10-27 11:08:30",
-    "updated_at": "2024-05-11 09:45:02",
-    "cover_image": "http://dummyimage.com/105x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Zona Zamfirova",
-    "author": "Tony Reolfi",
-    "isbn": "614559861-1",
+    "title": "Generation X",
+    "author": "Gwynne Benting",
+    "isbn": "594368345-3",
     "rating": 2,
-    "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "publish_date": "2024-05-24 16:44:23",
-    "created_at": "2024-03-19 14:04:33",
-    "updated_at": "2024-03-10 01:38:04",
-    "cover_image": "http://dummyimage.com/229x100.png/ff4444/ffffff"
+    "description": "sapien varius ut blandit non interdum in ante vestibulum ante",
+    "publish_date": "2024-07-05 05:39:18",
+    "created_at": "2023-11-06 18:22:12",
+    "updated_at": "2023-11-19 11:18:31",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Last Wedding, The (Kivenpyörittäjän kylä)",
-    "author": "Kenton Rubie",
-    "isbn": "213250357-5",
+    "title": "Jerk, The",
+    "author": "Lezley Ive",
+    "isbn": "823988214-5",
+    "rating": 0,
+    "description": "sagittis nam congue risus semper porta volutpat quam pede lobortis",
+    "publish_date": "2023-10-13 17:53:34",
+    "created_at": "2024-05-19 04:49:38",
+    "updated_at": "2023-08-18 04:40:11",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Mahabharata, The",
+    "author": "Wainwright Beston",
+    "isbn": "933877522-4",
+    "rating": 3,
+    "description": "vulputate elementum nullam varius nulla facilisi cras non velit nec",
+    "publish_date": "2024-07-03 16:23:56",
+    "created_at": "2024-04-08 14:20:33",
+    "updated_at": "2023-11-06 13:46:13",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Donnie Darko",
+    "author": "Yurik Playle",
+    "isbn": "210949260-0",
+    "rating": 0,
+    "description": "morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl",
+    "publish_date": "2023-08-22 14:06:12",
+    "created_at": "2024-02-04 13:02:31",
+    "updated_at": "2024-05-30 05:02:26",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "11 Harrowhouse",
+    "author": "Evyn Sired",
+    "isbn": "194830942-4",
+    "rating": 0,
+    "description": "orci eget orci vehicula condimentum curabitur in libero ut massa",
+    "publish_date": "2023-12-20 04:05:49",
+    "created_at": "2023-10-24 12:18:11",
+    "updated_at": "2024-02-02 17:17:54",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Going Hollywood",
+    "author": "Gradeigh Bachs",
+    "isbn": "473789659-4",
+    "rating": 0,
+    "description": "pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis",
+    "publish_date": "2023-09-11 15:26:13",
+    "created_at": "2023-10-07 20:56:54",
+    "updated_at": "2023-10-21 10:29:38",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Varsity Blues",
+    "author": "Galvan Bastow",
+    "isbn": "882614740-X",
     "rating": 2,
-    "description": "In congue. Etiam justo. Etiam pretium iaculis justo.",
-    "publish_date": "2024-06-30 14:25:52",
-    "created_at": "2023-10-26 03:39:23",
-    "updated_at": "2024-01-05 18:47:12",
-    "cover_image": "http://dummyimage.com/237x100.png/dddddd/000000"
+    "description": "vitae quam suspendisse potenti nullam porttitor lacus at turpis donec",
+    "publish_date": "2024-01-22 21:32:21",
+    "created_at": "2023-07-18 18:48:32",
+    "updated_at": "2023-08-09 20:54:04",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Two of Us, The (Le vieil homme et l'enfant)",
-    "author": "Harrie Eves",
-    "isbn": "624363466-3",
-    "rating": 5,
-    "description": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-    "publish_date": "2023-08-21 07:28:32",
-    "created_at": "2024-06-03 02:52:26",
-    "updated_at": "2023-12-21 08:09:42",
-    "cover_image": "http://dummyimage.com/201x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Sleepover",
-    "author": "Lena Alesio",
-    "isbn": "141217236-5",
-    "rating": 3,
-    "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-    "publish_date": "2023-12-24 07:58:42",
-    "created_at": "2024-05-08 06:02:09",
-    "updated_at": "2024-06-22 09:19:50",
-    "cover_image": "http://dummyimage.com/123x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Magic Voyage of Sindbad, The (Sadko)",
-    "author": "Anatollo Theurer",
-    "isbn": "014152276-3",
-    "rating": 3,
-    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2023-10-09 02:46:05",
-    "created_at": "2023-11-11 15:27:36",
-    "updated_at": "2024-04-24 04:52:29",
-    "cover_image": "http://dummyimage.com/201x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Asthenic Syndrome, The (Astenicheskiy sindrom)",
-    "author": "Florri Lambart",
-    "isbn": "569162367-2",
-    "rating": 1,
-    "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "publish_date": "2023-10-27 10:45:25",
-    "created_at": "2024-05-03 22:31:55",
-    "updated_at": "2024-02-28 15:46:26",
-    "cover_image": "http://dummyimage.com/125x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Accidents Happen",
-    "author": "Jacquenetta Shirrell",
-    "isbn": "431891581-6",
-    "rating": 3,
-    "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-    "publish_date": "2024-05-07 09:58:46",
-    "created_at": "2023-09-01 23:57:34",
-    "updated_at": "2024-03-16 01:21:26",
-    "cover_image": "http://dummyimage.com/167x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Angus",
-    "author": "Maure Labadini",
-    "isbn": "122111988-5",
-    "rating": 3,
-    "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "publish_date": "2024-03-19 18:51:29",
-    "created_at": "2023-11-05 15:09:28",
-    "updated_at": "2023-11-12 12:33:56",
-    "cover_image": "http://dummyimage.com/123x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Boomerang",
-    "author": "Mart Ballard",
-    "isbn": "980742804-1",
-    "rating": 2,
-    "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
-    "publish_date": "2023-08-15 21:45:10",
-    "created_at": "2024-03-12 14:18:27",
-    "updated_at": "2023-08-24 03:32:16",
-    "cover_image": "http://dummyimage.com/170x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Terra (a.k.a. Battle for Terra)",
-    "author": "Madeleine Schuelcke",
-    "isbn": "674836884-7",
-    "rating": 5,
-    "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-    "publish_date": "2024-04-10 10:03:54",
-    "created_at": "2024-01-10 08:51:35",
-    "updated_at": "2024-07-10 04:31:05",
-    "cover_image": "http://dummyimage.com/145x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Forest (Rengeteg)",
-    "author": "Ellerey O'Shesnan",
-    "isbn": "984153119-4",
-    "rating": 3,
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "publish_date": "2024-04-29 20:07:46",
-    "created_at": "2024-06-29 19:19:01",
-    "updated_at": "2023-12-26 14:20:14",
-    "cover_image": "http://dummyimage.com/211x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Yearling, The",
-    "author": "Allissa Silverthorn",
-    "isbn": "646821359-2",
+    "title": "Disorderlies",
+    "author": "Ellerey Symcoxe",
+    "isbn": "528543847-0",
     "rating": 4,
-    "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-    "publish_date": "2023-08-31 19:59:23",
-    "created_at": "2023-10-03 10:53:07",
-    "updated_at": "2024-05-08 11:14:50",
-    "cover_image": "http://dummyimage.com/139x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Broadway Serenade",
-    "author": "Merwin Bier",
-    "isbn": "620391966-7",
-    "rating": 3,
-    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "publish_date": "2024-02-20 20:36:21",
-    "created_at": "2024-06-20 05:29:11",
-    "updated_at": "2024-03-13 12:04:18",
-    "cover_image": "http://dummyimage.com/175x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Kumiko, the Treasure Hunter",
-    "author": "Chiquia Click",
-    "isbn": "502142440-8",
-    "rating": 5,
-    "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "publish_date": "2024-07-06 17:32:31",
-    "created_at": "2024-05-28 19:44:36",
-    "updated_at": "2024-05-08 03:57:27",
-    "cover_image": "http://dummyimage.com/208x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Man Who Wasn't There, The",
-    "author": "Ivory Skrines",
-    "isbn": "229810473-5",
-    "rating": 3,
-    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
-    "publish_date": "2023-08-21 23:09:40",
-    "created_at": "2023-10-18 18:39:30",
-    "updated_at": "2024-05-27 14:30:16",
-    "cover_image": "http://dummyimage.com/136x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Bug's Life, A",
-    "author": "Brier Headings",
-    "isbn": "567337041-5",
-    "rating": 3,
-    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
-    "publish_date": "2023-10-20 03:10:32",
-    "created_at": "2024-04-24 03:43:47",
-    "updated_at": "2023-09-14 02:50:51",
-    "cover_image": "http://dummyimage.com/139x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Boondock Saints II: All Saints Day, The",
-    "author": "Sully Souch",
-    "isbn": "979271771-4",
-    "rating": 0,
-    "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-    "publish_date": "2024-01-01 11:35:55",
-    "created_at": "2024-05-31 23:10:07",
-    "updated_at": "2024-01-09 02:13:33",
-    "cover_image": "http://dummyimage.com/224x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "A Night for Dying Tigers",
-    "author": "Fern Faireclough",
-    "isbn": "099945982-1",
-    "rating": 5,
-    "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "publish_date": "2023-12-03 10:50:54",
-    "created_at": "2024-01-19 08:36:55",
-    "updated_at": "2024-03-28 12:57:28",
-    "cover_image": "http://dummyimage.com/161x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Blue Jasmine",
-    "author": "Shelley Hagston",
-    "isbn": "604470059-3",
-    "rating": 1,
-    "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "publish_date": "2023-12-26 11:28:44",
-    "created_at": "2024-02-23 02:08:24",
-    "updated_at": "2023-11-27 21:44:59",
-    "cover_image": "http://dummyimage.com/154x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Ecstasy in Entropy",
-    "author": "Eulalie Finlater",
-    "isbn": "078837133-9",
-    "rating": 1,
-    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-    "publish_date": "2024-05-02 13:06:12",
-    "created_at": "2024-07-04 14:32:02",
-    "updated_at": "2024-07-04 06:42:19",
-    "cover_image": "http://dummyimage.com/182x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Young & Beautiful",
-    "author": "Oran Kimpton",
-    "isbn": "608813955-2",
-    "rating": 1,
-    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "publish_date": "2024-03-04 12:49:44",
-    "created_at": "2023-12-26 17:16:08",
-    "updated_at": "2024-07-07 10:58:30",
-    "cover_image": "http://dummyimage.com/177x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Brothers on the Line",
-    "author": "Aleksandr Brennon",
-    "isbn": "613735494-6",
-    "rating": 4,
-    "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
-    "publish_date": "2024-04-02 12:39:33",
-    "created_at": "2023-10-04 15:23:09",
-    "updated_at": "2023-08-12 16:53:57",
-    "cover_image": "http://dummyimage.com/136x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Miracle",
-    "author": "Jania Pye",
-    "isbn": "226856338-3",
-    "rating": 3,
-    "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-    "publish_date": "2024-01-09 10:32:03",
-    "created_at": "2023-10-02 22:54:07",
-    "updated_at": "2023-12-23 15:45:33",
-    "cover_image": "http://dummyimage.com/134x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Life Is Beautiful (La Vita è bella)",
-    "author": "Maddalena Caldecott",
-    "isbn": "173937150-X",
-    "rating": 0,
-    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2024-05-31 10:41:37",
-    "created_at": "2024-02-27 02:45:44",
-    "updated_at": "2023-07-31 15:24:34",
-    "cover_image": "http://dummyimage.com/113x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Parisian Love",
-    "author": "Tandi Arkow",
-    "isbn": "799090826-3",
-    "rating": 1,
-    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-    "publish_date": "2024-01-15 02:29:02",
-    "created_at": "2024-04-25 01:39:50",
-    "updated_at": "2024-01-20 21:56:32",
-    "cover_image": "http://dummyimage.com/122x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Santa's Pocket Watch",
-    "author": "Adolf Gutowski",
-    "isbn": "879495073-3",
-    "rating": 3,
-    "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "publish_date": "2024-06-14 08:35:55",
-    "created_at": "2023-07-29 17:34:11",
-    "updated_at": "2024-01-17 16:37:55",
-    "cover_image": "http://dummyimage.com/209x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Cromwell",
-    "author": "Leif Gowrich",
-    "isbn": "054739106-4",
-    "rating": 5,
-    "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-    "publish_date": "2023-11-01 13:00:32",
-    "created_at": "2023-07-25 05:01:34",
-    "updated_at": "2023-08-19 03:56:38",
-    "cover_image": "http://dummyimage.com/117x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Mating Season, The",
-    "author": "Baryram Paylie",
-    "isbn": "098821489-X",
-    "rating": 4,
-    "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    "publish_date": "2024-01-02 04:26:22",
-    "created_at": "2024-04-04 11:49:23",
-    "updated_at": "2023-11-06 04:41:04",
-    "cover_image": "http://dummyimage.com/170x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Journey to the Center of the Earth",
-    "author": "Mikel Marcome",
-    "isbn": "550209430-8",
-    "rating": 3,
-    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-    "publish_date": "2024-01-29 19:26:21",
-    "created_at": "2024-05-03 15:54:10",
-    "updated_at": "2023-09-24 00:51:29",
-    "cover_image": "http://dummyimage.com/165x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Bitter Tears of Petra von Kant, The (bitteren Tränen der Petra von Kant, Die)",
-    "author": "Solomon Jansey",
-    "isbn": "268128520-8",
-    "rating": 0,
-    "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "publish_date": "2024-03-31 04:29:12",
-    "created_at": "2023-10-22 13:36:40",
-    "updated_at": "2023-11-08 06:43:17",
-    "cover_image": "http://dummyimage.com/154x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Nightmare on Elm Street 3: Dream Warriors, A",
-    "author": "Kelby Trevascus",
-    "isbn": "488209675-7",
-    "rating": 2,
-    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "publish_date": "2024-05-31 07:47:48",
-    "created_at": "2023-12-04 23:41:54",
-    "updated_at": "2024-01-18 14:09:44",
-    "cover_image": "http://dummyimage.com/164x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Bambou",
-    "author": "Brigitta Pool",
-    "isbn": "781315373-1",
-    "rating": 3,
-    "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2023-12-05 15:36:46",
-    "created_at": "2023-09-06 03:10:45",
-    "updated_at": "2023-07-16 17:20:55",
-    "cover_image": "http://dummyimage.com/232x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Thunderheart",
-    "author": "Romonda Forten",
-    "isbn": "036456479-2",
-    "rating": 5,
-    "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "publish_date": "2024-03-07 17:27:16",
-    "created_at": "2023-09-06 21:40:14",
-    "updated_at": "2023-11-14 18:58:48",
-    "cover_image": "http://dummyimage.com/124x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Red Cliff Part II (Chi Bi Xia: Jue Zhan Tian Xia)",
-    "author": "Liane Fleury",
-    "isbn": "238415530-X",
-    "rating": 5,
-    "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "publish_date": "2024-05-14 14:05:49",
-    "created_at": "2024-04-07 20:08:48",
-    "updated_at": "2023-08-15 17:03:07",
-    "cover_image": "http://dummyimage.com/168x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Sarah Silverman: Jesus Is Magic",
-    "author": "Alis Ibell",
-    "isbn": "887189710-2",
-    "rating": 4,
-    "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-    "publish_date": "2023-10-01 14:49:20",
-    "created_at": "2023-07-24 12:09:09",
-    "updated_at": "2024-02-03 17:05:10",
-    "cover_image": "http://dummyimage.com/137x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "K-20: The Fiend with Twenty Faces",
-    "author": "Frank Borgne",
-    "isbn": "879801414-5",
-    "rating": 1,
-    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-    "publish_date": "2024-03-06 08:45:27",
-    "created_at": "2024-02-27 07:32:07",
-    "updated_at": "2023-10-16 16:46:41",
-    "cover_image": "http://dummyimage.com/135x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Snow Cake",
-    "author": "Lindsey Tirrey",
-    "isbn": "237799081-9",
-    "rating": 4,
-    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "publish_date": "2024-04-29 05:22:53",
-    "created_at": "2024-03-05 07:10:00",
-    "updated_at": "2023-08-30 18:16:41",
-    "cover_image": "http://dummyimage.com/185x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Castle, The (Das Schloß)",
-    "author": "Nicola Sisselot",
-    "isbn": "424563648-3",
-    "rating": 0,
-    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2023-08-14 11:20:41",
-    "created_at": "2023-08-01 05:27:37",
-    "updated_at": "2023-08-16 12:20:49",
-    "cover_image": "http://dummyimage.com/107x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Caveman's Valentine, The",
-    "author": "Ree McManus",
-    "isbn": "632439618-5",
-    "rating": 4,
-    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "publish_date": "2023-11-18 13:26:20",
-    "created_at": "2023-12-03 17:18:01",
-    "updated_at": "2024-04-30 21:28:46",
-    "cover_image": "http://dummyimage.com/120x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Pelle Svanslös",
-    "author": "Kendricks Cray",
-    "isbn": "758579204-2",
-    "rating": 3,
-    "description": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    "publish_date": "2023-08-26 20:36:23",
-    "created_at": "2023-07-28 13:29:29",
-    "updated_at": "2024-03-14 01:57:38",
-    "cover_image": "http://dummyimage.com/247x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Evidence ",
-    "author": "Slade Zorzin",
-    "isbn": "560471793-2",
-    "rating": 0,
-    "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "publish_date": "2023-11-08 00:01:50",
-    "created_at": "2024-03-24 08:26:17",
-    "updated_at": "2024-03-21 17:07:31",
-    "cover_image": "http://dummyimage.com/219x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Secret Policeman's Other Ball, The",
-    "author": "Nehemiah Kobierzycki",
-    "isbn": "734354654-6",
-    "rating": 2,
-    "description": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-    "publish_date": "2023-10-08 17:43:15",
-    "created_at": "2024-02-25 05:56:39",
-    "updated_at": "2023-12-11 11:57:53",
-    "cover_image": "http://dummyimage.com/199x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Judgment at Nuremberg",
-    "author": "Amandi Pawlick",
-    "isbn": "505831070-8",
-    "rating": 2,
-    "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-    "publish_date": "2023-09-16 03:26:42",
-    "created_at": "2024-07-08 02:39:30",
-    "updated_at": "2023-10-14 14:03:39",
-    "cover_image": "http://dummyimage.com/197x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Streets of Blood",
-    "author": "Lisha Pearson",
-    "isbn": "477295527-5",
-    "rating": 4,
-    "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    "publish_date": "2024-06-07 11:45:37",
-    "created_at": "2024-01-27 16:44:16",
-    "updated_at": "2024-07-02 04:56:25",
-    "cover_image": "http://dummyimage.com/115x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Zachariah",
-    "author": "Devin Dorricott",
-    "isbn": "602566679-2",
-    "rating": 2,
-    "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "publish_date": "2024-03-22 05:33:49",
-    "created_at": "2023-09-07 14:16:11",
-    "updated_at": "2023-07-25 12:28:10",
-    "cover_image": "http://dummyimage.com/236x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Jumpin' Jack Flash",
-    "author": "Catina Samwell",
-    "isbn": "500112398-4",
-    "rating": 4,
-    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-    "publish_date": "2023-10-25 07:13:15",
-    "created_at": "2023-09-27 10:45:07",
-    "updated_at": "2024-06-06 03:35:57",
-    "cover_image": "http://dummyimage.com/124x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Sea Inside, The (Mar adentro)",
-    "author": "Tan Linnemann",
-    "isbn": "975346446-0",
-    "rating": 4,
-    "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2024-05-22 12:50:06",
-    "created_at": "2024-04-06 15:26:26",
-    "updated_at": "2023-09-03 08:08:40",
-    "cover_image": "http://dummyimage.com/165x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Somewhere Under the Broad Sky",
-    "author": "Alessandra MacDermid",
-    "isbn": "231961928-3",
-    "rating": 4,
-    "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-    "publish_date": "2024-06-29 19:10:28",
-    "created_at": "2023-11-19 04:35:44",
-    "updated_at": "2023-12-22 18:34:23",
-    "cover_image": "http://dummyimage.com/186x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Good Night, and Good Luck.",
-    "author": "Josie Ritmeyer",
-    "isbn": "614593789-0",
-    "rating": 0,
-    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "publish_date": "2024-01-28 23:22:35",
-    "created_at": "2023-10-09 01:26:27",
-    "updated_at": "2024-04-13 06:31:14",
-    "cover_image": "http://dummyimage.com/121x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Moderns, The",
-    "author": "Mollee Woodrup",
-    "isbn": "998878094-X",
-    "rating": 0,
-    "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "publish_date": "2024-03-29 17:20:05",
-    "created_at": "2024-04-26 01:28:38",
-    "updated_at": "2023-08-15 18:27:47",
-    "cover_image": "http://dummyimage.com/224x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Summer of Sam",
-    "author": "Birdie Claessens",
-    "isbn": "346639173-3",
-    "rating": 5,
-    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2023-08-17 04:54:06",
-    "created_at": "2023-12-26 12:14:39",
-    "updated_at": "2023-09-29 17:40:37",
-    "cover_image": "http://dummyimage.com/119x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Bjarnfreðarson",
-    "author": "Curry Woollons",
-    "isbn": "778889235-1",
-    "rating": 3,
-    "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "publish_date": "2023-08-22 11:11:39",
-    "created_at": "2024-01-15 12:10:15",
-    "updated_at": "2023-09-15 20:48:25",
-    "cover_image": "http://dummyimage.com/116x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Film ist. 7-12",
-    "author": "Sigismondo Doxsey",
-    "isbn": "736120644-1",
-    "rating": 4,
-    "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-    "publish_date": "2023-11-23 18:06:57",
-    "created_at": "2023-08-11 17:12:46",
-    "updated_at": "2023-10-23 19:44:04",
-    "cover_image": "http://dummyimage.com/219x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Americano",
-    "author": "Niccolo Gambell",
-    "isbn": "045783821-3",
-    "rating": 5,
-    "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2023-12-24 12:27:22",
-    "created_at": "2024-02-27 09:10:38",
-    "updated_at": "2023-10-27 11:40:38",
-    "cover_image": "http://dummyimage.com/148x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Box of Moon Light",
-    "author": "Sibel Prandoni",
-    "isbn": "502579166-9",
-    "rating": 5,
-    "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-    "publish_date": "2023-10-31 23:03:06",
-    "created_at": "2024-01-16 14:21:39",
-    "updated_at": "2023-08-11 02:44:31",
-    "cover_image": "http://dummyimage.com/178x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Out of the Fog",
-    "author": "Grete Von Oertzen",
-    "isbn": "922308988-3",
-    "rating": 2,
-    "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-    "publish_date": "2024-02-08 14:52:08",
-    "created_at": "2024-01-11 07:56:02",
-    "updated_at": "2024-06-14 09:53:05",
-    "cover_image": "http://dummyimage.com/233x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Curse of Chucky (Child's Play 6)",
-    "author": "Leila Pigne",
-    "isbn": "762108781-1",
-    "rating": 1,
-    "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "publish_date": "2024-04-02 18:31:11",
-    "created_at": "2024-01-31 20:05:47",
-    "updated_at": "2023-11-26 07:18:49",
-    "cover_image": "http://dummyimage.com/181x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Distinguished Gentleman, The",
-    "author": "Adams Inns",
-    "isbn": "023460144-2",
-    "rating": 3,
-    "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-    "publish_date": "2024-02-18 05:53:00",
-    "created_at": "2024-02-27 06:55:45",
-    "updated_at": "2024-06-05 18:24:24",
-    "cover_image": "http://dummyimage.com/241x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Uncle Boonmee Who Can Recall His Past Lives (Loong Boonmee raleuk chat)",
-    "author": "Deanne Doe",
-    "isbn": "805856222-X",
-    "rating": 2,
-    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2024-03-30 20:52:51",
-    "created_at": "2023-10-03 11:09:14",
-    "updated_at": "2023-10-01 19:49:38",
-    "cover_image": "http://dummyimage.com/178x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Man Named Pearl, A",
-    "author": "Margaretta Verdie",
-    "isbn": "692940756-9",
-    "rating": 0,
-    "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
-    "publish_date": "2024-03-13 23:30:53",
-    "created_at": "2023-11-05 02:59:22",
-    "updated_at": "2024-02-10 23:38:10",
-    "cover_image": "http://dummyimage.com/123x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Surf Nazis Must Die",
-    "author": "Sallee Baddam",
-    "isbn": "984153456-8",
-    "rating": 1,
-    "description": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-    "publish_date": "2023-08-07 22:17:58",
-    "created_at": "2023-09-12 09:32:19",
-    "updated_at": "2023-07-19 18:39:21",
-    "cover_image": "http://dummyimage.com/127x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Servant, The",
-    "author": "Jacquelynn Dungate",
-    "isbn": "926338546-7",
-    "rating": 0,
-    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    "publish_date": "2024-02-05 08:55:26",
-    "created_at": "2024-02-04 01:37:33",
-    "updated_at": "2023-10-18 14:31:36",
-    "cover_image": "http://dummyimage.com/210x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Series 7: The Contenders",
-    "author": "Dahlia Willmott",
-    "isbn": "276753768-X",
-    "rating": 5,
-    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "publish_date": "2023-09-21 14:37:35",
-    "created_at": "2024-06-23 04:57:12",
-    "updated_at": "2024-05-02 07:06:30",
-    "cover_image": "http://dummyimage.com/110x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Heiress, The",
-    "author": "Rennie Hairon",
-    "isbn": "378547947-6",
-    "rating": 3,
-    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "publish_date": "2024-07-03 04:20:04",
-    "created_at": "2024-01-18 20:12:30",
-    "updated_at": "2024-06-29 11:49:28",
-    "cover_image": "http://dummyimage.com/145x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Christmas Party, The (Joulubileet)",
-    "author": "Gus Chadburn",
-    "isbn": "463117187-1",
-    "rating": 4,
-    "description": "Fusce consequat. Nulla nisl. Nunc nisl.",
-    "publish_date": "2023-12-12 07:27:00",
-    "created_at": "2023-12-04 00:53:25",
-    "updated_at": "2023-11-18 07:31:38",
-    "cover_image": "http://dummyimage.com/233x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "I Am Maria (Jag är Maria)",
-    "author": "Arlena Bernardini",
-    "isbn": "662124703-6",
-    "rating": 1,
-    "description": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-    "publish_date": "2024-01-07 17:38:54",
-    "created_at": "2023-10-04 05:58:01",
-    "updated_at": "2024-04-10 06:50:35",
-    "cover_image": "http://dummyimage.com/160x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Nine",
-    "author": "Odo Elcock",
-    "isbn": "957682837-6",
-    "rating": 5,
-    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    "publish_date": "2023-11-06 00:48:47",
-    "created_at": "2024-04-26 03:46:53",
-    "updated_at": "2024-01-30 23:14:53",
-    "cover_image": "http://dummyimage.com/114x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Booker's Place: A Mississippi Story",
-    "author": "Tressa Fiddler",
-    "isbn": "894405137-2",
-    "rating": 4,
-    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "publish_date": "2024-02-29 07:34:15",
-    "created_at": "2024-01-06 20:51:28",
-    "updated_at": "2023-08-19 18:52:21",
-    "cover_image": "http://dummyimage.com/232x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Sirens",
-    "author": "Clare Newe",
-    "isbn": "412822936-9",
-    "rating": 4,
-    "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "publish_date": "2023-09-15 07:38:14",
-    "created_at": "2023-07-30 23:25:34",
-    "updated_at": "2024-05-04 10:20:51",
-    "cover_image": "http://dummyimage.com/218x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Angels in the Outfield",
-    "author": "Arabel Yoell",
-    "isbn": "680653557-7",
-    "rating": 5,
-    "description": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-    "publish_date": "2023-12-26 12:44:25",
-    "created_at": "2024-05-20 08:31:13",
-    "updated_at": "2023-08-26 16:21:58",
-    "cover_image": "http://dummyimage.com/222x100.png/dddddd/000000"
+    "description": "arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus",
+    "publish_date": "2024-01-25 03:40:20",
+    "created_at": "2024-05-21 14:06:18",
+    "updated_at": "2023-12-07 22:10:08",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
     "title": "*batteries not included",
-    "author": "Matty Beesley",
-    "isbn": "289980536-3",
+    "author": "Annis Fedynski",
+    "isbn": "348915083-X",
+    "rating": 1,
+    "description": "phasellus in felis donec semper sapien a libero nam dui",
+    "publish_date": "2024-07-12 14:50:20",
+    "created_at": "2023-11-08 19:08:17",
+    "updated_at": "2024-01-24 22:19:07",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Ice Bound",
+    "author": "Kaylil Epinay",
+    "isbn": "494684631-X",
     "rating": 2,
-    "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
-    "publish_date": "2023-11-04 03:28:24",
-    "created_at": "2023-07-29 05:39:30",
-    "updated_at": "2024-04-15 22:46:57",
-    "cover_image": "http://dummyimage.com/185x100.png/dddddd/000000"
+    "description": "vel est donec odio justo sollicitudin ut suscipit a feugiat",
+    "publish_date": "2024-05-23 20:00:58",
+    "created_at": "2024-07-08 12:21:24",
+    "updated_at": "2024-01-15 07:24:41",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Hippocrates",
-    "author": "Husain Derell",
-    "isbn": "517143588-X",
-    "rating": 0,
-    "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    "publish_date": "2023-12-27 02:51:19",
-    "created_at": "2024-04-05 22:35:20",
-    "updated_at": "2023-09-01 08:51:03",
-    "cover_image": "http://dummyimage.com/117x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Floating Skyscrapers",
-    "author": "Clemente Downing",
-    "isbn": "511421279-6",
-    "rating": 4,
-    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-    "publish_date": "2024-01-17 11:13:14",
-    "created_at": "2024-06-14 13:44:28",
-    "updated_at": "2024-03-10 14:01:31",
-    "cover_image": "http://dummyimage.com/233x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Radio Days",
-    "author": "Shela Beefon",
-    "isbn": "335755857-2",
-    "rating": 1,
-    "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
-    "publish_date": "2023-07-16 21:50:32",
-    "created_at": "2023-11-10 11:36:09",
-    "updated_at": "2023-12-10 09:02:08",
-    "cover_image": "http://dummyimage.com/154x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Zigeunerweisen (Tsigoineruwaizen)",
-    "author": "Sarina Balf",
-    "isbn": "133609980-1",
-    "rating": 4,
-    "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "publish_date": "2023-10-11 07:42:59",
-    "created_at": "2024-01-03 13:47:44",
-    "updated_at": "2023-12-26 17:27:14",
-    "cover_image": "http://dummyimage.com/104x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Jingle All the Way",
-    "author": "Lukas Laffoley-Lane",
-    "isbn": "378480365-2",
+    "title": "Just Anybody (Le premier venu)",
+    "author": "Jerad Ronald",
+    "isbn": "348502498-8",
     "rating": 2,
-    "description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    "publish_date": "2023-08-01 21:45:28",
-    "created_at": "2023-10-28 20:30:26",
-    "updated_at": "2024-04-27 08:05:28",
-    "cover_image": "http://dummyimage.com/175x100.png/cc0000/ffffff"
+    "description": "quam a odio in hac habitasse platea dictumst maecenas ut",
+    "publish_date": "2024-07-06 18:23:16",
+    "created_at": "2024-01-17 18:10:11",
+    "updated_at": "2023-07-31 21:39:02",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Bad Luck (Zezowate szczescie)",
-    "author": "Sibilla Poynor",
-    "isbn": "341130420-0",
+    "title": "The Great Northfield Minnesota Raid",
+    "author": "Hermina Mackrill",
+    "isbn": "496253741-5",
     "rating": 4,
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "publish_date": "2023-11-16 08:38:07",
-    "created_at": "2024-02-07 05:51:00",
-    "updated_at": "2024-05-09 22:19:06",
-    "cover_image": "http://dummyimage.com/193x100.png/cc0000/ffffff"
+    "description": "ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis",
+    "publish_date": "2024-02-15 02:31:28",
+    "created_at": "2023-10-26 20:49:35",
+    "updated_at": "2024-05-02 20:07:47",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Tenant, The (Locataire, Le)",
-    "author": "Vin Schroder",
-    "isbn": "402197698-1",
+    "title": "Great K & A Train Robbery, The",
+    "author": "Evangelia Jullian",
+    "isbn": "046918120-6",
+    "rating": 5,
+    "description": "vel lectus in quam fringilla rhoncus mauris enim leo rhoncus",
+    "publish_date": "2023-08-15 18:13:04",
+    "created_at": "2023-07-27 07:34:15",
+    "updated_at": "2023-10-20 03:13:59",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Which Way Home",
+    "author": "Christa Keenlayside",
+    "isbn": "885319405-7",
+    "rating": 2,
+    "description": "orci luctus et ultrices posuere cubilia curae donec pharetra magna",
+    "publish_date": "2024-03-22 07:48:28",
+    "created_at": "2023-10-21 23:33:32",
+    "updated_at": "2023-09-16 20:43:51",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "The Fault in Our Stars",
+    "author": "Christiane Bushell",
+    "isbn": "587623199-1",
     "rating": 1,
-    "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
-    "publish_date": "2024-01-31 00:03:24",
-    "created_at": "2023-09-29 14:09:55",
-    "updated_at": "2024-05-27 02:28:00",
-    "cover_image": "http://dummyimage.com/239x100.png/5fa2dd/ffffff"
+    "description": "suspendisse potenti in eleifend quam a odio in hac habitasse",
+    "publish_date": "2023-11-30 22:18:54",
+    "created_at": "2023-12-09 20:31:53",
+    "updated_at": "2024-01-16 06:16:52",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Cast a Dark Shadow (Angel)",
-    "author": "Perceval McGahern",
-    "isbn": "164322568-5",
-    "rating": 1,
-    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "publish_date": "2024-01-13 23:11:40",
-    "created_at": "2024-06-25 13:29:37",
-    "updated_at": "2024-04-26 14:55:05",
-    "cover_image": "http://dummyimage.com/193x100.png/dddddd/000000"
+    "title": "Chicago Overcoat",
+    "author": "Mair Caw",
+    "isbn": "184006776-4",
+    "rating": 4,
+    "description": "rutrum at lorem integer tincidunt ante vel ipsum praesent blandit",
+    "publish_date": "2023-11-05 20:01:40",
+    "created_at": "2024-05-23 05:58:42",
+    "updated_at": "2024-04-12 20:04:22",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Franz Kafka's a Country Doctor",
-    "author": "Jordan McGurk",
-    "isbn": "554361799-2",
+    "title": "I Love You, I Love You (Je t'aime je t'aime)",
+    "author": "Melessa Cockerton",
+    "isbn": "137623890-X",
+    "rating": 5,
+    "description": "convallis eget eleifend luctus ultricies eu nibh quisque id justo",
+    "publish_date": "2023-11-26 12:48:32",
+    "created_at": "2023-10-15 14:28:47",
+    "updated_at": "2023-09-21 06:08:29",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Did You Hear About the Morgans?",
+    "author": "Laird Summerlie",
+    "isbn": "819183228-3",
     "rating": 0,
-    "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-    "publish_date": "2023-12-23 02:06:13",
-    "created_at": "2023-12-24 03:56:58",
-    "updated_at": "2023-10-11 09:18:36",
-    "cover_image": "http://dummyimage.com/223x100.png/cc0000/ffffff"
+    "description": "eget eleifend luctus ultricies eu nibh quisque id justo sit",
+    "publish_date": "2023-10-04 09:42:16",
+    "created_at": "2024-01-30 19:54:26",
+    "updated_at": "2023-10-02 15:43:59",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Reel Rock 8 ",
-    "author": "Reiko Lescop",
-    "isbn": "037524056-X",
+    "title": "Teenage Mutant Ninja Turtles II: The Secret of the Ooze",
+    "author": "Thomasina Yesenev",
+    "isbn": "915125547-2",
+    "rating": 2,
+    "description": "lectus vestibulum quam sapien varius ut blandit non interdum in",
+    "publish_date": "2024-05-04 09:11:17",
+    "created_at": "2023-12-07 11:09:04",
+    "updated_at": "2023-11-14 10:37:40",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Men with Guns",
+    "author": "Darrelle Philipot",
+    "isbn": "893613423-X",
     "rating": 3,
-    "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-    "publish_date": "2024-02-20 12:29:37",
-    "created_at": "2024-04-12 12:26:41",
-    "updated_at": "2024-03-12 18:20:19",
-    "cover_image": "http://dummyimage.com/234x100.png/ff4444/ffffff"
+    "description": "congue risus semper porta volutpat quam pede lobortis ligula sit",
+    "publish_date": "2024-06-03 08:44:05",
+    "created_at": "2024-01-11 11:40:16",
+    "updated_at": "2024-02-26 20:33:35",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Sacro GRA",
-    "author": "Nelia Barends",
-    "isbn": "875122117-9",
-    "rating": 2,
-    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-    "publish_date": "2024-05-06 14:19:50",
-    "created_at": "2024-06-09 11:49:56",
-    "updated_at": "2023-07-20 14:33:45",
-    "cover_image": "http://dummyimage.com/171x100.png/ff4444/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Honeymoons",
-    "author": "Margeaux Cubberley",
-    "isbn": "382502655-8",
-    "rating": 0,
-    "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-    "publish_date": "2023-08-10 05:42:33",
-    "created_at": "2024-04-24 18:47:54",
-    "updated_at": "2024-05-24 18:04:40",
-    "cover_image": "http://dummyimage.com/232x100.png/dddddd/000000"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Visitors, The",
-    "author": "Thornie Longridge",
-    "isbn": "510496767-0",
-    "rating": 4,
-    "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-    "publish_date": "2024-05-19 22:12:04",
-    "created_at": "2023-09-06 13:38:38",
-    "updated_at": "2023-09-01 19:10:03",
-    "cover_image": "http://dummyimage.com/192x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Every Other Weekend (Un week-end sur deux)",
-    "author": "Bobbee Wisden",
-    "isbn": "354793647-0",
-    "rating": 1,
-    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-    "publish_date": "2023-10-29 02:34:09",
-    "created_at": "2023-08-18 23:51:53",
-    "updated_at": "2023-12-07 20:58:29",
-    "cover_image": "http://dummyimage.com/127x100.png/5fa2dd/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Rooster's Breakfast (Petelinji zajtrk)",
-    "author": "Bud Leighton",
-    "isbn": "491802085-2",
-    "rating": 4,
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-    "publish_date": "2023-08-30 15:46:32",
-    "created_at": "2023-12-01 15:12:46",
-    "updated_at": "2024-07-03 00:12:13",
-    "cover_image": "http://dummyimage.com/120x100.png/cc0000/ffffff"
-  }
-}, {
-  "model": "book.book",
-  "fields": {
-    "title": "Addams Family Reunion",
-    "author": "Benedetto Brightling",
-    "isbn": "158464004-9",
+    "title": "Elevator Girl",
+    "author": "Dasie Mulholland",
+    "isbn": "831798895-3",
     "rating": 3,
-    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "publish_date": "2023-10-26 21:14:48",
-    "created_at": "2023-11-21 13:22:25",
-    "updated_at": "2023-12-04 19:22:19",
-    "cover_image": "http://dummyimage.com/182x100.png/dddddd/000000"
+    "description": "leo rhoncus sed vestibulum sit amet cursus id turpis integer",
+    "publish_date": "2024-02-24 11:41:32",
+    "created_at": "2024-04-06 07:14:35",
+    "updated_at": "2023-11-06 20:51:32",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Fifty/Fifty",
-    "author": "Waverley Dubois",
-    "isbn": "643254390-8",
+    "title": "Sunset",
+    "author": "Allyn Chappelle",
+    "isbn": "904685222-9",
+    "rating": 5,
+    "description": "felis donec semper sapien a libero nam dui proin leo",
+    "publish_date": "2023-10-07 11:09:14",
+    "created_at": "2023-10-27 21:28:08",
+    "updated_at": "2024-07-12 06:13:33",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Reluctant Saint, The",
+    "author": "Morlee Tunnadine",
+    "isbn": "665111410-7",
     "rating": 4,
-    "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-    "publish_date": "2023-11-21 20:11:22",
-    "created_at": "2024-06-13 23:54:23",
-    "updated_at": "2024-01-11 05:58:41",
-    "cover_image": "http://dummyimage.com/102x100.png/ff4444/ffffff"
+    "description": "justo in hac habitasse platea dictumst etiam faucibus cursus urna",
+    "publish_date": "2024-05-21 04:13:20",
+    "created_at": "2023-10-22 20:19:37",
+    "updated_at": "2023-07-26 00:40:48",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }, {
   "model": "book.book",
   "fields": {
-    "title": "Kairat",
-    "author": "Aretha Troyes",
-    "isbn": "245506812-9",
+    "title": "Lodger, The",
+    "author": "Carlin Reuter",
+    "isbn": "643052298-9",
+    "rating": 2,
+    "description": "phasellus in felis donec semper sapien a libero nam dui",
+    "publish_date": "2024-04-17 13:46:20",
+    "created_at": "2024-05-27 18:19:33",
+    "updated_at": "2024-01-09 18:38:44",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Must Have Been Love",
+    "author": "Paulita Tibald",
+    "isbn": "415768054-5",
+    "rating": 4,
+    "description": "pretium iaculis diam erat fermentum justo nec condimentum neque sapien",
+    "publish_date": "2024-06-24 16:09:30",
+    "created_at": "2024-03-18 02:15:13",
+    "updated_at": "2023-09-05 20:11:24",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Home",
+    "author": "Florina Stenett",
+    "isbn": "031229174-4",
+    "rating": 3,
+    "description": "cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor",
+    "publish_date": "2024-07-01 09:34:50",
+    "created_at": "2024-02-25 09:21:30",
+    "updated_at": "2024-06-16 04:28:17",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Nuns on the Run",
+    "author": "Floris Milner",
+    "isbn": "795599430-2",
+    "rating": 5,
+    "description": "egestas metus aenean fermentum donec ut mauris eget massa tempor",
+    "publish_date": "2024-01-02 17:11:59",
+    "created_at": "2023-09-26 15:21:28",
+    "updated_at": "2023-10-14 14:39:57",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Beware of Mr. Baker",
+    "author": "Rayshell Latehouse",
+    "isbn": "637524139-1",
     "rating": 1,
-    "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
-    "publish_date": "2024-06-30 16:40:03",
-    "created_at": "2023-11-30 03:03:47",
-    "updated_at": "2023-10-05 19:34:44",
-    "cover_image": "http://dummyimage.com/240x100.png/ff4444/ffffff"
+    "description": "praesent id massa id nisl venenatis lacinia aenean sit amet",
+    "publish_date": "2023-07-24 14:10:52",
+    "created_at": "2024-06-27 03:06:05",
+    "updated_at": "2023-11-23 13:01:17",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Bis zum Ellenbogen",
+    "author": "Allx Loache",
+    "isbn": "933743022-3",
+    "rating": 2,
+    "description": "mi pede malesuada in imperdiet et commodo vulputate justo in",
+    "publish_date": "2023-08-07 22:36:36",
+    "created_at": "2024-07-03 04:26:18",
+    "updated_at": "2023-10-03 06:15:41",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Kill a Rat",
+    "author": "Jobina Jouannot",
+    "isbn": "728497504-0",
+    "rating": 3,
+    "description": "eleifend quam a odio in hac habitasse platea dictumst maecenas",
+    "publish_date": "2024-03-08 14:19:58",
+    "created_at": "2024-01-11 22:48:26",
+    "updated_at": "2023-12-03 00:30:18",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Cat from Outer Space, The",
+    "author": "Thain Fonso",
+    "isbn": "082716806-3",
+    "rating": 1,
+    "description": "accumsan tellus nisi eu orci mauris lacinia sapien quis libero",
+    "publish_date": "2024-03-31 13:20:36",
+    "created_at": "2024-01-31 14:40:09",
+    "updated_at": "2023-07-19 03:38:49",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Meet Me at the Fair",
+    "author": "Galvan Guppy",
+    "isbn": "180617389-1",
+    "rating": 2,
+    "description": "nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper",
+    "publish_date": "2023-11-03 01:00:01",
+    "created_at": "2023-08-23 13:33:54",
+    "updated_at": "2024-01-05 00:11:16",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "I Live in Fear (Ikimono no kiroku)",
+    "author": "Langsdon Willgoose",
+    "isbn": "966332917-3",
+    "rating": 3,
+    "description": "congue eget semper rutrum nulla nunc purus phasellus in felis",
+    "publish_date": "2024-02-01 05:23:36",
+    "created_at": "2024-03-27 06:49:09",
+    "updated_at": "2023-12-06 03:20:25",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Step Into Liquid",
+    "author": "Carline Heditch",
+    "isbn": "832521332-9",
+    "rating": 2,
+    "description": "donec diam neque vestibulum eget vulputate ut ultrices vel augue",
+    "publish_date": "2024-07-12 12:42:21",
+    "created_at": "2023-07-31 03:39:55",
+    "updated_at": "2023-12-25 08:22:08",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Cass",
+    "author": "Emile Dodswell",
+    "isbn": "860806066-3",
+    "rating": 0,
+    "description": "mauris morbi non lectus aliquam sit amet diam in magna",
+    "publish_date": "2024-07-05 23:02:22",
+    "created_at": "2023-11-12 03:02:18",
+    "updated_at": "2024-07-11 01:30:15",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Free Ride",
+    "author": "Barris Silvermann",
+    "isbn": "012820380-3",
+    "rating": 5,
+    "description": "at dolor quis odio consequat varius integer ac leo pellentesque",
+    "publish_date": "2024-03-16 04:51:46",
+    "created_at": "2024-01-21 23:23:26",
+    "updated_at": "2023-12-12 02:15:34",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Dirty Bomb",
+    "author": "Lauritz Armit",
+    "isbn": "315893827-8",
+    "rating": 4,
+    "description": "donec vitae nisi nam ultrices libero non mattis pulvinar nulla",
+    "publish_date": "2023-09-30 19:54:59",
+    "created_at": "2023-11-21 09:56:33",
+    "updated_at": "2023-07-30 02:05:43",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Z",
+    "author": "Jarret Zanetello",
+    "isbn": "757530661-7",
+    "rating": 1,
+    "description": "nibh fusce lacus purus aliquet at feugiat non pretium quis",
+    "publish_date": "2024-03-05 00:27:09",
+    "created_at": "2024-03-01 20:44:21",
+    "updated_at": "2024-02-09 06:43:15",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Burning Hot Summer, A (Un été brûlant)",
+    "author": "Pail Riccione",
+    "isbn": "885674171-7",
+    "rating": 2,
+    "description": "amet turpis elementum ligula vehicula consequat morbi a ipsum integer",
+    "publish_date": "2023-09-30 02:42:17",
+    "created_at": "2023-09-15 08:29:57",
+    "updated_at": "2024-02-14 09:00:29",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Bloodline",
+    "author": "Trever Hariot",
+    "isbn": "442830620-2",
+    "rating": 4,
+    "description": "felis sed interdum venenatis turpis enim blandit mi in porttitor",
+    "publish_date": "2023-10-15 12:47:51",
+    "created_at": "2024-02-15 14:38:58",
+    "updated_at": "2023-09-19 11:52:27",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Sharpe's Battle",
+    "author": "Elsa Gudeman",
+    "isbn": "419293394-2",
+    "rating": 0,
+    "description": "in quis justo maecenas rhoncus aliquam lacus morbi quis tortor",
+    "publish_date": "2024-07-08 19:01:11",
+    "created_at": "2023-09-27 11:25:37",
+    "updated_at": "2024-04-08 23:23:34",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Favela Rising",
+    "author": "Gerti Storrah",
+    "isbn": "187492823-1",
+    "rating": 5,
+    "description": "sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie",
+    "publish_date": "2024-01-04 05:40:52",
+    "created_at": "2023-12-11 09:31:08",
+    "updated_at": "2024-06-18 10:23:00",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Deficit (Déficit)",
+    "author": "Mahalia Littlejohn",
+    "isbn": "475431314-3",
+    "rating": 5,
+    "description": "sed interdum venenatis turpis enim blandit mi in porttitor pede",
+    "publish_date": "2024-04-13 23:07:08",
+    "created_at": "2023-08-29 19:17:12",
+    "updated_at": "2024-04-27 01:25:18",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Cabinet of Caligari, The",
+    "author": "Clevey Marklin",
+    "isbn": "090874857-4",
+    "rating": 1,
+    "description": "ultrices aliquet maecenas leo odio condimentum id luctus nec molestie",
+    "publish_date": "2023-08-07 04:16:42",
+    "created_at": "2023-10-21 03:42:36",
+    "updated_at": "2023-07-18 16:45:26",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Sibling Rivalry",
+    "author": "Hallsy Heck",
+    "isbn": "028911576-0",
+    "rating": 2,
+    "description": "varius integer ac leo pellentesque ultrices mattis odio donec vitae",
+    "publish_date": "2024-01-27 23:43:33",
+    "created_at": "2023-11-11 20:03:46",
+    "updated_at": "2024-03-14 18:18:54",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Magnum Force",
+    "author": "Cesare Menlow",
+    "isbn": "223874300-6",
+    "rating": 4,
+    "description": "dolor vel est donec odio justo sollicitudin ut suscipit a",
+    "publish_date": "2023-09-11 13:57:20",
+    "created_at": "2024-01-11 22:56:12",
+    "updated_at": "2024-06-17 07:01:06",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Edge of Darkness",
+    "author": "Kenyon Bull",
+    "isbn": "323150093-1",
+    "rating": 5,
+    "description": "nunc nisl duis bibendum felis sed interdum venenatis turpis enim",
+    "publish_date": "2024-03-26 03:57:34",
+    "created_at": "2024-02-10 01:49:02",
+    "updated_at": "2023-11-10 13:01:51",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Hero at Large",
+    "author": "Olivier Hearfield",
+    "isbn": "687300626-2",
+    "rating": 0,
+    "description": "porttitor pede justo eu massa donec dapibus duis at velit",
+    "publish_date": "2023-08-07 12:55:38",
+    "created_at": "2024-01-05 19:17:28",
+    "updated_at": "2024-01-09 07:57:57",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Harvey Girls, The",
+    "author": "Harrietta Gommery",
+    "isbn": "148756318-3",
+    "rating": 5,
+    "description": "pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas",
+    "publish_date": "2023-10-15 07:24:51",
+    "created_at": "2024-03-26 08:16:19",
+    "updated_at": "2024-06-09 23:54:41",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Possession",
+    "author": "Elisabet Hugenin",
+    "isbn": "358327487-3",
+    "rating": 3,
+    "description": "vulputate ut ultrices vel augue vestibulum ante ipsum primis in",
+    "publish_date": "2024-06-06 08:40:24",
+    "created_at": "2023-07-18 17:18:58",
+    "updated_at": "2023-08-26 04:48:58",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Sea Is Watching, The (Umi wa miteita)",
+    "author": "Daile Youde",
+    "isbn": "759835590-8",
+    "rating": 2,
+    "description": "et eros vestibulum ac est lacinia nisi venenatis tristique fusce",
+    "publish_date": "2023-08-24 00:54:46",
+    "created_at": "2023-08-27 20:57:52",
+    "updated_at": "2023-12-03 01:58:30",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Dunwich Horror, The",
+    "author": "Felisha Jobke",
+    "isbn": "266069294-7",
+    "rating": 0,
+    "description": "vestibulum velit id pretium iaculis diam erat fermentum justo nec",
+    "publish_date": "2023-07-26 14:00:39",
+    "created_at": "2023-11-01 07:45:05",
+    "updated_at": "2024-05-05 08:12:46",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "High, Wide, and Handsome",
+    "author": "Haroun July",
+    "isbn": "719331760-1",
+    "rating": 4,
+    "description": "sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar",
+    "publish_date": "2023-09-13 16:09:34",
+    "created_at": "2024-02-19 08:22:33",
+    "updated_at": "2023-08-23 20:38:44",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Year of the Jellyfish (L'année des méduses)",
+    "author": "Mannie Hendin",
+    "isbn": "991196280-6",
+    "rating": 4,
+    "description": "ipsum praesent blandit lacinia erat vestibulum sed magna at nunc",
+    "publish_date": "2024-05-21 08:47:39",
+    "created_at": "2023-09-04 10:02:09",
+    "updated_at": "2024-02-22 10:00:06",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Eye of the Beholder",
+    "author": "Natalee Sill",
+    "isbn": "506869529-7",
+    "rating": 2,
+    "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta",
+    "publish_date": "2023-09-28 14:28:47",
+    "created_at": "2023-10-01 03:39:48",
+    "updated_at": "2023-10-08 08:07:39",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Bridge to Nowhere, The",
+    "author": "Maggee Benjefield",
+    "isbn": "740233095-8",
+    "rating": 0,
+    "description": "faucibus orci luctus et ultrices posuere cubilia curae mauris viverra",
+    "publish_date": "2024-04-07 22:28:36",
+    "created_at": "2024-01-03 04:54:20",
+    "updated_at": "2024-06-24 07:10:01",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Outlaw, The",
+    "author": "Leanora Abrahmovici",
+    "isbn": "175945884-8",
+    "rating": 2,
+    "description": "pede justo lacinia eget tincidunt eget tempus vel pede morbi",
+    "publish_date": "2024-02-17 11:02:45",
+    "created_at": "2023-10-19 06:06:56",
+    "updated_at": "2024-03-08 18:06:15",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Merrily We Live",
+    "author": "Martha Blancowe",
+    "isbn": "680485707-0",
+    "rating": 4,
+    "description": "amet diam in magna bibendum imperdiet nullam orci pede venenatis",
+    "publish_date": "2024-07-02 23:04:11",
+    "created_at": "2023-08-15 02:20:24",
+    "updated_at": "2024-06-13 20:46:07",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Striking Distance",
+    "author": "Danika Birbeck",
+    "isbn": "851219020-5",
+    "rating": 5,
+    "description": "vitae consectetuer eget rutrum at lorem integer tincidunt ante vel",
+    "publish_date": "2023-11-17 00:11:57",
+    "created_at": "2024-03-25 14:48:02",
+    "updated_at": "2024-01-10 18:33:58",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Magnetic Monster, The",
+    "author": "Ashlan Barens",
+    "isbn": "744105294-7",
+    "rating": 2,
+    "description": "magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet",
+    "publish_date": "2024-05-13 03:58:47",
+    "created_at": "2023-12-07 07:30:30",
+    "updated_at": "2024-06-16 11:48:27",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Doghouse",
+    "author": "Helen-elizabeth Klaaassen",
+    "isbn": "956835820-X",
+    "rating": 4,
+    "description": "lectus suspendisse potenti in eleifend quam a odio in hac",
+    "publish_date": "2024-02-09 02:10:21",
+    "created_at": "2023-08-03 20:11:18",
+    "updated_at": "2023-11-11 11:01:37",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Librarian: Return to King Solomon's Mines, The",
+    "author": "Gilligan Macey",
+    "isbn": "741120709-8",
+    "rating": 3,
+    "description": "augue vestibulum ante ipsum primis in faucibus orci luctus et",
+    "publish_date": "2023-07-27 22:56:13",
+    "created_at": "2023-07-29 08:59:36",
+    "updated_at": "2023-12-05 20:02:50",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "3 Holiday Tails (Golden Christmas 2: The Second Tail, A)",
+    "author": "Antonio De Ruggiero",
+    "isbn": "863035363-5",
+    "rating": 5,
+    "description": "mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit",
+    "publish_date": "2023-09-26 09:18:04",
+    "created_at": "2024-03-07 06:31:25",
+    "updated_at": "2024-04-10 09:03:38",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Thaw, The",
+    "author": "Skyler Partrick",
+    "isbn": "225743641-5",
+    "rating": 5,
+    "description": "faucibus accumsan odio curabitur convallis duis consequat dui nec nisi",
+    "publish_date": "2024-03-20 03:32:06",
+    "created_at": "2024-01-12 03:00:26",
+    "updated_at": "2023-07-31 08:52:33",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Cherry Falls",
+    "author": "Christian O'Donnell",
+    "isbn": "622123629-0",
+    "rating": 1,
+    "description": "in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit",
+    "publish_date": "2023-10-23 01:12:01",
+    "created_at": "2023-11-23 23:11:50",
+    "updated_at": "2023-08-27 18:40:49",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Neo Ned",
+    "author": "Sybille Hargitt",
+    "isbn": "176470600-5",
+    "rating": 1,
+    "description": "ultrices aliquet maecenas leo odio condimentum id luctus nec molestie",
+    "publish_date": "2023-09-11 05:11:10",
+    "created_at": "2023-10-12 12:48:23",
+    "updated_at": "2024-07-15 05:21:11",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Kobe Doin' Work",
+    "author": "Eldin Eberlein",
+    "isbn": "857235518-9",
+    "rating": 3,
+    "description": "hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc",
+    "publish_date": "2024-02-14 15:41:27",
+    "created_at": "2024-06-11 15:43:37",
+    "updated_at": "2024-03-13 05:58:15",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Fever Pitch",
+    "author": "Arvie O' Timony",
+    "isbn": "076844005-X",
+    "rating": 5,
+    "description": "rhoncus sed vestibulum sit amet cursus id turpis integer aliquet",
+    "publish_date": "2023-11-20 16:49:59",
+    "created_at": "2023-09-22 02:03:04",
+    "updated_at": "2024-01-17 03:43:07",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "The Gun That Won the West",
+    "author": "Neill Stitle",
+    "isbn": "450839677-1",
+    "rating": 1,
+    "description": "mauris non ligula pellentesque ultrices phasellus id sapien in sapien",
+    "publish_date": "2023-08-09 00:56:42",
+    "created_at": "2024-06-08 08:11:42",
+    "updated_at": "2024-01-25 21:55:27",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Lover, The (Amant, L')",
+    "author": "Morena Mum",
+    "isbn": "056031415-9",
+    "rating": 5,
+    "description": "venenatis turpis enim blandit mi in porttitor pede justo eu",
+    "publish_date": "2024-02-29 15:20:50",
+    "created_at": "2024-01-30 17:23:08",
+    "updated_at": "2023-10-24 03:49:39",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Max Keeble's Big Move",
+    "author": "Jannelle Bucksey",
+    "isbn": "513091074-5",
+    "rating": 0,
+    "description": "nulla facilisi cras non velit nec nisi vulputate nonummy maecenas",
+    "publish_date": "2023-11-18 12:01:13",
+    "created_at": "2023-10-28 05:25:14",
+    "updated_at": "2024-03-06 13:41:49",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Just Visiting",
+    "author": "Dawna Boreham",
+    "isbn": "046200188-1",
+    "rating": 3,
+    "description": "fermentum donec ut mauris eget massa tempor convallis nulla neque",
+    "publish_date": "2024-03-01 19:18:48",
+    "created_at": "2023-10-22 05:22:00",
+    "updated_at": "2023-07-19 05:26:45",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Cigarette Girl of Mosselprom, The (Papirosnitsa ot Mosselproma)",
+    "author": "Emmaline Duchart",
+    "isbn": "011662689-5",
+    "rating": 3,
+    "description": "amet diam in magna bibendum imperdiet nullam orci pede venenatis",
+    "publish_date": "2023-07-24 11:31:20",
+    "created_at": "2024-01-26 17:49:40",
+    "updated_at": "2024-04-21 12:52:41",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Bad Girl Island (Sirens of Eleuthera) (Sirens of the Caribbean)",
+    "author": "Blakeley D'Almeida",
+    "isbn": "347715807-5",
+    "rating": 0,
+    "description": "cursus id turpis integer aliquet massa id lobortis convallis tortor",
+    "publish_date": "2023-08-07 07:06:56",
+    "created_at": "2024-04-09 02:48:05",
+    "updated_at": "2024-06-14 14:25:13",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Sorority House Massacre II",
+    "author": "Ferrel Drayn",
+    "isbn": "869594265-1",
+    "rating": 4,
+    "description": "interdum mauris non ligula pellentesque ultrices phasellus id sapien in",
+    "publish_date": "2023-12-06 04:01:49",
+    "created_at": "2024-03-18 05:55:27",
+    "updated_at": "2024-07-03 07:20:33",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "The Little Polar Bear: Lars and the Little Tiger",
+    "author": "Simon Corbally",
+    "isbn": "455761357-8",
+    "rating": 0,
+    "description": "a pede posuere nonummy integer non velit donec diam neque",
+    "publish_date": "2023-09-29 20:33:44",
+    "created_at": "2024-02-19 04:03:43",
+    "updated_at": "2023-09-15 05:43:48",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Trancers III",
+    "author": "Woodman Pepye",
+    "isbn": "033899625-7",
+    "rating": 2,
+    "description": "metus vitae ipsum aliquam non mauris morbi non lectus aliquam",
+    "publish_date": "2023-09-17 11:43:27",
+    "created_at": "2023-12-27 07:59:33",
+    "updated_at": "2023-11-05 23:22:53",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "No Time for Comedy",
+    "author": "Merwin Andrysek",
+    "isbn": "663255817-8",
+    "rating": 2,
+    "description": "a nibh in quis justo maecenas rhoncus aliquam lacus morbi",
+    "publish_date": "2024-03-01 20:47:43",
+    "created_at": "2024-01-28 16:06:53",
+    "updated_at": "2023-09-02 21:21:42",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Menace II Society",
+    "author": "Mellicent Antonomoli",
+    "isbn": "683721565-5",
+    "rating": 1,
+    "description": "integer non velit donec diam neque vestibulum eget vulputate ut",
+    "publish_date": "2024-03-11 10:00:34",
+    "created_at": "2023-08-27 08:48:37",
+    "updated_at": "2023-08-09 05:56:56",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Luke and Lucy: The Texas Rangers (Suske en Wiske: De Texas rakkers)",
+    "author": "Joshuah Meddemmen",
+    "isbn": "147230793-3",
+    "rating": 5,
+    "description": "integer a nibh in quis justo maecenas rhoncus aliquam lacus",
+    "publish_date": "2024-02-29 07:54:20",
+    "created_at": "2023-12-02 11:29:01",
+    "updated_at": "2024-04-17 17:13:49",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Halloween III: Season of the Witch",
+    "author": "Merl Messingham",
+    "isbn": "824658105-8",
+    "rating": 5,
+    "description": "sed sagittis nam congue risus semper porta volutpat quam pede",
+    "publish_date": "2023-12-25 20:09:28",
+    "created_at": "2023-07-27 07:30:59",
+    "updated_at": "2023-10-30 23:58:43",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Bloody Territories (Kôiki bôryoku: ryuuketsu no shima)",
+    "author": "Saudra Jakel",
+    "isbn": "103947300-8",
+    "rating": 4,
+    "description": "odio condimentum id luctus nec molestie sed justo pellentesque viverra",
+    "publish_date": "2023-08-07 15:22:19",
+    "created_at": "2023-08-26 21:57:06",
+    "updated_at": "2023-07-21 09:03:51",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Gantz: Perfect Answer",
+    "author": "Donny Ells",
+    "isbn": "915085720-7",
+    "rating": 1,
+    "description": "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem",
+    "publish_date": "2024-07-14 00:09:21",
+    "created_at": "2023-11-29 10:47:24",
+    "updated_at": "2023-12-15 01:21:26",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Film Noir: Bringing Darkness to Light",
+    "author": "Bernardo Trinke",
+    "isbn": "291592890-8",
+    "rating": 3,
+    "description": "purus sit amet nulla quisque arcu libero rutrum ac lobortis",
+    "publish_date": "2023-08-21 08:10:33",
+    "created_at": "2023-10-06 08:23:43",
+    "updated_at": "2024-07-10 08:53:47",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Model Shop",
+    "author": "Quint McCreery",
+    "isbn": "453914624-6",
+    "rating": 5,
+    "description": "eget tincidunt eget tempus vel pede morbi porttitor lorem id",
+    "publish_date": "2023-09-26 09:32:25",
+    "created_at": "2024-04-19 22:30:26",
+    "updated_at": "2023-08-31 07:26:19",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Walter Defends Sarajevo (Valter brani Sarajevo)",
+    "author": "Micheal Lorriman",
+    "isbn": "542604716-2",
+    "rating": 1,
+    "description": "non velit nec nisi vulputate nonummy maecenas tincidunt lacus at",
+    "publish_date": "2023-08-13 12:24:27",
+    "created_at": "2023-08-17 07:59:28",
+    "updated_at": "2023-11-17 08:24:53",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Dead Man",
+    "author": "Chastity Mathewson",
+    "isbn": "262237251-5",
+    "rating": 4,
+    "description": "nullam orci pede venenatis non sodales sed tincidunt eu felis",
+    "publish_date": "2024-02-26 21:20:53",
+    "created_at": "2024-07-13 04:09:28",
+    "updated_at": "2023-07-21 23:52:16",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "War of the Arrows (Choi-jong-byeong-gi Hwal)",
+    "author": "Glenna Crookston",
+    "isbn": "517240103-2",
+    "rating": 1,
+    "description": "auctor sed tristique in tempus sit amet sem fusce consequat",
+    "publish_date": "2023-12-08 11:35:49",
+    "created_at": "2024-03-08 06:48:16",
+    "updated_at": "2023-08-28 15:02:55",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Can I Do It 'Till I Need Glasses?",
+    "author": "Nathanial Frith",
+    "isbn": "692857550-6",
+    "rating": 4,
+    "description": "aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien",
+    "publish_date": "2024-01-26 11:19:21",
+    "created_at": "2023-08-08 01:31:00",
+    "updated_at": "2023-11-16 12:04:38",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Lady, The",
+    "author": "Maxy Ariss",
+    "isbn": "796375212-6",
+    "rating": 0,
+    "description": "elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor",
+    "publish_date": "2024-05-25 11:44:32",
+    "created_at": "2023-11-26 07:45:03",
+    "updated_at": "2024-02-16 01:52:38",
+    "cover_image": "uploads/book_cover_sample.png"
+  }
+}, {
+  "model": "book.book",
+  "fields": {
+    "title": "Jungle Man-Eaters",
+    "author": "Brantley Yelding",
+    "isbn": "807051152-4",
+    "rating": 0,
+    "description": "congue etiam justo etiam pretium iaculis justo in hac habitasse",
+    "publish_date": "2023-09-10 11:38:58",
+    "created_at": "2024-01-30 01:15:44",
+    "updated_at": "2023-12-13 09:57:09",
+    "cover_image": "uploads/book_cover_sample.png"
   }
 }]

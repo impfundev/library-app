@@ -13,7 +13,7 @@
   <tbody>
     {% if object_list %} {% for book in object_list %}
     <tr>
-      <td><a href="/dashboard/books/{{ book.id }}/">{{ book.title }}</a></td>
+      <td><a href="/books/{{ book.id }}/">{{ book.title }}</a></td>
       <td>{{ book.category.name }}</td>
       <td>{{ book.description }}</td>
       <td>{{ book.publish_date }}</td>
