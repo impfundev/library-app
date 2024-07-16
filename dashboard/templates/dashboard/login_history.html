@@ -12,8 +12,8 @@
     <tbody>
       {% for histori in login_histories %}
       <tr>
-        <td>{{ histori.librarian.name }}</td>
-        <td>{{ histori.login_at }}</td>
+        <td>{{ histori.librarian.user.username }}</td>
+        <td>{{ histori.librarian.date }}</td>
       </tr>
       {% endfor %}
     </tbody>

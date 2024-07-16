@@ -6,8 +6,8 @@ from users.models import Member
 
 
 class BookLoan(models.Model):
-    book = models.OneToOneField(Book, on_delete=models.CASCADE)
-    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
     loan_date = models.DateTimeField()
     due_date = models.DateTimeField()
     return_date = models.DateTimeField(blank=True, null=True)
