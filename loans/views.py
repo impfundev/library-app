@@ -17,15 +17,15 @@ class BookLoanListView(generic.ListView):
         if keyword:
             queryset = queryset.filter(
                 Q(book__title__icontains=keyword) | Q(member__name__icontains=keyword)
-            ).order_by("-loan_date")
+            ).order_by("-created_at")
 
         if order:
             if order == "new":
-                queryset = queryset.order_by("-loan_date")
+                queryset = queryset.order_by("-created_at")
             elif order == "old":
-                queryset = queryset.order_by("loan_date")
+                queryset = queryset.order_by("created_at")
 
-        return queryset.order_by("-loan_date")
+        return queryset.order_by("-created_at")
 
 
 class BookLoanCreateView(generic.edit.CreateView):
