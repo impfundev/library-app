@@ -13,7 +13,7 @@
     {% if object_list %} {% for loan in object_list %}
     <tr>
       <td>{{ loan.book.title }}</td>
-      <td>{{ loan.member.name }}</td>
+      <td>{{ loan.member.user.username }}</td>
       <td>{{ loan.loan_date }}</td>
       <td>{{ loan.due_date }}</td>
       <td>{{ loan.return_date }}</td>
