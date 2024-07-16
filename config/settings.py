@@ -168,6 +168,16 @@ STORAGES = {
     },
 }
 
+# EMAIL CONFIGS
+
+# smptp using etheral email mock smptp server
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.ethereal.email"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "jaquan.ohara41@ethereal.email"
+EMAIL_HOST_PASSWORD = "83VFaB6ZGSzy72D24T"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

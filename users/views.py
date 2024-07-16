@@ -4,6 +4,7 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from users.models import Librarian, Member
 from users.forms import UserForm, User, LoginForm, SignUpForm, ForgotPasswordForm
@@ -201,6 +202,14 @@ class LibrarianSignUpView(generic.FormView):
             return self.form_invalid(form)
 
 
-class LibrarianResetPassword(PasswordResetView):
+class LibrarianResetPassword(SuccessMessageMixin, PasswordResetView):
     form_class = ForgotPasswordForm
-    template_name = "librarians/forgot_password.html"
+    template_name = "password/password_reset.html"
+    email_template_name = "password/password_reset_email.html"
+    success_message = (
+        "We've emailed you instructions for setting your password, "
+        "if an account exists with the email you entered. You should receive them shortly."
+        " If you don't receive an email, "
+        "please make sure you've entered the address you registered with, and check your spam folder."
+    )
+    success_url = "/password-reset-complete/"

@@ -19,7 +19,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import (
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+)
 
 from dashboard.views import UpcomingLoanView, OverduedLoanView
 from users.views import (
@@ -42,10 +45,25 @@ urlpatterns = [
     path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
     path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
     path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),
+    # password reset
     path(
-        "auth/forgot-password/",
+        "password-reset/",
         LibrarianResetPassword.as_view(),
         name="reset_password",
+    ),
+    path(
+        "password-reset-confirm/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(
+            template_name="password/password_reset_confirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "password-reset-complete/",
+        PasswordResetCompleteView.as_view(
+            template_name="password/password_reset_complete.html"
+        ),
+        name="password_reset_complete",
     ),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
