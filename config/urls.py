@@ -19,7 +19,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
+
 from dashboard.views import UpcomingLoanView, OverduedLoanView
+from users.views import (
+    LibrarianLoginView,
+    LibrarianLogoutView,
+    LibrarianSignUpView,
+    LibrarianResetPassword,
+)
 
 urlpatterns = [
     # local
@@ -30,6 +38,15 @@ urlpatterns = [
     path("book-loans/", include("loans.urls")),
     path("upcoming-loans/", UpcomingLoanView.as_view(), name="upcoming_loans"),
     path("overdued-loans/", OverduedLoanView.as_view(), name="overdued_loans"),
+    # auth
+    path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
+    path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
+    path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),
+    path(
+        "auth/forgot-password/",
+        LibrarianResetPassword.as_view(),
+        name="reset_password",
+    ),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party

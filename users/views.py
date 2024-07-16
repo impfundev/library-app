@@ -1,8 +1,12 @@
 from django.db.models import Q
 from django.views import generic
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
+
+from django.contrib.auth.views import LoginView, PasswordResetView
 
 from users.models import Librarian, Member
-from users.forms import UserForm, User
+from users.forms import UserForm, User, LoginForm, SignUpForm, ForgotPasswordForm
 
 
 class UserListView(generic.ListView):
@@ -100,12 +104,12 @@ class LibrarianCreateView(UserCreateView):
 
 class LibrarianUpdateView(UserUpdateView):
     model = Librarian
-    success_url = "/dashboard/librarians"
+    success_url = "/users/librarians"
 
 
 class LibrarianDeleteView(UserDeleteView):
     model = Librarian
-    success_url = "/dashboard/librarians"
+    success_url = "/users/librarians"
 
 
 class MemberListView(UserListView):
@@ -116,7 +120,7 @@ class MemberListView(UserListView):
 
 class MemberCreateView(UserCreateView):
     model = User
-    success_url = "/dashboard/members/"
+    success_url = "/users/members/"
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -131,9 +135,72 @@ class MemberCreateView(UserCreateView):
 
 class MemberUpdateView(UserUpdateView):
     model = Member
-    success_url = "/dashboard/members"
+    success_url = "/users/members"
 
 
 class MemberDeleteView(UserDeleteView):
     model = Member
-    success_url = "/dashboard/members"
+    success_url = "/users/members"
+
+
+class LibrarianLoginView(LoginView):
+    form_class = LoginForm
+    template_name = "librarians/login.html"
+    redirect_authenticated_user = "/dashboard/"
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        context = self.get_context_data()
+
+        if form.is_valid():
+            username = form.data.get("username")
+            user = User.objects.get(username=username)
+
+            if not user.is_staff:
+                context["error_message"] = "Access Denie, account is not staff"
+
+                return self.form_invalid(form)
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+class LibrarianLogoutView(generic.TemplateView):
+    success_url = "/auth/login/"
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+
+        if request.user.is_authenticated:
+            logout(request)
+            return HttpResponseRedirect(self.success_url)
+
+        return self.render_to_response(context)
+
+
+class LibrarianSignUpView(generic.FormView):
+    form_class = SignUpForm
+    template_name = "librarians/sign_up.html"
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid:
+            username = form.data.get("username")
+            email = form.data.get("email")
+            password = form.data.get("password")
+
+            user = User.objects.create_user(
+                username=username, email=email, password=password
+            )
+
+            Librarian.objects.create(user=user)
+
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+class LibrarianResetPassword(PasswordResetView):
+    form_class = ForgotPasswordForm
+    template_name = "librarians/forgot_password.html"
