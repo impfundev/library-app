@@ -9,6 +9,7 @@ from .auth.views import (
     MemberViewSet,
     MemberLoginView,
     MemberLogoutView,
+    MemberChangePasswordView,
 )
 from .book.views import BookViewSet, CategoryViewSet
 from .loans.views import (
@@ -46,7 +47,12 @@ urlpatterns = [
         "librarians/auth/logout", LibrarianLogoutView.as_view(), name="librarian_logout"
     ),
     path("members/auth/login", MemberLoginView.as_view(), name="member_login"),
-    path("members/auth/logout", MemberLogoutView.as_view(), name="member_logout"),
+    path("members/auth/logout/", MemberLogoutView.as_view(), name="member_logout"),
+    path(
+        "members/<int:member_id>/change-password",
+        MemberChangePasswordView.as_view(),
+        name="member_change_password",
+    ),
     path(
         "members/<int:member_id>/",
         include(router_member_loan.urls),

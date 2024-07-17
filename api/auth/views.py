@@ -206,3 +206,22 @@ class MemberLogoutView(LogoutBasedView):
                 )
 
         return response
+
+
+class MemberChangePasswordView(views.APIView):
+    permission_classes = [IsNotStaffUser]
+
+    def post(self, request, member_id):
+        new_password = request.data.get("new_password")
+        old_password = request.data.get("old_password")
+        member = Member.objects.get(pk=member_id)
+        user = member.user
+
+        if user.check_password(old_password):
+            user.set_password(new_password)
+            user.save()
+            return Response(
+                {"message": "Pasword succesfuly changed"}, status=status.HTTP_200_OK
+            )
+
+        return Response({"message": "Change password failed, old password is invalid."})
