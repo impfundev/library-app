@@ -6,6 +6,7 @@ from .views import (
     BookUpdateView,
     BookDeleteView,
     CategoryListView,
+    CategoryDetailView,
     CategoryCreateView,
     CategoryUpdateView,
     CategoryDeleteView,
@@ -19,7 +20,16 @@ urlpatterns = [
     path("<int:pk>/delete/", BookDeleteView.as_view(), name="book_delete"),
     path("categories/", CategoryListView.as_view(), name="category_list"),
     path("categories/add/", CategoryCreateView.as_view(), name="category_update"),
-    path("categories/<int:pk>/", CategoryUpdateView.as_view(), name="category_update"),
+    path(
+        "categories/<int:pk>/",
+        CategoryDetailView.as_view(),
+        name="category_detail",
+    ),
+    path(
+        "categories/<int:pk>/update/",
+        CategoryUpdateView.as_view(),
+        name="category_update",
+    ),
     path(
         "categories/<int:pk>/delete/",
         CategoryDeleteView.as_view(),
