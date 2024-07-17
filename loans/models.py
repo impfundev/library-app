@@ -1,15 +1,15 @@
 from django.db import models
-from django.utils import timezone
 
 from book.models import Book
 from users.models import Member
+from .validators import validate_due_date, validate_loan_date
 
 
 class BookLoan(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    loan_date = models.DateTimeField()
-    due_date = models.DateTimeField()
+    loan_date = models.DateTimeField(validators=[validate_loan_date])
+    due_date = models.DateTimeField(validators=[validate_due_date])
     return_date = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
