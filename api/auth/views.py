@@ -1,9 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+
 from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 
 from .serializers import (
+    User,
     Librarian,
     LibrarianSerializer,
     LibrarianLoginHistory,
@@ -224,4 +228,74 @@ class MemberChangePasswordView(views.APIView):
                 {"message": "Pasword succesfuly changed"}, status=status.HTTP_200_OK
             )
 
-        return Response({"message": "Change password failed, old password is invalid."})
+        return Response(
+            {"message": "Change password failed, old password is invalid."},
+            status=status.HTTP_403_FORBIDDEN,
+        )
+
+
+class TokenResetPasswordView(views.APIView):
+
+    def post(self, request):
+        data = request.data.copy()
+        email = data.get("email")
+        user = User.objects.get(email=email)
+
+        if user is None:
+            return Response(
+                {"message": "Invalid Email, Request token reset password failed"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        token = default_token_generator.make_token(user)
+        message = f"Here's your reset password token: {token}"
+        send_mail(
+            subject="Django Library App Reset password token, dev: Ilham Maulana",
+            message=message,
+            from_email="from@example.com",
+            recipient_list=["to@example.com"],
+            fail_silently=False,
+        )
+
+        data["message"] = (
+            "Your token request was successful! We've sent an email with instructions on how to use it."
+        )
+
+        self.request.session["user_id_reset_pw"] = user.id
+
+        return Response(data, status=status.HTTP_200_OK)
+
+
+class ResetPasswordConfirmView(views.APIView):
+
+    def post(self, request):
+        data = request.data
+
+        token = data.get("token")
+        password1 = data.get("password1")
+        password2 = data.get("password2")
+        user_id = self.request.session["user_id_reset_pw"]
+        user = User.objects.get(pk=user_id)
+
+        is_password_invalid = password1 != password2
+        if is_password_invalid:
+            return Response(
+                {"message": "password and confirm password are not same"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        is_token_valid = default_token_generator.check_token(user, token)
+        if not is_token_valid:
+            return Response(
+                {"message": "Invalid token reset password"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+        user.set_password(password1)
+        user.save()
+
+        del user_id
+        return Response(
+            {"message": "Reset password success"},
+            status=status.HTTP_200_OK,
+        )
