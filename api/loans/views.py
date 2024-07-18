@@ -5,9 +5,11 @@ from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import BookLoan, BookLoanSerializer, MemberLoanSerializer
+from ..auth.permissions import IsNotStaffUser, IsStaffUser
 
 
 class BookLoanViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsStaffUser]
     queryset = BookLoan.objects.all().order_by("loan_date")
     serializer_class = BookLoanSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
@@ -49,6 +51,7 @@ class UpComingBookLoanViewSet(BookLoanViewSet):
 
 
 class MemberLoanViewSet(BookLoanViewSet):
+    permission_classes = [IsNotStaffUser]
     queryset = BookLoan.objects.all()
     serializer_class = MemberLoanSerializer
 
