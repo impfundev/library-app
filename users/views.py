@@ -158,7 +158,7 @@ class LibrarianLoginView(LoginView):
             user = User.objects.get(username=username)
 
             if not user.is_staff:
-                context["error_message"] = "Access Denie, account is not staff"
+                context["error_message"] = "Access Denied, account is not staff"
 
                 return self.form_invalid(form)
             return self.form_valid(form)
@@ -182,18 +182,31 @@ class LibrarianLogoutView(generic.TemplateView):
 class LibrarianSignUpView(generic.FormView):
     form_class = SignUpForm
     template_name = "librarians/sign_up.html"
+    success_url = "/auth/login/"
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
 
         if form.is_valid:
+            context = self.get_context_data()
             username = form.data.get("username")
             email = form.data.get("email")
-            password = form.data.get("password")
+            password1 = form.data.get("password1")
+            password2 = form.data.get("password2")
+
+            is_password_confirmed = password1 != password2
+            if is_password_confirmed:
+                return self.form_invalid(form)
+
+            is_email = User.objects.filter(email=email)
+            if is_email.exists():
+                return self.form_invalid(form)
 
             user = User.objects.create_user(
-                username=username, email=email, password=password
+                username=username, email=email, is_staff=True
             )
+            user.set_password(password1)
+            user.save()
 
             Librarian.objects.create(user=user)
 
