@@ -5,6 +5,7 @@ from users.views import (
     LibrarianCreateView,
     LibrarianDeleteView,
     LibrarianUpdateView,
+    LibrarianLoginHistoryView,
     MemberListView,
     MemberCreateView,
     MemberDeleteView,
@@ -22,6 +23,11 @@ urlpatterns = [
         "librarians/<int:pk>/delete/",
         LibrarianDeleteView.as_view(),
         name="delete_librarian",
+    ),
+    path(
+        "librarians/login-history/",
+        LibrarianLoginHistoryView.as_view(),
+        name="librarian_login_history",
     ),
     # members
     path("members/", MemberListView.as_view(), name="member_lists"),

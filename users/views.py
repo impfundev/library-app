@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from users.models import Librarian, Member
+from users.models import Librarian, Member, LibrarianLoginHistory
 from users.forms import UserForm, User, LoginForm, SignUpForm, ForgotPasswordForm
 
 
@@ -161,6 +161,10 @@ class LibrarianLoginView(LoginView):
                 context["error_message"] = "Access Denied, account is not staff"
 
                 return self.form_invalid(form)
+
+            librarian = Librarian.objects.get(user=user)
+            LibrarianLoginHistory.objects.create(librarian=librarian)
+
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
@@ -226,3 +230,28 @@ class LibrarianResetPassword(SuccessMessageMixin, PasswordResetView):
         "please make sure you've entered the address you registered with, and check your spam folder."
     )
     success_url = "/password-reset-complete/"
+
+
+class LibrarianLoginHistoryView(generic.ListView):
+    model = LibrarianLoginHistory
+    template_name = "librarians/librarian_login_history.html"
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        keyword = self.request.GET.get("q")
+        order = self.request.GET.get("o")
+
+        if keyword:
+            queryset = queryset.filter(
+                Q(librarian__user__username__icontains=keyword)
+                | Q(librarian__user__email__icontains=keyword)
+            ).order_by("-date")
+
+        if order:
+            if order == "new":
+                queryset = queryset.order_by("-date")
+            elif order == "old":
+                queryset = queryset.order_by("date")
+
+        return queryset.order_by("-date")
