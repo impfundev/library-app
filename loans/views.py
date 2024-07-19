@@ -31,18 +31,18 @@ class BookLoanListView(generic.ListView):
 class BookLoanCreateView(generic.edit.CreateView):
     model = BookLoan
     form_class = BookLoanForm
-    success_url = "/dashboard/book-loans/"
+    success_url = "/book-loans"
     template_name = "form/create_form.html"
 
 
 class BookLoanUpdateView(generic.edit.UpdateView):
     model = BookLoan
     form_class = BookLoanForm
-    success_url = "/dashboard/book-loans"
+    success_url = "/book-loans"
     template_name = "form/update_form.html"
 
 
 class BookLoanDeleteView(generic.edit.DeleteView):
     model = BookLoan
-    success_url = "/dashboard/book-loans"
+    success_url = "/book-loans"
     template_name = "form/delete_form.html"
