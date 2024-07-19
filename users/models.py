@@ -27,7 +27,7 @@ class Member(models.Model):
 
 
 class LibrarianLoginHistory(models.Model):
-    librarian = models.OneToOneField(
+    librarian = models.ForeignKey(
         Librarian, blank=True, null=True, on_delete=models.CASCADE
     )
     date = models.DateTimeField(auto_now_add=True)
