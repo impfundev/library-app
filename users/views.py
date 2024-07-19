@@ -85,7 +85,7 @@ class UserDeleteView(generic.edit.DeleteView):
 class LibrarianListView(UserListView):
     model = Librarian
     template_name = "librarians/librarians.html"
-    paginate_by = 5
+    paginate_by = 10
 
 
 class LibrarianCreateView(UserCreateView):
@@ -116,7 +116,7 @@ class LibrarianDeleteView(UserDeleteView):
 class MemberListView(UserListView):
     model = Member
     template_name = "members/members.html"
-    paginate_by = 5
+    paginate_by = 10
 
 
 class MemberCreateView(UserCreateView):
@@ -235,7 +235,7 @@ class LibrarianResetPassword(SuccessMessageMixin, PasswordResetView):
 class LibrarianLoginHistoryView(generic.ListView):
     model = LibrarianLoginHistory
     template_name = "librarians/librarian_login_history.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()

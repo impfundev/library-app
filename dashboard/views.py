@@ -7,7 +7,7 @@ from loans.models import BookLoan
 class OverduedLoanView(ListView):
     model = BookLoan
     template_name = "loans.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -38,7 +38,7 @@ class OverduedLoanView(ListView):
 class UpcomingLoanView(ListView):
     model = BookLoan
     template_name = "loans.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()

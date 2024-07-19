@@ -7,7 +7,7 @@ from .forms import Book, BookForm, Category, CategoryForm
 class BookListView(generic.ListView):
     model = Book
     template_name = "books.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -59,7 +59,7 @@ class BookDeleteView(generic.edit.DeleteView):
 class CategoryListView(generic.ListView):
     model = Category
     template_name = "categories.html"
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
