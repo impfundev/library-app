@@ -1,5 +1,5 @@
 from django.utils import timezone
-from django.db.models import Q
+from django.db.models import Q, F
 from django.views.generic import ListView, TemplateView
 from loans.models import BookLoan
 
@@ -66,6 +66,9 @@ class UpcomingLoanView(ListView):
                 queryset = queryset.order_by("-created_at")
             elif order == "old":
                 queryset = queryset.order_by("created_at")
+
+        today = timezone.now()
+        queryset = queryset.annotate(remaining_loan_time=(F("due_date") - today))
 
         return queryset
 

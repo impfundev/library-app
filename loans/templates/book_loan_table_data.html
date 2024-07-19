@@ -3,6 +3,7 @@
     <tr class="table-primary">
       <th scope="col">Book</th>
       <th scope="col">Member</th>
+      <th scope="col">Remaining Loan</th>
       <th scope="col">Loan Date</th>
       <th scope="col">Due Date</th>
       <th scope="col">Return Date</th>
@@ -14,6 +15,11 @@
     <tr>
       <td>{{ loan.book.title }}</td>
       <td>{{ loan.member.user.username }}</td>
+      {% if loan.remaining_loan_time %}
+      <td>
+          {{ loan.remaining_loan_time.days }} days left
+      </td>
+      {% endif %}
       <td>{{ loan.loan_date }}</td>
       <td>{{ loan.due_date }}</td>
       <td>{{ loan.return_date }}</td>

@@ -1,3 +1,5 @@
+from django.db.models import F
+from django.utils import timezone
 from django.db.models import Q
 from django.views import generic
 from .models import BookLoan
@@ -24,6 +26,9 @@ class BookLoanListView(generic.ListView):
                 queryset = queryset.order_by("-created_at")
             elif order == "old":
                 queryset = queryset.order_by("created_at")
+
+        today = timezone.now()
+        queryset = queryset.annotate(remaining_loan_time=(F("due_date") - today))
 
         return queryset.order_by("-created_at")
 
