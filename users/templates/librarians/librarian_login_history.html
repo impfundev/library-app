@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block dashboard %}
+<div style="max-width: 80vw" class="w-100 p-4">
+  <div class="d-flex gap-2 mb-4">
+    {% include "order_form.html" %}
+    {% include "search_form.html" %}
+  </div>
+  <table class="table table-hover">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if object_list %} {% for login_history in object_list %}
+    <tr>
+      <td>{{ login_history.librarian.user.username }}</td>
+      <td>{{ login_history.librarian.user.email }}</td>
+      <td>{{ login_history.date }}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <tr class="w-100">
+      <td>
+        <p>Data Empty</p>
+      </td>
+      <td></td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% include "pagination.html" %}
+
+</div>
+{% endblock dashboard %}

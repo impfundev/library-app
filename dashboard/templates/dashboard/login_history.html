@@ -5,7 +5,7 @@
   <table class="table table-striped">
     <thead>
       <tr class="table-primary">
-        <th scope="col">Name</th>
+        <th scope="col">Username</th>
         <th scope="col">Login At</th>
       </tr>
     </thead>
@@ -13,7 +13,7 @@
       {% for histori in login_histories %}
       <tr>
         <td>{{ histori.librarian.user.username }}</td>
-        <td>{{ histori.librarian.date }}</td>
+        <td>{{ histori.date }}</td>
       </tr>
       {% endfor %}
     </tbody>
