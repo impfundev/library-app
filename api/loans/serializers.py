@@ -9,6 +9,13 @@ from ..auth.serializers import MemberSerializer
 class BookLoanSerializer(serializers.ModelSerializer):
     book_detail = BookSerializer(source="book", read_only=True)
     member_detail = MemberSerializer(source="member", read_only=True)
+    remaining_loan_time = serializers.DateTimeField(read_only=True)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        remaining_loan_time = instance.due_date.day - timezone.now().day
+        data["remaining_loan_time"] = str(remaining_loan_time) + " days left"
+        return data
 
     class Meta:
         model = BookLoan
