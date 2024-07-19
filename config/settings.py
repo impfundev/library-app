@@ -90,6 +90,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 # local
                 "users.utils.context_processors.user_context",
+                "dashboard.utils.context_processors.dashboard_context",
             ],
         },
     },
