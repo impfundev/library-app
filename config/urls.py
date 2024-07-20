@@ -23,6 +23,10 @@ from django.contrib.auth.views import (
     PasswordResetConfirmView,
     PasswordResetCompleteView,
 )
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from dashboard.views import UpcomingLoanView, OverduedLoanView
 from users.views import (
@@ -42,6 +46,8 @@ urlpatterns = [
     path("upcoming-loans/", UpcomingLoanView.as_view(), name="upcoming_loans"),
     path("overdued-loans/", OverduedLoanView.as_view(), name="overdued_loans"),
     # auth
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
     path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
     path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),

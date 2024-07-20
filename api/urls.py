@@ -4,12 +4,12 @@ from rest_framework import routers
 from .auth.views import (
     LibrarianViewSet,
     LibrarianLoginView,
-    LibrarianLogoutView,
+    LibrarianRegisterView,
     LibrarianLoginHistoryViewSet,
     MemberViewSet,
     MemberLoginView,
-    MemberLogoutView,
     MemberChangePasswordView,
+    LogoutView,
     TokenResetPasswordView,
     ResetPasswordConfirmView,
 )
@@ -56,10 +56,12 @@ urlpatterns = [
     ),
     path("librarians/auth/login", LibrarianLoginView.as_view(), name="librarian_login"),
     path(
-        "librarians/auth/logout", LibrarianLogoutView.as_view(), name="librarian_logout"
+        "librarians/auth/register",
+        LibrarianRegisterView.as_view(),
+        name="librarian_register",
     ),
+    path("auth/logout", LogoutView.as_view(), name="librarian_logout"),
     path("members/auth/login", MemberLoginView.as_view(), name="member_login"),
-    path("members/auth/logout/", MemberLogoutView.as_view(), name="member_logout"),
     path(
         "members/<int:member_id>/change-password",
         MemberChangePasswordView.as_view(),

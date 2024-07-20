@@ -1,23 +1,27 @@
-from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
-class IsStaffUser(permissions.BasePermission):
-
-    def has_permission(self, request, view):
-        if request.method != "POST" and not request.user.is_staff:
-            return False
-        elif request.method != "POST" and not request.user.is_authenticated:
-            return False
-
-        return True
-
-
-class IsNotStaffUser(permissions.BasePermission):
+class IsStaffUser(IsAuthenticated):
 
     def has_permission(self, request, view):
-        if request.method != "POST" and request.user.is_staff:
-            return False
-        elif request.method != "POST" and not request.user.is_authenticated:
-            return False
+        refresh_token = request.session.get("refresh_token")
 
-        return True
+        return bool(
+            refresh_token is not None
+            and request.user
+            and request.user.is_authenticated
+            and request.user.is_staff
+        )
+
+
+class IsNotStaffUser(IsAuthenticated):
+
+    def has_permission(self, request, view):
+        refresh_token = request.session.get("refresh_token")
+        return bool(
+            refresh_token is not None
+            and request.user
+            and request.user.is_authenticated
+            and not request.user.is_staff
+        )

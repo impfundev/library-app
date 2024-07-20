@@ -1,10 +1,12 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 from django.contrib.auth.tokens import default_token_generator
+
 from django.core.mail import send_mail
 
 from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import (
     User,
@@ -39,8 +41,17 @@ class LibrarianViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class LibrarianLoginHistoryViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsStaffUser]
+    queryset = LibrarianLoginHistory.objects.all().order_by("date")
+    serializer_class = LoginHistorySerializer
+
+    filter_backends = [SearchFilter]
+    search_fields = ["librarian__name"]
+
+
 class MemberViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsNotStaffUser]
+    permission_classes = [IsStaffUser]
     queryset = Member.objects.all().order_by("created_at")
     serializer_class = MemberSerializer
 
@@ -70,146 +81,85 @@ class MemberViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class LoginBaseView(views.APIView):
+class LoginBaseView(TokenObtainPairView):
     user = None
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
         username = request.data.get("username")
         password = request.data.get("password")
+        user = authenticate(username=username, password=password)
 
-        if request.user.is_authenticated:
+        if user is None:
             return Response(
-                {"message": "Login failed, user is already authenticated"},
+                {"message": "Invalid username or password"},
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        if username is None or password is None:
-            return Response(
-                {"message": "Login failed, username or password cannot be empty"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            self.user = user
-            request.data["token"] = user.get_session_auth_hash()
-            request.data["message"] = "Login successful"
-
-            return Response(request.data, status=status.HTTP_200_OK)
-        else:
-            return Response(
-                {"message": "Login failed, invalid username or password"},
-                status=status.HTTP_401_UNAUTHORIZED,
-            )
+        self.user = user
+        request.session["refresh_token"] = response.data.get("refresh")
+        return response
 
 
 class LibrarianLoginView(LoginBaseView):
-    def post(self, request):
-        response = super().post(request)
 
-        if response.status_code == status.HTTP_200_OK:
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+
+        if response.status_code == 200:
             if not self.user.is_staff:
                 return Response(
-                    {"message": "Login as librarian failed, account is not staff"},
+                    {"message": "Account does not have access"},
                     status=status.HTTP_403_FORBIDDEN,
                 )
             else:
-                login(request, self.user)
-
-                librarian = Librarian.objects.get(user=self.user)
-                LibrarianLoginHistory.objects.create(librarian=librarian)
+                pass
 
         return response
 
 
-class LibrarianLoginHistoryViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsStaffUser]
-    queryset = LibrarianLoginHistory.objects.all().order_by("date")
-    serializer_class = LoginHistorySerializer
+class LibrarianRegisterView(views.APIView):
 
-    filter_backends = [SearchFilter]
-    search_fields = ["librarian__name"]
-
-
-class LibrarianViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsStaffUser]
-    queryset = Librarian.objects.all().order_by("created_at")
-    serializer_class = LibrarianSerializer
-
-    filter_backends = [SearchFilter]
-    search_fields = [
-        "user__username",
-        "user__email",
-        "user__first_name",
-        "user__last_name",
-    ]
-
-    def update(self, request, pk):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
+    def post(self, request):
+        data = request.data
+        data["message"] = "Register as librarian success"
+        serializer = LibrarianSerializer(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class MemberLoginView(LoginBaseView):
-    def post(self, request):
-        response = super().post(request)
 
-        if response.status_code == status.HTTP_200_OK:
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+
+        if response.status_code == 200:
             if self.user.is_staff:
                 return Response(
-                    {"message": "Login failed, invalid username or password"},
-                    status=status.HTTP_401_UNAUTHORIZED,
+                    {"message": "Account does not have access"},
+                    status=status.HTTP_403_FORBIDDEN,
                 )
             else:
-                login(request, self.user)
+                pass
 
         return response
 
 
-class LogoutBasedView(views.APIView):
+class LogoutView(views.APIView):
 
     def get(self, request):
-        if not request.user.is_authenticated:
+        refresh = request.session.get("refresh_token")
+        if refresh is None:
             return Response(
-                {"message": "Logout failed, user is unauthorized"},
-                status=status.HTTP_401_UNAUTHORIZED,
+                {"detail": "You do not have permission to perform this action."},
+                status=status.HTTP_403_FORBIDDEN,
             )
 
+        del request.session["refresh_token"]
+
         return Response({"message": "Logout success"}, status=status.HTTP_200_OK)
-
-
-class LibrarianLogoutView(LogoutBasedView):
-
-    def get(self, request):
-        response = super().get(request)
-        if response.status_code == status.HTTP_200_OK:
-            if request.user.is_staff:
-                logout(request)
-            else:
-                return Response(
-                    {"message": "Logout failed, user is unauthorized"},
-                    status=status.HTTP_401_UNAUTHORIZED,
-                )
-
-        return response
-
-
-class MemberLogoutView(LogoutBasedView):
-
-    def get(self, request):
-        response = super().get(request)
-        if response.status_code == status.HTTP_200_OK:
-            if not request.user.is_staff:
-                logout(request)
-            else:
-                return Response(
-                    {"message": "Logout failed, user is unauthorized"},
-                    status=status.HTTP_401_UNAUTHORIZED,
-                )
-
-        return response
 
 
 class MemberChangePasswordView(views.APIView):

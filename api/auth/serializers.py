@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from rest_framework import serializers
 
 from users.models import User, Librarian, Member, LibrarianLoginHistory
@@ -40,7 +41,18 @@ class LibrarianSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user_data = validated_data.pop("user")
         user_data["is_staff"] = True
+        username = user_data.get("username")
+        email = user_data.get("email")
+
+        is_username = User.objects.filter(username=username)
+        is_email = User.objects.filter(email=email)
+
+        if is_username.exists() and is_email.exists():
+            raise serializers.ValidationError("Username or Email is already exists")
+
         user = User.objects.create_user(**user_data)
+        user.set_password(user_data.get("password"))
+        user.save()
 
         librarian = Librarian.objects.create(user=user, **validated_data)
         return librarian
@@ -90,6 +102,8 @@ class MemberSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop("user")
         user_data["is_staff"] = False
         user = User.objects.create_user(**user_data)
+        user.set_password(user_data.get("password"))
+        user.save()
 
         member = Member.objects.create(user=user, **validated_data)
         return member
