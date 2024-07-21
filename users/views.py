@@ -171,7 +171,7 @@ class LibrarianLoginView(LoginView):
 
 
 class LibrarianLogoutView(generic.TemplateView):
-    success_url = "/auth/login/"
+    success_url = "/users/auth/login/"
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
@@ -186,7 +186,7 @@ class LibrarianLogoutView(generic.TemplateView):
 class LibrarianSignUpView(generic.FormView):
     form_class = SignUpForm
     template_name = "librarians/sign_up.html"
-    success_url = "/auth/login/"
+    success_url = "/users/auth/login/"
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()

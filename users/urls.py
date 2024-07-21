@@ -10,9 +10,22 @@ from users.views import (
     MemberCreateView,
     MemberDeleteView,
     MemberUpdateView,
+    LibrarianLoginView,
+    LibrarianLogoutView,
+    LibrarianSignUpView,
+    LibrarianResetPassword,
 )
 
 urlpatterns = [
+    # auth
+    path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
+    path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
+    path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),
+    path(
+        "password-reset/",
+        LibrarianResetPassword.as_view(),
+        name="reset_password",
+    ),
     # librarians
     path("librarians/", LibrarianListView.as_view(), name="librarian_lists"),
     path("librarians/add/", LibrarianCreateView.as_view(), name="create_librarian"),

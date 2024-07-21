@@ -28,12 +28,6 @@ from rest_framework_simplejwt.views import (
 )
 
 from dashboard.views import UpcomingLoanView, OverduedLoanView
-from users.views import (
-    LibrarianLoginView,
-    LibrarianLogoutView,
-    LibrarianSignUpView,
-    LibrarianResetPassword,
-)
 
 urlpatterns = [
     # local
@@ -44,16 +38,7 @@ urlpatterns = [
     path("book-loans/", include("loans.urls")),
     path("upcoming-loans/", UpcomingLoanView.as_view(), name="upcoming_loans"),
     path("overdued-loans/", OverduedLoanView.as_view(), name="overdued_loans"),
-    # auth
-    path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
-    path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
-    path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),
     # password reset
-    path(
-        "password-reset/",
-        LibrarianResetPassword.as_view(),
-        name="reset_password",
-    ),
     path(
         "password-reset-confirm/<uidb64>/<token>/",
         PasswordResetConfirmView.as_view(

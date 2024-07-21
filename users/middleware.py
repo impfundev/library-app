@@ -11,8 +11,8 @@ class AuthMiddleware(MiddlewareMixin):
         response = self.get_response(request)
 
         if not request.user.is_authenticated and request.path.startswith("/dashboard/"):
-            return HttpResponseRedirect("/auth/login")
-        elif request.user.is_authenticated and request.path.startswith("/auth/"):
+            return HttpResponseRedirect("/users/auth/login")
+        elif request.user.is_authenticated and request.path.startswith("/users/auth/"):
             return HttpResponseRedirect("/dashboard/")
         else:
             return response
