@@ -24,7 +24,6 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
 )
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
 )
 
@@ -46,8 +45,6 @@ urlpatterns = [
     path("upcoming-loans/", UpcomingLoanView.as_view(), name="upcoming_loans"),
     path("overdued-loans/", OverduedLoanView.as_view(), name="overdued_loans"),
     # auth
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("auth/login/", LibrarianLoginView.as_view(), name="librarian_login"),
     path("auth/logout/", LibrarianLogoutView.as_view(), name="librarian_logout"),
     path("auth/sign-up/", LibrarianSignUpView.as_view(), name="librarian_logout"),
@@ -72,6 +69,7 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # api
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party
     path("api-auth/", include("rest_framework.urls"), name="api_auth"),
