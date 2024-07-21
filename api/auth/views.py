@@ -51,7 +51,7 @@ class LibrarianLoginHistoryViewSet(viewsets.ModelViewSet):
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsStaffUser]
+    permission_classes = [IsNotStaffUser]
     queryset = Member.objects.all().order_by("created_at")
     serializer_class = MemberSerializer
 
@@ -62,16 +62,6 @@ class MemberViewSet(viewsets.ModelViewSet):
         "user__first_name",
         "user__last_name",
     ]
-
-    def list(self, request):
-        if self.request.user.is_staff:
-            return Response(
-                {"message": "Access Denied"}, status=status.HTTP_406_NOT_ACCEPTABLE
-            )
-
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
 
     def update(self, request, pk):
         instance = self.get_object()
