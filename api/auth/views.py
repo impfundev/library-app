@@ -118,16 +118,25 @@ class LibrarianLoginView(LoginBaseView):
         return response
 
 
-class LibrarianRegisterView(views.APIView):
+class RegisterBaseView(views.APIView):
+    serializer_class = None
 
     def post(self, request):
         data = request.data
         data["message"] = "Register as librarian success"
-        serializer = LibrarianSerializer(data=data)
+        serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class LibrarianRegisterView(RegisterBaseView):
+    serializer_class = LibrarianSerializer
+
+
+class MemberRegisterView(RegisterBaseView):
+    serializer_class = MemberSerializer
 
 
 class MemberLoginView(LoginBaseView):

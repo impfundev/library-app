@@ -101,6 +101,15 @@ class MemberSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user_data = validated_data.pop("user")
         user_data["is_staff"] = False
+        username = user_data.get("username")
+        email = user_data.get("email")
+
+        is_username = User.objects.filter(username=username)
+        is_email = User.objects.filter(email=email)
+
+        if is_username.exists() and is_email.exists():
+            raise serializers.ValidationError("Username or Email is already exists")
+
         user = User.objects.create_user(**user_data)
         user.set_password(user_data.get("password"))
         user.save()

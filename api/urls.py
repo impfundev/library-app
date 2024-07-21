@@ -8,6 +8,7 @@ from .auth.views import (
     LibrarianLoginHistoryViewSet,
     MemberViewSet,
     MemberLoginView,
+    MemberRegisterView,
     MemberChangePasswordView,
     LogoutView,
     TokenResetPasswordView,
@@ -62,6 +63,12 @@ urlpatterns = [
     ),
     path("auth/logout", LogoutView.as_view(), name="librarian_logout"),
     path("members/auth/login", MemberLoginView.as_view(), name="member_login"),
+    path(
+        "members/auth/register",
+        MemberRegisterView.as_view(),
+        name="librarian_register",
+    ),
+    # change password
     path(
         "members/<int:member_id>/change-password",
         MemberChangePasswordView.as_view(),
