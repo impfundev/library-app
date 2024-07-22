@@ -36,7 +36,7 @@ class LibrarianSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Librarian
-        fields = ["user", "picture", "created_at", "updated_at"]
+        fields = ["id", "user", "picture", "created_at", "updated_at"]
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")
@@ -96,7 +96,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Member
-        fields = ["user", "picture", "created_at", "updated_at"]
+        fields = ["id", "user", "picture", "created_at", "updated_at"]
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")
