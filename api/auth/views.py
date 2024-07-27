@@ -81,7 +81,7 @@ class UserDetailView(views.APIView):
         token = header.replace("Bearer ", "")
 
         try:
-            verified_token = AccessToken(token="asddssdaasd")
+            verified_token = AccessToken(token=token)
         except TokenError:
             return Response(
                 {"message": "Token is invalid or expired"},
