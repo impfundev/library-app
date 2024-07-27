@@ -1,5 +1,5 @@
-from django.contrib.auth import authenticate
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from users.models import User, Librarian, Member, LibrarianLoginHistory
 
@@ -149,3 +149,11 @@ class MemberSerializer(serializers.ModelSerializer):
         Member.objects.filter(id=instance.id).update(user=user[0])
         instance.save()
         return instance
+
+
+class TokenSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token["user_id"] = user.id
+        return token

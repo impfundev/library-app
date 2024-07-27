@@ -13,6 +13,7 @@ from .auth.views import (
     LogoutView,
     TokenResetPasswordView,
     ResetPasswordConfirmView,
+    UserDetailView,
 )
 from .book.views import BookViewSet, CategoryViewSet
 from .loans.views import (
@@ -45,6 +46,11 @@ router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans"
 urlpatterns = [
     path("", include(router.urls)),
     # auth
+    path(
+        "user",
+        UserDetailView.as_view(),
+        name="user_detail",
+    ),
     path(
         "reset-password/request-token",
         TokenResetPasswordView.as_view(),

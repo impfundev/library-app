@@ -1,3 +1,4 @@
+import json
 from django.contrib.auth import authenticate
 from django.contrib.auth.tokens import default_token_generator
 
@@ -7,6 +8,7 @@ from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.tokens import AccessToken
 
 from .serializers import (
     User,
@@ -16,6 +18,7 @@ from .serializers import (
     LoginHistorySerializer,
     Member,
     MemberSerializer,
+    TokenSerializer,
 )
 from .permissions import IsStaffUser, IsNotStaffUser
 
@@ -71,7 +74,28 @@ class MemberViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class UserDetailView(views.APIView):
+
+    def get(self, request, *args, **kwargs):
+        header = request.headers.get("Authorization")
+        token = header.replace("Bearer ", "")
+        verified_token = AccessToken(token=token)
+        user_id = verified_token.payload.get("user_id")
+        user = User.objects.get(pk=user_id)
+        data = {
+            "id": user.pk,
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "is_staff": user.is_staff,
+        }
+
+        return Response(data, status=status.HTTP_200_OK)
+
+
 class LoginBaseView(TokenObtainPairView):
+    serializer_class = TokenSerializer
     user = None
 
     def post(self, request, *args, **kwargs):

@@ -54,7 +54,7 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     # api
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/v1/", include("api.urls"), name="API_V1"),
     # 3rd party
     path("api-auth/", include("rest_framework.urls"), name="api_auth"),
