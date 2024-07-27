@@ -8,7 +8,7 @@ from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework_simplejwt.tokens import AccessToken, TokenError
 
 from .serializers import (
     User,
@@ -79,7 +79,15 @@ class UserDetailView(views.APIView):
     def get(self, request, *args, **kwargs):
         header = request.headers.get("Authorization")
         token = header.replace("Bearer ", "")
-        verified_token = AccessToken(token=token)
+
+        try:
+            verified_token = AccessToken(token="asddssdaasd")
+        except TokenError:
+            return Response(
+                {"message": "Token is invalid or expired"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
         user_id = verified_token.payload.get("user_id")
         user = User.objects.get(pk=user_id)
         data = {
