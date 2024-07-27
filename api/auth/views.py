@@ -76,11 +76,15 @@ class MemberViewSet(viewsets.ModelViewSet):
 
 class UserDetailView(views.APIView):
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         header = request.headers.get("Authorization")
-        token = header.replace("Bearer ", "")
+        if header is None:
+            return Response(
+                {"message": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED
+            )
 
         try:
+            token = header.replace("Bearer ", "")
             verified_token = AccessToken(token=token)
         except TokenError:
             return Response(
