@@ -84,7 +84,7 @@ class UserDetailView(views.APIView):
             )
 
         try:
-            token = header.replace("Bearer ", "")
+            token = header.split(" ")[1]
             verified_token = AccessToken(token=token)
         except TokenError:
             return Response(
