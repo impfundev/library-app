@@ -14,6 +14,7 @@ from .auth.views import (
     TokenResetPasswordView,
     ResetPasswordConfirmView,
     UserDetailView,
+    UserViewSet,
 )
 from .book.views import BookViewSet, CategoryViewSet
 from .loans.views import (
@@ -25,6 +26,7 @@ from .loans.views import (
 
 
 router = routers.DefaultRouter()
+router.register(r"user", UserViewSet, basename="user")
 router.register(r"librarians", LibrarianViewSet, basename="librarians")
 router.register(r"members", MemberViewSet, basename="members")
 router.register(r"books", BookViewSet, basename="books")

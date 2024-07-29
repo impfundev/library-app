@@ -19,6 +19,8 @@ from .serializers import (
     Member,
     MemberSerializer,
     TokenSerializer,
+    User,
+    UserSerializer,
 )
 from .permissions import IsStaffUser, IsNotStaffUser
 
@@ -284,3 +286,15 @@ class ResetPasswordConfirmView(views.APIView):
             {"message": "Reset password success"},
             status=status.HTTP_200_OK,
         )
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all().order_by("id")
+
+    def update(self, request, pk):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)

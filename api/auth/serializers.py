@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
             "id",
             "username",
             "email",
-            "password",
             "first_name",
             "last_name",
             "is_staff",
@@ -19,10 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {"write_only": True}}
 
     def update(self, instance, validated_data):
-        partial = self.context.get("is_partial", False)
-        return serializers.ModelSerializer.update(
-            self, instance, validated_data, partial=partial
-        )
+        partial = validated_data.get("is_partial", False)
+        return serializers.ModelSerializer.update(self, instance, validated_data)
 
 
 class LoginHistorySerializer(serializers.ModelSerializer):
