@@ -145,7 +145,13 @@ class RegisterBaseView(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        user = User.objects.get(id=serializer.data["id"])
+        login(request=request, user=user)
+        token, created = Token.objects.get_or_create(user=user)
+
+        response = serializer.data.copy()
+        response["token"] = token.key
+        return Response(response, status=status.HTTP_200_OK)
 
 
 class LibrarianRegisterView(RegisterBaseView):
