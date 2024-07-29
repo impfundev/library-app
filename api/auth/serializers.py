@@ -11,11 +11,20 @@ class UserSerializer(serializers.ModelSerializer):
             "id",
             "username",
             "email",
+            "password",
             "first_name",
             "last_name",
             "is_staff",
         ]
-        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data):
+        password = validated_data.get("password")
+        print(validated_data)
+        user = User.objects.create(**validated_data)
+        user.set_password(password)
+        user.save()
+
+        return user
 
     def update(self, instance, validated_data):
         partial = validated_data.get("is_partial", False)

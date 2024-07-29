@@ -1,5 +1,5 @@
 import json
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.tokens import default_token_generator
 
 from django.core.mail import send_mail
@@ -7,8 +7,7 @@ from django.core.mail import send_mail
 from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.tokens import AccessToken, TokenError
+from rest_framework.authtoken.models import Token
 
 from .serializers import (
     User,
@@ -18,7 +17,6 @@ from .serializers import (
     LoginHistorySerializer,
     Member,
     MemberSerializer,
-    TokenSerializer,
     User,
     UserSerializer,
 )
@@ -85,16 +83,15 @@ class UserDetailView(views.APIView):
                 {"message": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED
             )
 
-        try:
-            token = header.split(" ")[1]
-            verified_token = AccessToken(token=token)
-        except TokenError:
+        token = header.split(" ")[1]
+        verified_token = Token.objects.filter(key=token)
+        if not verified_token.exists():
             return Response(
                 {"message": "Token is invalid or expired"},
                 status=status.HTTP_401_UNAUTHORIZED,
             )
 
-        user_id = verified_token.payload.get("user_id")
+        user_id = verified_token[0].user.id
         user = User.objects.get(pk=user_id)
         data = {
             "id": user.pk,
@@ -108,25 +105,18 @@ class UserDetailView(views.APIView):
         return Response(data, status=status.HTTP_200_OK)
 
 
-class LoginBaseView(TokenObtainPairView):
-    serializer_class = TokenSerializer
-    user = None
+class LoginBaseView(views.APIView):
 
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        username = request.data.get("username")
-        password = request.data.get("password")
-        user = authenticate(username=username, password=password)
-
-        if user is None:
-            return Response(
-                {"message": "Invalid username or password"},
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        self.user = user
-        request.session["refresh_token"] = response.data.get("refresh")
-        return response
+    def post(self, request):
+        user = authenticate(
+            username=request.data["username"], password=request.data["password"]
+        )
+        if user:
+            login(request=request, user=user)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({"token": token.key})
+        else:
+            return Response({"error": "Invalid credentials"}, status=401)
 
 
 class LibrarianLoginView(LoginBaseView):
@@ -135,7 +125,7 @@ class LibrarianLoginView(LoginBaseView):
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
-            if not self.user.is_staff:
+            if not request.user.is_staff:
                 return Response(
                     {"message": "Account does not have access"},
                     status=status.HTTP_403_FORBIDDEN,
@@ -151,7 +141,6 @@ class RegisterBaseView(views.APIView):
 
     def post(self, request):
         data = request.data
-        data["message"] = "Register as librarian success"
         serializer = self.serializer_class(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -160,11 +149,19 @@ class RegisterBaseView(views.APIView):
 
 
 class LibrarianRegisterView(RegisterBaseView):
-    serializer_class = LibrarianSerializer
+    serializer_class = UserSerializer
 
 
 class MemberRegisterView(RegisterBaseView):
-    serializer_class = MemberSerializer
+    serializer_class = UserSerializer
+
+    def post(self, request):
+        response = super().post(request)
+        user_id = response.data.get("id")
+        user = User.objects.get(pk=user_id)
+        Member.objects.create(user=user)
+
+        return response
 
 
 class MemberLoginView(LoginBaseView):
@@ -173,7 +170,7 @@ class MemberLoginView(LoginBaseView):
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
-            if self.user.is_staff:
+            if request.user.is_staff:
                 return Response(
                     {"message": "Account does not have access"},
                     status=status.HTTP_403_FORBIDDEN,
@@ -187,14 +184,22 @@ class MemberLoginView(LoginBaseView):
 class LogoutView(views.APIView):
 
     def get(self, request):
-        refresh = request.session.get("refresh_token")
-        if refresh is None:
+        header = request.headers.get("Authorization")
+        if header is None:
             return Response(
-                {"detail": "You do not have permission to perform this action."},
-                status=status.HTTP_403_FORBIDDEN,
+                {"message": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED
             )
 
-        del request.session["refresh_token"]
+        token = header.split(" ")[1]
+        verified_token = Token.objects.filter(key=token)
+        if not verified_token.exists():
+            return Response(
+                {"message": "Token is invalid or expired"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+        verified_token.delete()
+        logout(request=request)
 
         return Response({"message": "Logout success"}, status=status.HTTP_200_OK)
 
