@@ -11,24 +11,21 @@ class UserSerializer(serializers.ModelSerializer):
             "id",
             "username",
             "email",
-            "password",
             "first_name",
             "last_name",
             "is_staff",
+            "password",
         ]
+
+        extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
         password = validated_data.get("password")
-        print(validated_data)
         user = User.objects.create(**validated_data)
         user.set_password(password)
         user.save()
 
         return user
-
-    def update(self, instance, validated_data):
-        partial = validated_data.get("is_partial", False)
-        return serializers.ModelSerializer.update(self, instance, validated_data)
 
 
 class LoginHistorySerializer(serializers.ModelSerializer):
@@ -157,9 +154,14 @@ class MemberSerializer(serializers.ModelSerializer):
         return instance
 
 
-class TokenSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        token["user_id"] = user.id
-        return token
+class UpdateProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "is_staff",
+        ]

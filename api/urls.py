@@ -14,7 +14,7 @@ from .auth.views import (
     TokenResetPasswordView,
     ResetPasswordConfirmView,
     UserDetailView,
-    UserViewSet,
+    UpdateProfileView,
 )
 from .book.views import BookViewSet, CategoryViewSet
 from .loans.views import (
@@ -26,7 +26,7 @@ from .loans.views import (
 
 
 router = routers.DefaultRouter()
-router.register(r"user", UserViewSet, basename="user")
+router.register(r"user", UpdateProfileView, basename="user")
 router.register(r"librarians", LibrarianViewSet, basename="librarians")
 router.register(r"members", MemberViewSet, basename="members")
 router.register(r"books", BookViewSet, basename="books")
@@ -48,6 +48,11 @@ router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans"
 urlpatterns = [
     path("", include(router.urls)),
     # auth
+    path(
+        "user",
+        UserDetailView.as_view(),
+        name="user_detail",
+    ),
     path(
         "user",
         UserDetailView.as_view(),

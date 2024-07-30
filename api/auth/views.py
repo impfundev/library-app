@@ -19,6 +19,7 @@ from .serializers import (
     MemberSerializer,
     User,
     UserSerializer,
+    UpdateProfileSerializer,
 )
 from .permissions import IsStaffUser, IsNotStaffUser
 
@@ -307,8 +308,8 @@ class ResetPasswordConfirmView(views.APIView):
         )
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
+class UpdateProfileView(viewsets.ModelViewSet):
+    serializer_class = UpdateProfileSerializer
     queryset = User.objects.all().order_by("id")
 
     def update(self, request, pk):
@@ -316,4 +317,16 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        user_id = serializer.data.get("id")
+        user = User.objects.get(pk=user_id)
+
+        account_id = None
+        if user.is_staff:
+            account_id = user.librarian.id
+        else:
+            account_id = user.member.id
+
+        response = serializer.data
+        response["account_id"] = account_id
+        return Response(response, status=status.HTTP_200_OK)
