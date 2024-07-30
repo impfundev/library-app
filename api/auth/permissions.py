@@ -18,7 +18,7 @@ class IsStaffUser(IsAuthenticated):
 
         return bool(
             header is not None
-            and verified_token.exists()
+            and verified_token is not None
             and verified_token.user.is_staff
         )
 

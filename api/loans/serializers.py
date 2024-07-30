@@ -13,7 +13,7 @@ class BookLoanSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        remaining_loan_time = instance.due_date.day - timezone.now().day
+        remaining_loan_time = timezone.now().day - instance.due_date.day
         data["remaining_loan_time"] = str(remaining_loan_time) + " days left"
         return data
 
@@ -23,6 +23,7 @@ class BookLoanSerializer(serializers.ModelSerializer):
 
 
 class MemberLoanSerializer(BookLoanSerializer):
+    book_detail = BookSerializer(source="book", read_only=True)
     is_overdue = serializers.BooleanField(read_only=True)
 
     def to_representation(self, instance):
@@ -32,4 +33,11 @@ class MemberLoanSerializer(BookLoanSerializer):
 
     class Meta:
         model = BookLoan
-        fields = ["book", "loan_date", "due_date", "is_overdue"]
+        fields = [
+            "book",
+            "book_detail",
+            "member",
+            "loan_date",
+            "due_date",
+            "is_overdue",
+        ]

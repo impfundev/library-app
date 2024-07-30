@@ -93,6 +93,13 @@ class UserDetailView(views.APIView):
 
         user_id = verified_token[0].user.id
         user = User.objects.get(pk=user_id)
+
+        account_id = None
+        if user.is_staff:
+            account_id = user.librarian.id
+        else:
+            account_id = user.member.id
+
         data = {
             "id": user.pk,
             "username": user.username,
@@ -100,6 +107,7 @@ class UserDetailView(views.APIView):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "is_staff": user.is_staff,
+            "account_id": account_id,
         }
 
         return Response(data, status=status.HTTP_200_OK)

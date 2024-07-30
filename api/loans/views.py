@@ -57,4 +57,4 @@ class MemberLoanViewSet(BookLoanViewSet):
 
     def get_queryset(self):
         member_id = self.kwargs.get("member_id")
-        return BookLoan.objects.filter(member__id=member_id).order_by("loan_date")
+        return BookLoan.objects.filter(member=member_id).order_by("loan_date")
