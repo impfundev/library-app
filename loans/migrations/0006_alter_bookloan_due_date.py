@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('loans', '0005_alter_bookloan_loan_date'),
+        ("loans", "0005_alter_bookloan_loan_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bookloan',
-            name='due_date',
-            field=models.DateTimeField(validators=[loans.validators.validate_due_date]),
+            model_name="bookloan",
+            name="due_date",
+            field=models.DateTimeField(),
         ),
     ]
