@@ -21,7 +21,7 @@ class Book(models.Model):
     isbn = models.CharField(max_length=15, default="xxxxxxxxx-x")
     description = models.CharField(max_length=255, blank=True, null=True)
     cover_image = models.ImageField(upload_to="uploads", blank=True, null=True)
-    category = models.OneToOneField(
+    category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
