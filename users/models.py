@@ -31,3 +31,8 @@ class LibrarianLoginHistory(models.Model):
         Librarian, blank=True, null=True, on_delete=models.CASCADE
     )
     date = models.DateTimeField(auto_now_add=True)
+
+
+class ResetPasswordPin(models.Model):
+    pin = models.IntegerField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)

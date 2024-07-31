@@ -1,13 +1,14 @@
-import json
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.tokens import default_token_generator
+import random
 
+from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 
 from rest_framework import views, viewsets, status
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from rest_framework.authtoken.models import Token
+
+from users.models import ResetPasswordPin
 
 from .serializers import (
     User,
@@ -243,6 +244,14 @@ class MemberChangePasswordView(views.APIView):
 
 class TokenResetPasswordView(views.APIView):
 
+    def generate_random_pin(self):
+        return random.randint(10000000, 99999999)
+
+    def store_data_with_pin(self, user):
+        pin = self.generate_random_pin()
+        ResetPasswordPin.objects.get_or_create(pin=pin, user=user)
+        return pin
+
     def post(self, request):
         data = request.data.copy()
         email = data.get("email")
@@ -250,14 +259,14 @@ class TokenResetPasswordView(views.APIView):
 
         if user is None:
             return Response(
-                {"message": "Invalid Email, Request token reset password failed"},
+                {"message": "Invalid Email, Request pin reset password failed"},
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        token = default_token_generator.make_token(user)
-        message = f"Here's your reset password token: {token}"
+        pin = self.store_data_with_pin(user)
+        message = f"Here's your reset password pin:       {pin}"
         send_mail(
-            subject="Django Library App Reset password token, dev: Ilham Maulana",
+            subject="Django Library App Reset password pin, dev: Ilham Maulana",
             message=message,
             from_email="from@example.com",
             recipient_list=["to@example.com"],
@@ -265,10 +274,8 @@ class TokenResetPasswordView(views.APIView):
         )
 
         data["message"] = (
-            "Your token request was successful! We've sent an email with instructions on how to use it."
+            "Your pin request was successful! We've sent an email with instructions on how to use it."
         )
-
-        self.request.session["user_id_reset_pw"] = user.id
 
         return Response(data, status=status.HTTP_200_OK)
 
@@ -278,11 +285,10 @@ class ResetPasswordConfirmView(views.APIView):
     def post(self, request):
         data = request.data
 
-        token = data.get("token")
+        pin = data.get("pin")
         password1 = data.get("password1")
         password2 = data.get("password2")
-        user_id = self.request.session["user_id_reset_pw"]
-        user = User.objects.get(pk=user_id)
+        encoded = None
 
         is_password_invalid = password1 != password2
         if is_password_invalid:
@@ -291,17 +297,18 @@ class ResetPasswordConfirmView(views.APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        is_token_valid = default_token_generator.check_token(user, token)
-        if not is_token_valid:
+        try:
+            encoded = ResetPasswordPin.objects.get(pin=pin)
+        except ResetPasswordPin.DoesNotExist:
             return Response(
-                {"message": "Invalid token reset password"},
+                {"message": "Invalid pin reset password"},
                 status=status.HTTP_401_UNAUTHORIZED,
             )
 
-        user.set_password(password1)
-        user.save()
+        encoded.user.set_password(password1)
+        encoded.user.save()
+        encoded.delete()
 
-        del user_id
         return Response(
             {"message": "Reset password success"},
             status=status.HTTP_200_OK,
