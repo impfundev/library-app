@@ -13,8 +13,22 @@ class BookLoanSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        remaining_loan_time = timezone.now().day - instance.due_date.day
-        data["remaining_loan_time"] = str(abs(remaining_loan_time)) + " days left"
+        now = timezone.now()
+        remaining_loan_time = instance.due_date - now
+
+        days = remaining_loan_time.days
+        hours, remainder = divmod(remaining_loan_time.seconds, 3600)
+        minutes = remainder // 60
+
+        time_string = ""
+        if days > 0:
+            time_string += f"{days} days"
+        if hours > 0:
+            time_string += f" {hours} hrs"
+        if minutes > 0:
+            time_string += f" {minutes} mins"
+
+        data["remaining_loan_time"] = time_string + " days left"
         return data
 
     class Meta:

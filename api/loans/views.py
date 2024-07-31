@@ -57,4 +57,25 @@ class MemberLoanViewSet(BookLoanViewSet):
 
     def get_queryset(self):
         member_id = self.kwargs.get("member_id")
+
+        now = timezone.now()
+        due_date_treshold = now + timezone.timedelta(days=3)
+        near_outstanding = self.request.query_params.get("near_outstanding")
+        overdue = self.request.query_params.get("overdue")
+
+        if near_outstanding:
+            return (
+                BookLoan.objects.filter(member=member_id)
+                .filter(due_date__lte=due_date_treshold, return_date=None)
+                .filter(due_date__gte=now)
+                .order_by("loan_date")
+            )
+
+        if overdue:
+            return (
+                BookLoan.objects.filter(member=member_id)
+                .filter(due_date__lte=now, return_date=None)
+                .order_by("loan_date")
+            )
+
         return BookLoan.objects.filter(member=member_id).order_by("loan_date")
