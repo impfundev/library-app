@@ -10,7 +10,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    category = Category
+    category_detail = CategorySerializer(source="category", read_only=True)
 
     class Meta:
         model = Book
