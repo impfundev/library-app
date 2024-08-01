@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import BookLoan, BookLoanSerializer, MemberLoanSerializer
+from .serializers import BookLoan, BookLoanSerializer
 from ..auth.permissions import IsNotStaffUser, IsStaffUser
 
 
@@ -53,7 +53,7 @@ class UpComingBookLoanViewSet(BookLoanViewSet):
 class MemberLoanViewSet(BookLoanViewSet):
     permission_classes = [IsNotStaffUser]
     queryset = BookLoan.objects.all()
-    serializer_class = MemberLoanSerializer
+    serializer_class = BookLoanSerializer
 
     def get_queryset(self):
         member_id = self.kwargs.get("member_id")
