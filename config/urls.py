@@ -24,10 +24,11 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
 )
 
-from dashboard.views import UpcomingLoanView, OverduedLoanView
+from dashboard.views import UpcomingLoanView, OverduedLoanView, HomePage
 
 urlpatterns = [
     # local
+    path("", HomePage.as_view()),
     path("admin/", admin.site.urls),
     path("dashboard/", include("dashboard.urls")),
     path("books/", include("book.urls")),
