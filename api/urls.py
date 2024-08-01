@@ -15,6 +15,7 @@ from .auth.views import (
     ResetPasswordConfirmView,
     UserDetailView,
     UpdateProfileView,
+    LoginBaseView,
 )
 from .book.views import BookViewSet, CategoryViewSet
 from .loans.views import (
@@ -69,6 +70,7 @@ urlpatterns = [
         name="reset_password_confirm",
     ),
     path("librarians/auth/login", LibrarianLoginView.as_view(), name="librarian_login"),
+    path("auth/login", LoginBaseView.as_view(), name="universal_login"),
     path(
         "librarians/auth/register",
         LibrarianRegisterView.as_view(),
