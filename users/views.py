@@ -19,7 +19,7 @@ class UserListView(generic.ListView):
 
         if keyword:
             queryset = queryset.filter(
-                Q(user__name__icontains=keyword) | Q(user__email__icontains=keyword)
+                Q(user__username__icontains=keyword) | Q(user__email__icontains=keyword)
             ).order_by("-created_at")
 
         if order:
