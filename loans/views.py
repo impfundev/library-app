@@ -32,6 +32,11 @@ class BookLoanListView(generic.ListView):
 
         return queryset.order_by("-created_at")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        return context
+
 
 class BookLoanCreateView(generic.edit.CreateView):
     model = BookLoan

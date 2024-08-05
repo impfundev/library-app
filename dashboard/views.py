@@ -34,6 +34,11 @@ class OverduedLoanView(ListView):
 
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        return context
+
 
 class UpcomingLoanView(ListView):
     model = BookLoan
@@ -67,10 +72,12 @@ class UpcomingLoanView(ListView):
             elif order == "old":
                 queryset = queryset.order_by("created_at")
 
-        today = timezone.now()
-        queryset = queryset.annotate(remaining_loan_time=(F("due_date") - today))
-
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        return context
 
 
 class HomePage(TemplateView):

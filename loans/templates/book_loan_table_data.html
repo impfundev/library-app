@@ -15,11 +15,9 @@
     <tr>
       <td>{{ loan.book.title }}</td>
       <td>{{ loan.member.user.username }}</td>
-      {% if loan.remaining_loan_time %}
       <td>
-          {{ loan.remaining_loan_time.days }} days left
+          {{ loan.due_date|timeuntil:now }} left
       </td>
-      {% endif %}
       <td>{{ loan.loan_date }}</td>
       <td>{{ loan.due_date }}</td>
       <td>{{ loan.return_date }}</td>
