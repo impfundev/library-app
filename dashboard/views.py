@@ -1,5 +1,5 @@
 from django.utils import timezone
-from django.db.models import Q, F
+from django.db.models import Q
 from django.views.generic import ListView, TemplateView
 from loans.models import BookLoan
 
