@@ -1,7 +1,6 @@
 import json
 
 from django.http import JsonResponse
-from django.core.serializers import serialize
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework import viewsets
