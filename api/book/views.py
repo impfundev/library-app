@@ -1,14 +1,8 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework.filters import SearchFilter
-from django_filters.rest_framework import DjangoFilterBackend
-
 
 from book.models import Book, Category
-from .serializers import BookSerializer, CategorySerializer
 
 
 @csrf_exempt
@@ -51,40 +45,19 @@ def bookView(request):
     return JsonResponse({"message": "Invalid request method"}, status=405)
 
 
-class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all().order_by("created_at")
-    serializer_class = BookSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["category__name"]
-    search_fields = ["title"]
+@csrf_exempt
+def categoryView(request):
+    categories = Category.objects.all().order_by("created_at")
 
-    def get_queryset(self):
-        year = self.request.query_params.get("year")
-        queryset = self.queryset
+    if request.method == "GET":
+        data = []
+        for category_item in categories:
+            category = {
+                "id": category_item.id,
+                "name": category_item.name,
+            }
+            data.append(category)
 
-        if year is not None:
-            return queryset.filter(publish_date__year=year)
+        return JsonResponse(data, safe=False, status=200)
 
-        return queryset
-
-    def update(self, request, pk):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all().order_by("created_at")
-    serializer_class = CategorySerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["created_at", "updated_at"]
-    search_fields = ["name"]
-
-    def update(self, request, pk):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
+    return JsonResponse({"message": "Invalid request method"}, status=405)

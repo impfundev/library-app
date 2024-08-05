@@ -14,17 +14,15 @@ from .auth.views import (
     resetPasswordConfirmView,
 )
 
-from .book.views import bookView, CategoryViewSet
+from .book.views import bookView, categoryView
 from .loans.views import (
     BookLoanViewSet,
     OverduedBookLoanViewSet,
     UpComingBookLoanViewSet,
-    MemberLoanViewSet,
 )
 
 
 router = routers.DefaultRouter()
-router.register(r"categories", CategoryViewSet, basename="categories")
 router.register(r"book-loans", BookLoanViewSet, basename="book_loans")
 router.register(
     r"overdued-loans", OverduedBookLoanViewSet, basename="book_loans_overdued"
@@ -32,9 +30,6 @@ router.register(
 router.register(
     r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
 )
-
-router_member_loan = routers.DefaultRouter()
-router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans")
 
 urlpatterns = [
     path("", include(router.urls)),
@@ -55,4 +50,6 @@ urlpatterns = [
     path("auth/check-auth-session", checkAuthSessionView, name="check_auth_session"),
     # books
     path("books", bookView, name="books"),
+    # categories
+    path("categories", categoryView, name="categories"),
 ]
