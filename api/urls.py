@@ -1,5 +1,4 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
 
 from .auth.views import (
     registerUserView,
@@ -15,24 +14,9 @@ from .auth.views import (
 )
 
 from .book.views import bookView, categoryView
-from .loans.views import (
-    BookLoanViewSet,
-    OverduedBookLoanViewSet,
-    UpComingBookLoanViewSet,
-)
-
-
-router = routers.DefaultRouter()
-router.register(r"book-loans", BookLoanViewSet, basename="book_loans")
-router.register(
-    r"overdued-loans", OverduedBookLoanViewSet, basename="book_loans_overdued"
-)
-router.register(
-    r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
-)
+from .loans.views import bookLoanView
 
 urlpatterns = [
-    path("", include(router.urls)),
     # auth
     path("user", getUserDetail, name="user_detail"),
     path("user/loans", memberLoanView, name="user_loans"),
@@ -52,4 +36,6 @@ urlpatterns = [
     path("books", bookView, name="books"),
     # categories
     path("categories", categoryView, name="categories"),
+    # book loans
+    path("book-loans", bookLoanView, name="book_loans"),
 ]

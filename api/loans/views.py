@@ -1,81 +1,69 @@
+import jwt
 from django.utils import timezone
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework.filters import SearchFilter
-from django_filters.rest_framework import DjangoFilterBackend
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
-from .serializers import BookLoan, BookLoanSerializer
-from ..auth.permissions import IsNotStaffUser, IsStaffUser
+from loans.models import BookLoan
 
 
-class BookLoanViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsStaffUser]
-    queryset = BookLoan.objects.all().order_by("loan_date")
-    serializer_class = BookLoanSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["loan_date", "due_date", "return_date"]
-    search_fields = [
-        "member__user__username",
-        "member__user__email",
-        "member__user__first_name",
-        "member__user__last_name",
-        "book__title",
-    ]
+@csrf_exempt
+def bookLoanView(request):
+    header_authorization = request.headers.get("Authorization")
 
-    def update(self, request, pk):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-
-class OverduedBookLoanViewSet(BookLoanViewSet):
-    now = timezone.now()
-    queryset = (
-        BookLoan.objects.all()
-        .filter(due_date__lte=now, return_date=None)
-        .order_by("loan_date")
-    )
-
-
-class UpComingBookLoanViewSet(BookLoanViewSet):
-    now = timezone.now()
-    due_date_treshold = now + timezone.timedelta(days=3)
-    queryset = (
-        BookLoan.objects.all()
-        .filter(due_date__lte=due_date_treshold, return_date=None)
-        .filter(due_date__gte=now)
-        .order_by("loan_date")
-    )
-
-
-class MemberLoanViewSet(BookLoanViewSet):
-    permission_classes = [IsNotStaffUser]
-    queryset = BookLoan.objects.all()
-    serializer_class = BookLoanSerializer
-
-    def get_queryset(self):
-        member_id = self.kwargs.get("member_id")
-
+    if request.method == "GET":
         now = timezone.now()
         due_date_treshold = now + timezone.timedelta(days=3)
-        near_outstanding = self.request.query_params.get("near_outstanding")
-        overdue = self.request.query_params.get("overdue")
+        loans = BookLoan.objects.all().order_by("loan_date")
+        near_outstanding = request.GET.get("near_outstanding")
+        overdue = request.GET.get("overdue")
 
-        if near_outstanding:
-            return (
-                BookLoan.objects.filter(member=member_id)
-                .filter(due_date__lte=due_date_treshold, return_date=None)
-                .filter(due_date__gte=now)
-                .order_by("loan_date")
-            )
+        try:
+            token = header_authorization.split(" ")[1]
+            jwt.decode(token, key="secret", algorithms=["HS256"])
+            if near_outstanding:
+                loans = (
+                    loans.filter(due_date__lte=due_date_treshold, return_date=None)
+                    .filter(due_date__gte=now)
+                    .order_by("loan_date")
+                )
 
-        if overdue:
-            return (
-                BookLoan.objects.filter(member=member_id)
-                .filter(due_date__lte=now, return_date=None)
-                .order_by("loan_date")
-            )
+            if overdue:
+                loans = loans.filter(due_date__lte=now, return_date=None).order_by(
+                    "loan_date"
+                )
 
-        return BookLoan.objects.filter(member=member_id).order_by("loan_date")
+            data = []
+            for loan_item in loans:
+                remaining_loan_time = (
+                    str(loan_item.due_date.day - now.day) + " days left"
+                )
+                is_overdue = loan_item.due_date < now
+                loan_obj = {
+                    "book": {
+                        "id": loan_item.book.id,
+                        "title": loan_item.book.title,
+                        "author": loan_item.book.author,
+                        "description": loan_item.book.description,
+                        "cover_image": loan_item.book.cover_image.url,
+                    },
+                    "user": {
+                        "id": loan_item.member.user.id,
+                        "username": loan_item.member.user.username,
+                        "email": loan_item.member.user.email,
+                        "first_name": loan_item.member.user.first_name,
+                        "last_name": loan_item.member.user.last_name,
+                        "is_staff": loan_item.member.user.is_staff,
+                    },
+                    "remaining_loan_time": remaining_loan_time,
+                    "is_overdue": is_overdue,
+                    "loan_date": loan_item.loan_date,
+                    "due_date": loan_item.due_date,
+                }
+                data.append(loan_obj)
+
+            return JsonResponse(data, safe=False, status=200)
+
+        except jwt.exceptions.InvalidTokenError:
+            return JsonResponse({"message": "Unauthorized"}, status=401)
+
+    return JsonResponse({"message": "Invalid request method"}, status=405)
