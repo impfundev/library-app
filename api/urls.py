@@ -2,22 +2,19 @@ from django.urls import path, include
 from rest_framework import routers
 
 from .auth.views import (
-    LibrarianViewSet,
-    LibrarianLoginView,
-    LibrarianRegisterView,
-    LibrarianLoginHistoryViewSet,
-    MemberViewSet,
-    MemberLoginView,
-    MemberRegisterView,
-    MemberChangePasswordView,
-    LogoutView,
-    TokenResetPasswordView,
-    ResetPasswordConfirmView,
-    UserDetailView,
-    UpdateProfileView,
-    LoginBaseView,
+    registerUserView,
+    loginUserView,
+    logoutUserView,
+    getUserDetail,
+    memberLoanView,
+    updateUserProfileView,
+    checkAuthSessionView,
+    changePasswordView,
+    resetPasswordView,
+    resetPasswordConfirmView,
 )
-from .book.views import BookViewSet, CategoryViewSet
+
+from .book.views import bookView, CategoryViewSet
 from .loans.views import (
     BookLoanViewSet,
     OverduedBookLoanViewSet,
@@ -27,10 +24,6 @@ from .loans.views import (
 
 
 router = routers.DefaultRouter()
-router.register(r"user", UpdateProfileView, basename="user")
-router.register(r"librarians", LibrarianViewSet, basename="librarians")
-router.register(r"members", MemberViewSet, basename="members")
-router.register(r"books", BookViewSet, basename="books")
 router.register(r"categories", CategoryViewSet, basename="categories")
 router.register(r"book-loans", BookLoanViewSet, basename="book_loans")
 router.register(
@@ -39,9 +32,6 @@ router.register(
 router.register(
     r"upcoming-loans", UpComingBookLoanViewSet, basename="book_loans_upcoming"
 )
-router.register(
-    r"login-history", LibrarianLoginHistoryViewSet, basename="librarian_login_history"
-)
 
 router_member_loan = routers.DefaultRouter()
 router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans")
@@ -49,49 +39,20 @@ router_member_loan.register(r"loans", MemberLoanViewSet, basename="member_loans"
 urlpatterns = [
     path("", include(router.urls)),
     # auth
+    path("user", getUserDetail, name="user_detail"),
+    path("user/loans", memberLoanView, name="user_loans"),
+    path("user/update", updateUserProfileView, name="update_user_profile"),
+    path("auth/login", loginUserView, name="login"),
+    path("auth/logout", logoutUserView, name="logout"),
+    path("auth/register", registerUserView, name="register"),
+    path("auth/change-password", changePasswordView, name="change_password"),
+    path("auth/reset-password", resetPasswordView, name="reset_password"),
     path(
-        "user",
-        UserDetailView.as_view(),
-        name="user_detail",
-    ),
-    path(
-        "user",
-        UserDetailView.as_view(),
-        name="user_detail",
-    ),
-    path(
-        "reset-password/request-token",
-        TokenResetPasswordView.as_view(),
-        name="reset_password_request_token",
-    ),
-    path(
-        "reset-password/confirm",
-        ResetPasswordConfirmView.as_view(),
+        "auth/reset-password-confirm",
+        resetPasswordConfirmView,
         name="reset_password_confirm",
     ),
-    path("librarians/auth/login", LibrarianLoginView.as_view(), name="librarian_login"),
-    path("auth/login", LoginBaseView.as_view(), name="universal_login"),
-    path(
-        "librarians/auth/register",
-        LibrarianRegisterView.as_view(),
-        name="librarian_register",
-    ),
-    path("auth/logout", LogoutView.as_view(), name="librarian_logout"),
-    path("members/auth/login", MemberLoginView.as_view(), name="member_login"),
-    path(
-        "members/auth/register",
-        MemberRegisterView.as_view(),
-        name="librarian_register",
-    ),
-    # change password
-    path(
-        "members/<int:member_id>/change-password",
-        MemberChangePasswordView.as_view(),
-        name="member_change_password",
-    ),
-    path(
-        "members/<int:member_id>/",
-        include(router_member_loan.urls),
-        name="member_loans",
-    ),
+    path("auth/check-auth-session", checkAuthSessionView, name="check_auth_session"),
+    # books
+    path("books", bookView, name="books"),
 ]

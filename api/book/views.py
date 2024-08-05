@@ -1,9 +1,57 @@
+import json
+
+from django.http import JsonResponse
+from django.core.serializers import serialize
+from django.views.decorators.csrf import csrf_exempt
+
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import Book, BookSerializer, Category, CategorySerializer
+
+from book.models import Book, Category
+from .serializers import BookSerializer, CategorySerializer
+
+
+@csrf_exempt
+def bookView(request):
+    books = Book.objects.all().order_by("created_at")
+    category = request.GET.get("category")
+    keyword = request.GET.get("search")
+
+    if request.method == "GET":
+        if category:
+            books = books.filter(category__name=category)
+
+        if keyword and len(keyword) >= 3:
+            books = books.filter(title__icontains=keyword)
+
+        data = []
+        for book_item in books:
+            if book_item.category is not None:
+                book = {
+                    "id": book_item.id,
+                    "title": book_item.title,
+                    "author": book_item.author,
+                    "description": book_item.description,
+                    "cover_image": "http://127.0.0.1:8000" + book_item.cover_image.url,
+                    "category": {
+                        "name": book_item.category.name,
+                    },
+                }
+
+            book = {
+                "id": book_item.id,
+                "title": book_item.title,
+                "author": book_item.author,
+                "description": book_item.description,
+                "cover_image": "http://127.0.0.1:8000" + book_item.cover_image.url,
+            }
+            data.append(book)
+        return JsonResponse(data, status=200, safe=False)
+
+    return JsonResponse({"message": "Invalid request method"}, status=405)
 
 
 class BookViewSet(viewsets.ModelViewSet):
