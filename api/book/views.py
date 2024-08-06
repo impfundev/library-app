@@ -1,6 +1,6 @@
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
-
 
 from book.models import Book, Category
 
@@ -10,6 +10,7 @@ def bookView(request):
     books = Book.objects.all().order_by("created_at")
     category = request.GET.get("category")
     keyword = request.GET.get("search")
+    page_number = request.GET.get("page", 1)
 
     if request.method == "GET":
         if category:
@@ -18,8 +19,11 @@ def bookView(request):
         if keyword and len(keyword) >= 3:
             books = books.filter(title__icontains=keyword)
 
+        paginator = Paginator(books, 10)
+        page_obj = paginator.get_page(page_number)
+
         data = []
-        for book_item in books:
+        for book_item in page_obj:
             if book_item.category is not None:
                 book = {
                     "id": book_item.id,
@@ -40,7 +44,16 @@ def bookView(request):
                 "cover_image": "http://127.0.0.1:8000" + book_item.cover_image.url,
             }
             data.append(book)
-        return JsonResponse(data, status=200, safe=False)
+
+        response_data = {
+            "data": data,
+            "has_next": page_obj.has_next(),
+            "has_prev": page_obj.has_previous(),
+            "page_number": page_obj.number,
+            "total_pages": paginator.num_pages,
+        }
+
+        return JsonResponse(response_data, status=200, safe=False)
 
     return JsonResponse({"message": "Invalid request method"}, status=405)
 
