@@ -53,8 +53,6 @@ urlpatterns = [
     ),
     # api
     path("api/v1/", include("api.urls"), name="API_V1"),
-    # 3rd party
-    path("api-auth/", include("rest_framework.urls"), name="api_auth"),
 ]
 
 if settings.DEBUG:
