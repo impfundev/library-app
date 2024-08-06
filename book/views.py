@@ -67,9 +67,9 @@ class CategoryListView(generic.ListView):
         order = self.request.GET.get("o")
 
         if keyword:
-            queryset = queryset.filter(
-                Q(name__icontains=keyword) | Q(description__icontains=keyword)
-            ).order_by("-created_at")
+            queryset = queryset.filter(Q(name__icontains=keyword)).order_by(
+                "-created_at"
+            )
 
         if order:
             if order == "new":

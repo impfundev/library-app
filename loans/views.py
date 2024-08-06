@@ -18,7 +18,8 @@ class BookLoanListView(generic.ListView):
 
         if keyword:
             queryset = queryset.filter(
-                Q(book__title__icontains=keyword) | Q(member__name__icontains=keyword)
+                Q(book__title__icontains=keyword)
+                | Q(member__user__username__icontains=keyword)
             ).order_by("-created_at")
 
         if order:
