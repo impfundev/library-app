@@ -151,15 +151,13 @@ class LibrarianLoginView(LoginView):
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
-        context = self.get_context_data()
 
         if form.is_valid():
             username = form.data.get("username")
             user = User.objects.get(username=username)
 
             if not user.is_staff:
-                context["error_message"] = "Access Denied, account is not staff"
-
+                form.add_error(field=None, error="Access Denied, account is not staff")
                 return self.form_invalid(form)
 
             librarian = Librarian.objects.get(user=user)
@@ -192,7 +190,6 @@ class LibrarianSignUpView(generic.FormView):
         form = self.get_form()
 
         if form.is_valid:
-            context = self.get_context_data()
             username = form.data.get("username")
             email = form.data.get("email")
             password1 = form.data.get("password1")
@@ -204,6 +201,10 @@ class LibrarianSignUpView(generic.FormView):
 
             is_email = User.objects.filter(email=email)
             if is_email.exists():
+                return self.form_invalid(form)
+
+            is_username = User.objects.filter(username=username)
+            if is_username.exists():
                 return self.form_invalid(form)
 
             user = User.objects.create_user(
