@@ -4,6 +4,7 @@ import random
 from django.utils import timezone
 
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout, authenticate
 
@@ -284,6 +285,7 @@ def memberLoanView(request):
         due_date_treshold = now + timezone.timedelta(days=3)
         near_outstanding = request.GET.get("near_outstanding")
         overdue = request.GET.get("overdue")
+        page_number = request.GET.get("page", 1)
 
         try:
             token = header_authorization.split(" ")[1]
@@ -311,8 +313,11 @@ def memberLoanView(request):
                     "loan_date"
                 )
 
+            paginator = Paginator(loans, 10)
+            page_obj = paginator.get_page(page_number)
+
             data = []
-            for loan in loans:
+            for loan in page_obj:
                 remaining_loan_time = str(loan.due_date.day - now.day) + " days left"
                 is_overdue = loan.due_date < now
                 loan_obj = {
@@ -330,9 +335,15 @@ def memberLoanView(request):
                 }
                 data.append(loan_obj)
 
-            book_loans.filter(due_date__lte=now, return_date=None).order_by("loan_date")
+            response_data = {
+                "data": data,
+                "has_next": page_obj.has_next(),
+                "has_prev": page_obj.has_previous(),
+                "page_number": page_obj.number,
+                "total_pages": paginator.num_pages,
+            }
 
-            return JsonResponse(data, safe=False, status=200)
+            return JsonResponse(response_data, safe=False, status=200)
 
         except jwt.exceptions.InvalidTokenError:
             return JsonResponse({"message": "Unauthorized"}, status=401)
