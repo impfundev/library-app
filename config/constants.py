@@ -13,4 +13,5 @@ LIST_HOST = [
     "localhost",
     "127.0.0.1",
     "192.168.2.252",
+    "library_app.ilhammaulana.me",
 ]

@@ -6,7 +6,7 @@
 *.sqlite3
 media
 uploads
-
+static
 # Backup files # 
 *.bak 
 
