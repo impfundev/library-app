@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from .settings import DATABASES, LIST_HOST
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-hkn&ykayorr75b$9*h^u&$@j(yl^%odsww0t&x%esl)le$t2$e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = LIST_HOST
 
 
 # Application definition
@@ -94,16 +95,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "library_app_dev",
-        "USER": "root",
-        "PASSWORD": "ilhammaulana13",
-        "HOST": "localhost",
-        "PORT": "3306",
-    }
-}
+DATABASES = DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
