@@ -56,6 +56,7 @@ def registerUserView(request):
         user = User.objects.create_user(
             username=username, email=email, password=password
         )
+        Member.objects.create(user=user)
         expired = timezone.now() + timezone.timedelta(days=1)
         payload = {"user_id": user.pk, "exp": expired}
         token = jwt.encode(payload, key="secret", algorithm="HS256")
