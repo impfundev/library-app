@@ -278,7 +278,7 @@ def checkAuthSessionView(request):
 @csrf_exempt
 def memberLoanView(request):
     header_authorization = request.headers.get("Authorization")
-    book_loans = BookLoan.objects.all()
+    book_loans = BookLoan.objects.all().order_by("loan_date")
 
     if request.method == "GET":
         now = timezone.now()
@@ -309,9 +309,7 @@ def memberLoanView(request):
                 )
 
             if overdue:
-                loans = loans.filter(due_date__lte=now, return_date=None).order_by(
-                    "loan_date"
-                )
+                loans = loans.filter(due_date__lte=now, return_date=None)
 
             paginator = Paginator(loans, 10)
             page_obj = paginator.get_page(page_number)

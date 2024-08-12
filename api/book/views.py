@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 
+from config.constants import host_name
 from book.models import Book, Category
 
 
@@ -30,7 +31,10 @@ def bookView(request):
                     "title": book_item.title,
                     "author": book_item.author,
                     "description": book_item.description,
-                    "cover_image": "http://127.0.0.1:8000" + book_item.cover_image.url,
+                    "cover_image": "http://"
+                    + host_name
+                    + ":8000"
+                    + book_item.cover_image.url,
                     "category": {
                         "name": book_item.category.name,
                     },
@@ -41,7 +45,10 @@ def bookView(request):
                 "title": book_item.title,
                 "author": book_item.author,
                 "description": book_item.description,
-                "cover_image": "http://127.0.0.1:8000" + book_item.cover_image.url,
+                "cover_image": "http://"
+                + host_name
+                + ":8000"
+                + book_item.cover_image.url,
             }
             data.append(book)
 

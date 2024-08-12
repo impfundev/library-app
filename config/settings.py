@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+from .constants import host_name
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,7 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "192.168.2.252",
+    host_name,
     "library_app.ilhammaulana.me",
 ]
 
