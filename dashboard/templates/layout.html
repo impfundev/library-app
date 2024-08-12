@@ -4,59 +4,7 @@
   class="w-100 h-100 bg-body-secondary d-flex justify-content-end"
 >
 
-  <div
-    class="w-100 p-4 d-flex flex-column gap-4 bg-dark"
-    style="max-width: 20vw"
-  >
-    {% include "profile.html" %}
-    <div class="d-flex flex-column gap-2">
-      <a
-        href="/dashboard"
-        class="btn {% if request.path == '/dashboard/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-columns-gap"></i> Dashboard</a
-      >
-      <a
-        href="/books"
-        class="btn {% if request.path == '/books/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-book-half"></i> Books</a
-      >
-      <a
-        href="/books/categories"
-        class="btn {% if request.path == '/books/categories/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-tags-fill"></i> Categories</a
-      >
-      <a
-        href="/users/members"
-        class="btn {% if request.path == '/users/members/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-person-vcard"></i> Members</a
-      >
-      <a
-        href="/users/librarians"
-        class="btn {% if request.path == '/users/librarians/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-person-fill-lock"></i> Librarian</a
-      >
-      <a
-        href="/book-loans"
-        class="btn {% if request.path == '/book-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-calendar-week"></i> Book Loans</a
-      >
-      <a
-        href="/upcoming-loans/"
-        class="btn {% if request.path == '/upcoming-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-calendar2-event"></i> Near Outstanding Loans</a
-      >
-      <a
-        href="/overdued-loans/"
-        class="btn {% if request.path == '/overdued-loans/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-calendar2-x"></i> Overdued Loans</a
-      >
-      <a
-        href="/users/librarians/login-history/"
-        class="btn {% if request.path == '/users/librarians/login-history/' %}btn-primary{% else %}btn-outline-primary border-white text-white{% endif %} text-start w-100"
-        ><i class="bi bi-clock-history"></i> Login History</a
-      >
-    </div>
-  </div>
+  {% include "sidebar.html" %}
 
   <div style="max-height: 100vh" class="w-100 overflow-y-auto">
     {% block dashboard %}{% endblock dashboard %}

@@ -1,0 +1,84 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-4">Library App Backoffice</span>
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
+        <a
+        href="/dashboard"
+        class="nav-link {% if request.path == '/dashboard/' %}active{% else %}link-dark{% endif %} text-start w-100"
+        ><i class="bi bi-speedometer"></i> Dashboard</a>
+      </li>
+      <li>
+        <a
+            href="/books"
+            class="nav-link {% if request.path == '/books/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-book-half"></i> Books</a
+        >
+      </li>
+      <li>
+        <a
+            href="/books/categories"
+            class="nav-link {% if request.path == '/books/categories/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-tags-fill"></i> Categories</a
+        >
+      </li>
+      <li>
+        <a
+            href="/users/members"
+            class="nav-link {% if request.path == '/users/members/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-person-vcard"></i> Members</a
+        >
+      </li>
+      <li>
+        <a
+            href="/users/librarians"
+            class="nav-link {% if request.path == '/users/librarians/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-person-fill-lock"></i> Librarian</a
+        >
+      </li>
+      <li>
+        <a
+            href="/book-loans"
+            class="nav-link {% if request.path == '/book-loans/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-calendar-week"></i> Book Loans</a
+        >
+      </li>
+      <li>
+        <a
+            href="/upcoming-loans/"
+            class="nav-link {% if request.path == '/upcoming-loans/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-calendar2-event"></i> Near Outstanding Loans</a
+        >
+      </li>
+      <li>
+        <a
+            href="/overdued-loans/"
+            class="nav-link {% if request.path == '/overdued-loans/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-calendar2-x"></i> Overdued Loans</a
+        >
+      </li>
+      <li>
+        <a
+            href="/users/librarians/login-history/"
+            class="nav-link {% if request.path == '/users/librarians/login-history/' %}active{% else %}link-dark{% endif %} text-start w-100"
+            ><i class="bi bi-clock-history"></i> Login History</a
+        >
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      {% if user %}
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>{{ user.username }}</strong>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+        <li><a class="dropdown-item" href="/users/librarians/{{ librarian_id }}/">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/users/auth/logout/">Sign out</a></li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
