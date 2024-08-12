@@ -31,10 +31,7 @@ def bookView(request):
                     "title": book_item.title,
                     "author": book_item.author,
                     "description": book_item.description,
-                    "cover_image": "http://"
-                    + host_name
-                    + ":8000"
-                    + book_item.cover_image.url,
+                    "cover_image": host_name + book_item.cover_image.url,
                     "category": {
                         "name": book_item.category.name,
                     },
@@ -45,10 +42,7 @@ def bookView(request):
                 "title": book_item.title,
                 "author": book_item.author,
                 "description": book_item.description,
-                "cover_image": "http://"
-                + host_name
-                + ":8000"
-                + book_item.cover_image.url,
+                "cover_image": host_name + book_item.cover_image.url,
             }
             data.append(book)
 
